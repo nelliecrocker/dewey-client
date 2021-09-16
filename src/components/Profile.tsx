@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 
 class Profile extends Component {
-    // const params = useParams()
+
     render() {
         return (
             <div>
