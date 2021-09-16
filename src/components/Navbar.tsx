@@ -1,25 +1,38 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom'
+import { Login, Register, Profile, Landing } from './Index'
 
 type Props = {}
 
 
 class Navbar extends Component<Props, {}> {
-    constructor(props: Props) {
-        super(props)
-    }
+    
+    
     render() {
         return (
+            <Router>
             <div>
-                
-
-
-                {/* <ul> */}
-                    {/* add activeClassName={"classname"} after {"/Login"} to stylize */}
-                    {/* <li><Link to="/login">Login</Link></li>
-                    <li><Link to="/register">Register</Link></li>
-                </ul> */}
+                <Link to="/login">Login</Link>
+                <Link to="/register">Register</Link>
+                <Link to="/profile">Profile</Link>
             </div>
+
+            <Switch>
+            <Route path="/">
+                    <Landing />
+                </Route>
+                <Route path="/login">
+                    <Login />
+                </Route>
+                <Route path="/register">
+                    <Register />
+                </Route>
+                <Route path="/profile/:id">
+                    <Profile />
+                </Route>
+
+            </Switch>
+            </Router>
         );
     }
 }

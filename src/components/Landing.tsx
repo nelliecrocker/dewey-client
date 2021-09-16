@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Register, Login, Navbar } from './Index'
+import { Component } from 'react'
+import { Navbar } from './Index'
 
 
 class Landing extends Component {
@@ -10,12 +10,7 @@ class Landing extends Component {
                 <div>
                     <div>
                         <Navbar />
-                    </div>
-                </div>
-                <hr/>
-                <div>
-                    <div>
-                        {this.props.children}
+                        Landing Page
                     </div>
                 </div>
             </div>
