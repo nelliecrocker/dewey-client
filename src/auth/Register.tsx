@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import './components.css';
 
 type Props = {
     token: string,
@@ -27,15 +26,15 @@ class Register extends Component<Props, {}> {
 
     handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        // this.setState({
-        //     user: {
-        //         fname: this.props.fname,
-        //         lname: this.props.lname,
-        //         email: this.props.email,
-        //         username: this.props.username,
-        //         password: this.props.password
-        //     }
-        // })
+        this.setState({
+            user: {
+                fname: this.props.fname,
+                lname: this.props.lname,
+                email: this.props.email,
+                username: this.props.username,
+                password: this.props.password
+            }
+        })
 
         fetch("http://localhost:3000/user/register", {
             method: 'POST',

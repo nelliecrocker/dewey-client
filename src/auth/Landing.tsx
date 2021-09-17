@@ -29,7 +29,7 @@ constructor(props: Props){
             <div>
                 <div>
                     <div>
-                        <Login
+                        {/* <Login
                         token={this.props.token}
                         updateToken={this.props.updateToken}
                         fname={this.state.fname}
@@ -39,7 +39,7 @@ constructor(props: Props){
                         password={this.state.password}
                         setUsername = {this.setUsername}
                         setPassword = {this.setPassword}
-                        />
+                        /> */}
 
                         <Register
                         token={this.props.token}

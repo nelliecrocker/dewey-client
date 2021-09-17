@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom'
-import { Login, Register, Profile, Landing } from './Index'
+import { Profile } from './Index'
+import { Register, Login, Landing } from '../auth/index'
 
 type Props = {}
 
