@@ -41,63 +41,75 @@ class Landing extends Component<Props, State> {
     }
     render() {
         return (
+            // add router
             <div>
                 <div>
                     <div>
-                        <h1>Landing Page</h1>
-                        <h2>Login</h2>
-                        <Login
-                            token={this.props.token}
-                            updateToken={this.props.updateToken}
-                            fname={this.state.fname}
-                            lname={this.state.lname}
-                            email={this.state.email}
-                            username={this.state.username}
-                            password={this.state.password}
-                            setUsername={this.setUsername}
-                            setPassword={this.setPassword}
-                        />
-                        <h2>Register</h2>
-                        <Register
-                            token={this.props.token}
-                            updateToken={this.props.updateToken}
-                            fname={this.state.fname}
-                            lname={this.state.lname}
-                            email={this.state.email}
-                            username={this.state.username}
-                            password={this.state.password}
-                            setUsername={this.setUsername}
-                            setFname={this.setFname}
-                            setLname={this.setLname}
-                            setEmail={this.setEmail}
-                            setPassword={this.setPassword}
-                        />
+                        {/* add route */}
+                        {!this.props.token &&
+                            <>
+                            <h2>Login</h2>
+                                <Login
+                                    token={this.props.token}
+                                    updateToken={this.props.updateToken}
+                                    fname={this.state.fname}
+                                    lname={this.state.lname}
+                                    email={this.state.email}
+                                    username={this.state.username}
+                                    password={this.state.password}
+                                    setUsername={this.setUsername}
+                                    setPassword={this.setPassword}
+                                />
+                                {/* add route */}
+                                <h2>Register</h2>
+                                <Register
+                                    token={this.props.token}
+                                    updateToken={this.props.updateToken}
+                                    fname={this.state.fname}
+                                    lname={this.state.lname}
+                                    email={this.state.email}
+                                    username={this.state.username}
+                                    password={this.state.password}
+                                    setUsername={this.setUsername}
+                                    setFname={this.setFname}
+                                    setLname={this.setLname}
+                                    setEmail={this.setEmail}
+                                    setPassword={this.setPassword}
+                                />
+                            </>
+                        }
 
+                        {/* add route */}
                         <h2>CreateBook</h2>
-                        <CreateBook 
-                            token={this.props.token}
-                            updateToken={this.props.updateToken}
-                            title={this.state.title}
-                            author={this.state.author}
-                            genre={this.state.genre}
-                            cover={this.state.cover}
-                            sharedWith={this.state.sharedWith}
-                            sharedDate={this.state.sharedDate}
-                            setTitle={this.setTitle}
-                            setAuthor={this.setAuthor}
-                            setGenre={this.setGenre}
-                            setCover={this.setCover}
-                            setSharedWith={this.setSharedWith}
-                            setSharedDate={this.setSharedDate}
-                            />
-                        <h2>MyProfile</h2>
-                        <Profile />
+                        {this.props.token &&
+                            <>
+                                <CreateBook
+                                    token={this.props.token}
+                                    updateToken={this.props.updateToken}
+                                    title={this.state.title}
+                                    author={this.state.author}
+                                    genre={this.state.genre}
+                                    cover={this.state.cover}
+                                    sharedWith={this.state.sharedWith}
+                                    sharedDate={this.state.sharedDate}
+                                    setTitle={this.setTitle}
+                                    setAuthor={this.setAuthor}
+                                    setGenre={this.setGenre}
+                                    setCover={this.setCover}
+                                    setSharedWith={this.setSharedWith}
+                                    setSharedDate={this.setSharedDate}
+                                />
+                                {/* add route */}
+                                <h2>MyProfile</h2>
+                                <Profile />
+                            </>
+                        }
                     </div>
                 </div>
             </div>
         )
     }
-// user helper functions
+    // user helper functions
     setUsername = (newUsername: string) => {
         this.setState({ username: newUsername })
     }
