@@ -116,10 +116,6 @@ class Register extends Component<Props, {}> {
                             </FormGroup>
                         </Col>
                     </Row>
-                    <FormGroup check>
-                        <Input type="checkbox" name="check" id="exampleCheck" />
-                        <Label for="exampleCheck" check>I agree to be a responsible member of the Dewey Collective.</Label>
-                    </FormGroup>
                     <Button>Join Dewey</Button>
                 </Form>
             </div>

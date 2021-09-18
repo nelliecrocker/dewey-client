@@ -23,6 +23,7 @@ class App extends Component<Props, State> {
     console.log(this.state.sessionToken)
   }
 
+  //add ternary to determine view. If they have a session token, allow them to view profile...etc
 
   render() {
     return (

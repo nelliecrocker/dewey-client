@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 
 
@@ -77,6 +77,7 @@ class Login extends Component<Props, {}> {
                             onChange = {e => this.props.setPassword(e.target.value)} />
                         </FormGroup>
                     </Col>
+                    <Button>Login</Button>
                 </Form>
             </div>
         );
