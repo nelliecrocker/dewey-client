@@ -17,9 +17,9 @@ type Props = {
 
 
 class Login extends Component<Props, {}> {
-    constructor(props: Props) {
-        super(props)
-    }
+    // constructor(props: Props) {
+    //     super(props)
+    // }
 
 
     componentDidMount() {

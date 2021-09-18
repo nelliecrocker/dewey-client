@@ -1,6 +1,6 @@
 import { Component } from 'react'
-import { Login, Register } from '../auth/index'
-import { CreateBook, Profile } from '../components/Index'
+import { Login, Register } from './index'
+import { CreateBook, Profile, Navbar } from '../components/Index'
 
 type Props = {
     token: string,
@@ -22,7 +22,7 @@ type State = {
     sharedDate: string
 }
 
-class Landing extends Component<Props, State> {
+class Portal extends Component<Props, State> {
     constructor(props: Props) {
         super(props)
         this.state = {
@@ -147,4 +147,4 @@ class Landing extends Component<Props, State> {
     }
 }
 
-export default Landing
+export default Portal

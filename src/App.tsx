@@ -4,7 +4,7 @@ import { Landing } from './auth/index'
 
 type Props = {}
 type State = {
-  sessionToken: string,
+  sessionToken: string
 }
 
 class App extends Component<Props, State> {
@@ -36,6 +36,6 @@ class App extends Component<Props, State> {
 
     );
   }
-}
+} 
 
 export default App;

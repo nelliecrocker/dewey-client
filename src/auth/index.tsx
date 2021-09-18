@@ -1,4 +1,4 @@
-import Landing from '../auth/Landing'
+import Landing from './Landing'
 import Register from '../auth/Register'
 import Login from '../auth/Login'
 
