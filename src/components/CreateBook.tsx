@@ -24,7 +24,10 @@ class CreateBook extends Component<Props, {}> {
         super(props)
     }
 
-    handleSubmit = (e: React.FormEvent) => {
+    
+
+    onSubmit = (e: React.FormEvent) => {
+
         e.preventDefault()
         this.setState({
             book: {
@@ -36,7 +39,6 @@ class CreateBook extends Component<Props, {}> {
                 sharedDate: this.props.sharedDate
             }
         })
-
 
         fetch("http://localhost:3000/book/create", {
             method: 'POST',
@@ -51,13 +53,16 @@ class CreateBook extends Component<Props, {}> {
                 }
             }),
             headers: new Headers({
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "Authorization": `Bearer ${this.props.token}`
+
             })
+            
         })
             .then(res => res.json())
             .then((data) => {
                 console.log(data)
-                this.props.updateToken(data.sessionToken)
+                // this.props.updateToken(data.sessionToken)
                 //call function that routes to my profile
             })
             .catch(err => console.log(err))
@@ -66,7 +71,7 @@ class CreateBook extends Component<Props, {}> {
     render() {
         return (
             <div>
-                <Form onSubmit={this.handleSubmit}>
+                <Form onSubmit={this.onSubmit}>
                     <Label>Create a Book</Label>
                     <FormGroup>
                         <Label for="title">Title</Label>
