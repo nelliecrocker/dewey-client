@@ -1,5 +1,6 @@
 import { Component } from 'react';
-import { Landing } from './auth/index'
+import { Portal } from './auth/index'
+import { Home } from './components/Index'
 
 
 type Props = {}
@@ -29,7 +30,8 @@ class App extends Component<Props, State> {
     return (
 
       <div>
-        <Landing token={this.state.sessionToken} updateToken={this.updateToken}/>
+        <Home />
+        <Portal />
       </div>
 
     );

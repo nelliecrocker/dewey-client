@@ -1,6 +1,6 @@
 import { Component } from 'react'
-import { Login, Register } from '../auth/index'
-import { CreateBook, Profile } from '../components/Index'
+import { Login, Register } from './index'
+import { CreateBook, Profile, Navbar } from '../components/Index'
 
 type Props = {
     token: string,
@@ -22,7 +22,7 @@ type State = {
     sharedDate: string
 }
 
-class Landing extends Component<Props, State> {
+class Portal extends Component<Props, State> {
     constructor(props: Props) {
         super(props)
         this.state = {
@@ -44,7 +44,9 @@ class Landing extends Component<Props, State> {
             <div>
                 <div>
                     <div>
-                        <h1>Landing Page</h1>
+                        <h1>Portal Page</h1>
+                        <h1>Navbar</h1>
+                        <Navbar />
                         <h2>Login</h2>
                         <Login
                             token={this.props.token}
@@ -74,7 +76,7 @@ class Landing extends Component<Props, State> {
                         />
 
                         <h2>CreateBook</h2>
-                        <CreateBook 
+                        <CreateBook
                             token={this.props.token}
                             updateToken={this.props.updateToken}
                             title={this.state.title}
@@ -89,7 +91,7 @@ class Landing extends Component<Props, State> {
                             setCover={this.setCover}
                             setSharedWith={this.setSharedWith}
                             setSharedDate={this.setSharedDate}
-                            />
+                        />
                         <h2>MyProfile</h2>
                         <Profile />
                     </div>
@@ -97,7 +99,7 @@ class Landing extends Component<Props, State> {
             </div>
         )
     }
-// user helper functions
+    // user helper functions
     setUsername = (newUsername: string) => {
         this.setState({ username: newUsername })
     }
@@ -135,4 +137,4 @@ class Landing extends Component<Props, State> {
     }
 }
 
-export default Landing
+export default Portal

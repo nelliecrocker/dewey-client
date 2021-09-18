@@ -1,10 +1,10 @@
-import Landing from '../auth/Landing'
+import Portal from './Portal'
 import Register from '../auth/Register'
 import Login from '../auth/Login'
 
 
 export {
-    Landing,
+    Portal,
     Register,
     Login
 }

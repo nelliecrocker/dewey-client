@@ -20,9 +20,9 @@ type Props = {
 
 
 class Register extends Component<Props, {}> {
-    constructor(props: Props) {
-        super(props)
-    }
+    // constructor(props: Props) {
+    //     super(props)
+    // }
 
     handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()

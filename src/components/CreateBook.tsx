@@ -20,9 +20,9 @@ type Props = {
 }
 
 class CreateBook extends Component<Props, {}> {
-    constructor(props: Props) {
-        super(props)
-    }
+    // constructor(props: Props) {
+    //     super(props)
+    // }
 
     
 
@@ -62,7 +62,6 @@ class CreateBook extends Component<Props, {}> {
             .then(res => res.json())
             .then((data) => {
                 console.log(data)
-                // this.props.updateToken(data.sessionToken)
                 //call function that routes to my profile
             })
             .catch(err => console.log(err))
