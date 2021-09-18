@@ -22,7 +22,7 @@ type State = {
     sharedDate: string
 }
 
-class Portal extends Component<Props, State> {
+class Landing extends Component<Props, State> {
     constructor(props: Props) {
         super(props)
         this.state = {
@@ -147,4 +147,4 @@ class Portal extends Component<Props, State> {
     }
 }
 
-export default Portal
+export default Landing
