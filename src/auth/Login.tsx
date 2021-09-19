@@ -1,43 +1,36 @@
 import React, { Component } from 'react';
 import { Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { Redirect } from 'react-router-dom'
 
 
 
 type Props = {
     token: string,
-    updateToken(newToken: string): void,
-    fname: string,
-    lname: string,
-    email: string,
-    username: string,
-    password: string,
-    setUsername(newUsername: string): void,
-    setPassword(newPassword: string): void
+    updateToken(newToken: string): void
+    
 };
 
+type State = {
+    username: string,
+    password: string
+}
 
-class Login extends Component<Props, {}> {
-    // constructor(props: Props) {
-    //     super(props)
-    // }
 
-
-    componentDidMount() {
-        //function to route to myprofile
-
+class Login extends Component<Props, State> {
+    state = {
+        username: "",
+        password: ""
     }
 
 
     onSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        // insert function to route to myprofile
-
         fetch("http://localhost:3000/user/login", {
             method: 'POST',
             body: JSON.stringify({
                 user: {
-                    username: this.props.username,
-                    password: this.props.password
+                    username: this.state.username,
+                    password: this.state.password
                 }
             }),
             headers: new Headers({
@@ -48,14 +41,16 @@ class Login extends Component<Props, {}> {
         ).then((data) => {
             console.log(data)
             this.props.updateToken(data.sessionToken)
-            // call function that routes to myprofile
+            
         }).catch(err => console.log(err))
     }
 
-
-
-
     render() {
+        //redirects to my profile after login
+        if (this.props.token !== "") {
+            return <Redirect to='/user/profile' />
+        }
+
         return (
             <div>
                 <Form onSubmit={this.onSubmit}>
@@ -64,7 +59,7 @@ class Login extends Component<Props, {}> {
                         <FormGroup>
                             <Label for="username">Username</Label>
                             <Input type="text" name="username" id="username" placeholder="harrylovesginny731"
-                            onChange = {e => this.props.setUsername(e.target.value)} />
+                            onChange = {e => this.setState({username: e.target.value})} />
                         </FormGroup>
                     </Col>
                     <Col md={6}>
@@ -74,7 +69,7 @@ class Login extends Component<Props, {}> {
                             name="password"
                             id="password"
                             placeholder="HorcruxCrshr"
-                            onChange = {e => this.props.setPassword(e.target.value)} />
+                            onChange = {e => this.setState({password: e.target.value})} />
                         </FormGroup>
                     </Col>
                     <Button>Login</Button>

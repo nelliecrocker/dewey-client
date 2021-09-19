@@ -1,5 +1,7 @@
 import { Component } from 'react';
-import { Landing } from './auth/index'
+import { Landing, Register, Login } from './auth/index'
+import { Navbar, Home } from './components/Index'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 
 type Props = {}
@@ -12,7 +14,7 @@ class App extends Component<Props, State> {
     super(props)
     this.state = {
       sessionToken: ""
-        }
+    }
   }
 
   updateToken = (newToken: string) => {
@@ -29,13 +31,14 @@ class App extends Component<Props, State> {
     return (
 
       <div>
-      <Landing token={this.state.sessionToken} updateToken={this.updateToken}/>
-      
+          <Navbar />
+          <Landing token={this.state.sessionToken} updateToken={this.updateToken} />
+
         {/* insert ternary to determine if sessionToken is empty. If yes, show BookCreate, if no, show Login/Register */}
       </div>
 
     );
   }
-} 
+}
 
 export default App;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Redirect } from 'react-router-dom'
 
 
 type Props = {
@@ -19,12 +20,9 @@ type Props = {
     setSharedDate(newSharedDate: string): void
 }
 
-class CreateBook extends Component<Props, {}> {
-    // constructor(props: Props) {
-    //     super(props)
-    // }
 
-    
+
+class CreateBook extends Component<Props, {}> {
 
     onSubmit = (e: React.FormEvent) => {
 
@@ -57,7 +55,7 @@ class CreateBook extends Component<Props, {}> {
                 "Authorization": `Bearer ${this.props.token}`
 
             })
-            
+
         })
             .then(res => res.json())
             .then((data) => {
@@ -67,7 +65,13 @@ class CreateBook extends Component<Props, {}> {
             .catch(err => console.log(err))
 
     }
+
     render() {
+        if (this.props.token === "") {
+            return <Redirect to="/user/login" />
+        } else {
+            return <Redirect to ="/user/profile" />
+        }
         return (
             <div>
                 <Form onSubmit={this.onSubmit}>
