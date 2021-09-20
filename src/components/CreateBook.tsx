@@ -6,35 +6,49 @@ import { Redirect } from 'react-router-dom'
 type Props = {
     token: string,
     updateToken(newToken: string): void,
-    title: string,
-    author: string,
-    genre: string,
-    cover: string,
-    sharedWith: string,
-    sharedDate: string,
-    setTitle(newTitle: string): void,
-    setAuthor(newAuthor: string): void,
-    setGenre(newGenre: string): void,
-    setCover(newCover: string): void,
-    setSharedWith(newSharedWith: string): void,
-    setSharedDate(newSharedDate: string): void
+
+    // setTitle(newTitle: string): void,
+    // setAuthor(newAuthor: string): void,
+    // setGenre(newGenre: string): void,
+    // setCover(newCover: string): void,
+    // setSharedWith(newSharedWith: string): void,
+    // setSharedDate(newSharedDate: string): void
+}
+type State = {
+    book: {
+        title: string,
+        author: string,
+        genre: string,
+        cover: string,
+        sharedWith: string,
+        sharedDate: string
+    }
 }
 
 
+class CreateBook extends Component<Props, State> {
+    state = {
+        book: {
+            title: "",
+            author: "",
+            genre: "",
+            cover: "",
+            sharedWith: "",
+            sharedDate: ""
+        }
+    }
 
-class CreateBook extends Component<Props, {}> {
 
     onSubmit = (e: React.FormEvent) => {
-
         e.preventDefault()
         this.setState({
             book: {
-                title: this.props.title,
-                author: this.props.author,
-                genre: this.props.genre,
-                cover: this.props.cover,
-                sharedWith: this.props.sharedWith,
-                sharedDate: this.props.sharedDate
+                title: this.state.book.title,
+                author: this.state.book.author,
+                genre: this.state.book.genre,
+                cover: this.state.book.cover,
+                sharedWith: this.state.book.sharedWith,
+                sharedDate: this.state.book.sharedDate
             }
         })
 
@@ -42,37 +56,38 @@ class CreateBook extends Component<Props, {}> {
             method: 'POST',
             body: JSON.stringify({
                 book: {
-                    title: this.props.title,
-                    author: this.props.author,
-                    genre: this.props.genre,
-                    cover: this.props.cover,
-                    sharedWith: this.props.sharedWith,
-                    sharedDate: this.props.sharedDate
+                    title: this.state.book.title,
+                    author: this.state.book.author,
+                    genre: this.state.book.genre,
+                    cover: this.state.book.cover,
+                    sharedWith: this.state.book.sharedWith,
+                    sharedDate: this.state.book.sharedDate
                 }
             }),
             headers: new Headers({
                 'Content-Type': 'application/json',
                 "Authorization": `Bearer ${this.props.token}`
-
             })
-
         })
             .then(res => res.json())
             .then((data) => {
                 console.log(data)
-                //call function that routes to my profile
             })
             .catch(err => console.log(err))
-
     }
 
     render() {
+        //redirects to login if no token, my profile after submit with token
+
         if (this.props.token === "") {
             return <Redirect to="/user/login" />
-        } else {
-            return <Redirect to ="/user/profile" />
-        }
+        } 
+        // else {
+        //     return <Redirect to="/user/profile" />
+        // }
+
         return (
+
             <div>
                 <Form onSubmit={this.onSubmit}>
                     <Label>Create a Book</Label>
@@ -82,7 +97,7 @@ class CreateBook extends Component<Props, {}> {
                             name="title"
                             id="title"
                             placeholder="Harry Potter and the Sorcerer's Stone"
-                            onChange={e => this.props.setTitle(e.target.value)} />
+                            onChange={(e) => this.setState({book: {...this.state.book, title: e.target.value}})} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="author">Author</Label>
@@ -90,7 +105,7 @@ class CreateBook extends Component<Props, {}> {
                             name="author"
                             id="author"
                             placeholder="J.K. Rowling"
-                            onChange={e => this.props.setAuthor(e.target.value)} />
+                            onChange={(e) => this.setState({book: {...this.state.book, author: e.target.value}})} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="genre">Genre</Label>
@@ -98,7 +113,7 @@ class CreateBook extends Component<Props, {}> {
                             name="genre"
                             id="genre"
                             placeholder="Fiction"
-                            onChange={e => this.props.setGenre(e.target.value)} />
+                            onChange={(e) => this.setState({book: {...this.state.book, genre: e.target.value}})} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="cover">cover</Label>
@@ -106,7 +121,7 @@ class CreateBook extends Component<Props, {}> {
                             name="cover"
                             id="cover"
                             placeholder="Cover Image"
-                            onChange={e => this.props.setCover(e.target.value)} />
+                            onChange={(e) => this.setState({book: {...this.state.book, cover: e.target.value}})} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="sharedWith">Shared With</Label>
@@ -114,7 +129,7 @@ class CreateBook extends Component<Props, {}> {
                             name="sharedWith"
                             id="sharedWith"
                             placeholder="Username"
-                            onChange={e => this.props.setSharedWith(e.target.value)} />
+                            onChange={(e) => this.setState({book: {...this.state.book, sharedWith: e.target.value}})} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="sharedDate">Shared Date</Label>
@@ -122,7 +137,7 @@ class CreateBook extends Component<Props, {}> {
                             name="sharedDate"
                             id="sharedDate"
                             placeholder="Date"
-                            onChange={e => this.props.setSharedDate(e.target.value)} />
+                            onChange={(e) => this.setState({book: {...this.state.book, sharedDate: e.target.value}})} />
                     </FormGroup>
                     <Button>Add to your bookshelf</Button>
                 </Form>

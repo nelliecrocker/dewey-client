@@ -28,22 +28,6 @@ class Register extends Component<Props, State> {
         }
     }
 
-    // setUsername = (newUsername: string) => {
-    //     this.setState({ username: newUsername })
-    // }
-    // setFname = (newFname: string) => {
-    //     this.setState({ fname: newFname })
-    // }
-    // setLname = (newLname: string) => {
-    //     this.setState({ lname: newLname })
-    // }
-    // setEmail = (newEmail: string) => {
-    //     this.setState({ email: newEmail })
-    // }
-    // setPassword = (newPassword: string) => {
-    //     this.setState({ password: newPassword })
-    // }
-
     handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
         this.setState({
@@ -81,10 +65,10 @@ class Register extends Component<Props, State> {
 
 
     render() {
-        //redirects to create book after registering
+        //redirects to my profile after registering
 
         if (this.props.token !== "") {
-            return <Redirect to='/user/create/book' />
+            return <Redirect to='/book/create' />
         }
 
         return (

@@ -109,18 +109,19 @@ class Landing extends Component<Props, State> {
                     <Route exact path="/book/create" component={() => <CreateBook
                         token={this.props.token}
                         updateToken={this.props.updateToken}
-                        title={this.state.title}
-                        author={this.state.author}
-                        genre={this.state.genre}
-                        cover={this.state.cover}
-                        sharedWith={this.state.sharedWith}
-                        sharedDate={this.state.sharedDate}
-                        setTitle={this.setTitle}
-                        setAuthor={this.setAuthor}
-                        setGenre={this.setGenre}
-                        setCover={this.setCover}
-                        setSharedWith={this.setSharedWith}
-                        setSharedDate={this.setSharedDate} />}>
+                        // title={this.state.title}
+                        // author={this.state.author}
+                        // genre={this.state.genre}
+                        // cover={this.state.cover}
+                        // sharedWith={this.state.sharedWith}
+                        // sharedDate={this.state.sharedDate}
+                        // setTitle={this.setTitle}
+                        // setAuthor={this.setAuthor}
+                        // setGenre={this.setGenre}
+                        // setCover={this.setCover}
+                        // setSharedWith={this.setSharedWith}
+                        // setSharedDate={this.setSharedDate} 
+                        />}>
                     </Route>
 
                     <Redirect to="/" />
