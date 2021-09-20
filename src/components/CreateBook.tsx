@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 
 
 type Props = {
@@ -140,6 +140,7 @@ class CreateBook extends Component<Props, State> {
                             onChange={(e) => this.setState({book: {...this.state.book, sharedDate: e.target.value}})} />
                     </FormGroup>
                     <Button>Add to your bookshelf</Button>
+                    
                 </Form>
             </div>
         );

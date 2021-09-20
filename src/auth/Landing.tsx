@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import { Login, Register } from './index'
-import { CreateBook, Profile, Navbar, Home } from '../components/Index'
+import { CreateBook, Profile, Navbar, Home, Bookshelf } from '../components/Index'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 
 type Props = {
@@ -124,6 +124,24 @@ class Landing extends Component<Props, State> {
                         />}>
                     </Route>
 
+                    <Route exact path="/book/bookshelf" component={() => <Bookshelf
+                        token={this.props.token}
+                        updateToken={this.props.updateToken}
+                        // title={this.state.title}
+                        // author={this.state.author}
+                        // genre={this.state.genre}
+                        // cover={this.state.cover}
+                        // sharedWith={this.state.sharedWith}
+                        // sharedDate={this.state.sharedDate}
+                        // setTitle={this.setTitle}
+                        // setAuthor={this.setAuthor}
+                        // setGenre={this.setGenre}
+                        // setCover={this.setCover}
+                        // setSharedWith={this.setSharedWith}
+                        // setSharedDate={this.setSharedDate} 
+                        />}>
+                    </Route>
+
                     <Redirect to="/" />
 
                 </Switch>
@@ -131,41 +149,41 @@ class Landing extends Component<Props, State> {
         )
     }
     // user helper functions
-    setUsername = (newUsername: string) => {
-        this.setState({ username: newUsername })
-    }
-    setFname = (newFname: string) => {
-        this.setState({ fname: newFname })
-    }
-    setLname = (newLname: string) => {
-        this.setState({ lname: newLname })
-    }
-    setEmail = (newEmail: string) => {
-        this.setState({ email: newEmail })
-    }
-    setPassword = (newPassword: string) => {
-        this.setState({ password: newPassword })
-    }
+    // setUsername = (newUsername: string) => {
+    //     this.setState({ username: newUsername })
+    // }
+    // setFname = (newFname: string) => {
+    //     this.setState({ fname: newFname })
+    // }
+    // setLname = (newLname: string) => {
+    //     this.setState({ lname: newLname })
+    // }
+    // setEmail = (newEmail: string) => {
+    //     this.setState({ email: newEmail })
+    // }
+    // setPassword = (newPassword: string) => {
+    //     this.setState({ password: newPassword })
+    // }
 
     // books helper functions
-    setTitle = (newTitle: string) => {
-        this.setState({ title: newTitle })
-    }
-    setAuthor = (newAuthor: string) => {
-        this.setState({ author: newAuthor })
-    }
-    setGenre = (newGenre: string) => {
-        this.setState({ genre: newGenre })
-    }
-    setCover = (newCover: string) => {
-        this.setState({ cover: newCover })
-    }
-    setSharedWith = (newSharedWith: string) => {
-        this.setState({ sharedWith: newSharedWith })
-    }
-    setSharedDate = (newSharedDate: string) => {
-        this.setState({ sharedDate: newSharedDate })
-    }
+    // setTitle = (newTitle: string) => {
+    //     this.setState({ title: newTitle })
+    // }
+    // setAuthor = (newAuthor: string) => {
+    //     this.setState({ author: newAuthor })
+    // }
+    // setGenre = (newGenre: string) => {
+    //     this.setState({ genre: newGenre })
+    // }
+    // setCover = (newCover: string) => {
+    //     this.setState({ cover: newCover })
+    // }
+    // setSharedWith = (newSharedWith: string) => {
+    //     this.setState({ sharedWith: newSharedWith })
+    // }
+    // setSharedDate = (newSharedDate: string) => {
+    //     this.setState({ sharedDate: newSharedDate })
+    // }
 }
 
 export default Landing

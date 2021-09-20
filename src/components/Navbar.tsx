@@ -19,14 +19,8 @@ class Navbar extends Component<Props, {}> {
                 <li><Link to='/user/login'>Login</Link></li>
                 <li><Link to='/user/profile'>Profile</Link></li>
                 <li><Link to='/book/create'>Create a Book</Link></li>
+                <li><Link to='/book/bookshelf'>View Bookshelf</Link></li>
             </ul>
-            {/* <Switch>
-                <Route exact path='/home'><Home /></Route>
-                <Route exact path='/user/register'>Register</Route>
-                <Route exact path='/user/login'>Login</Route>
-                <Route exact path='/user/profile'>Profile</Route>
-                <Route exact path='/book/create'>Create a Book</Route>
-            </Switch> */}
             
             </div>
         );
