@@ -84,7 +84,7 @@ class Register extends Component<Props, State> {
         //redirects to create book after registering
 
         if (this.props.token !== "") {
-            return <Redirect to='/create/book' />
+            return <Redirect to='/user/create/book' />
         }
 
         return (
@@ -98,56 +98,57 @@ class Register extends Component<Props, State> {
                             name="fname"
                             id="fname"
                             placeholder="Harry"
-                            onChange={e => this.setState(e.target.value)} />
+                            onChange={(e) => this.setState({user: {...this.state.user, fname: e.target.value}})} />
                     </FormGroup>
                     <Row form>
-                        <Col md={6}>
-                            <FormGroup>
-                                <Label for="lname">Last Name</Label>
-                                <Input type="text"
-                                    name="lname"
-                                    id="lname"
-                                    placeholder="Potter"
-                                    onChange={e => this.props.setLname(e.target.value)} />
-                            </FormGroup>
-                        </Col>
-                        <Col md={4}>
-                            <FormGroup>
-                                <Label for="email">Email Address</Label>
-                                <Input type="email"
-                                    name="email"
-                                    id="email"
-                                    placeholder="hpotter@ministryofmagic.gov"
-                                    onChange={e => this.props.setEmail(e.target.value)} />
-                            </FormGroup>
-                        </Col>
-                        <Col md={6}>
-                            <FormGroup>
-                                <Label for="username">Username</Label>
-                                <Input type="text"
-                                    name="username"
-                                    id="username"
-                                    placeholder="harrylovesginny731"
-                                    onChange={e => this.props.setUsername(e.target.value)} />
-                            </FormGroup>
-                        </Col>
-                        <Col md={6}>
-                            <FormGroup>
-                                <Label for="password">Password</Label>
-                                <Input type="password"
-                                    name="password"
-                                    id="password"
-                                    placeholder="HorcruxCrshr"
-                                    onChange={e => this.props.setPassword(e.target.value)} />
-                            </FormGroup>
-                        </Col>
-                    </Row>
-                    <Button>Join Dewey</Button>
+                            <Col md={6}>
+                                <FormGroup>
+                                    <Label for="lname">Last Name</Label>
+                                    <Input type="text"
+                                        name="lname"
+                                        id="lname"
+                                        placeholder="Potter"
+                                        onChange={(e) => this.setState({user: {...this.state.user, lname: e.target.value}})} />
+                                </FormGroup>
+                            </Col>
+                            <Col md={4}>
+                                <FormGroup>
+                                    <Label for="email">Email Address</Label>
+                                    <Input type="email"
+                                        name="email"
+                                        id="email"
+                                        placeholder="hpotter@ministryofmagic.gov"
+                                        onChange={(e) => this.setState({user: {...this.state.user, email: e.target.value}})} />
+                                </FormGroup>
+                            </Col>
+                            <Col md={6}>
+                                <FormGroup>
+                                    <Label for="username">Username</Label>
+                                    <Input type="text"
+                                        name="username"
+                                        id="username"
+                                        placeholder="harrylovesginny731"
+                                        onChange={(e) => this.setState({user: {...this.state.user, username: e.target.value}})} />
+                                </FormGroup>
+                            </Col>
+                            <Col md={6}>
+                                <FormGroup>
+                                    <Label for="password">Password</Label>
+                                    <Input type="password"
+                                        name="password"
+                                        id="password"
+                                        placeholder="HorcruxCrshr"
+                                        onChange={(e) => this.setState({user: {...this.state.user, password: e.target.value}})} />
+                                </FormGroup>
+                            </Col>
+                        </Row>
+                        <Button>Join Dewey</Button>
                 </Form>
             </div>
         )
     }
 }
+
 
 
 
