@@ -15,12 +15,14 @@ type Book = {
 }
 
 type State = {
-    books: Book[]
+    // books: Book[],
+    bookData: Book[]
+
 }
 
 class Bookshelf extends Component<Props, State>{
     state = {
-        books: [{
+        bookData: [{
             title: "",
             author: "",
             genre: "",
@@ -44,23 +46,27 @@ class Bookshelf extends Component<Props, State>{
             })
         })
             .then(res => res.json())
-            .then(json => {
-                this.setState({
-
-                    books: [{
-                        title: json.title,
-                        author: json.author,
-                        genre: json.genre,
-                        cover: json.cover,
-                        sharedWith: json.sharedWith,
-                        sharedDate: json.sharedDate
-                    }]
-                })
-                console.log(json)
-                //! this is a key piece...how to map to display at the interval
-                console.log(json[0].title)
-
+            .then((bookData) => this.setState({
+                bookData: bookData,
             })
+                // json => {
+            //     this.setState({
+
+            //         books: [{
+            //             title: json.title,
+            //             author: json.author,
+            //             genre: json.genre,
+            //             cover: json.cover,
+            //             sharedWith: json.sharedWith,
+            //             sharedDate: json.sharedDate
+            //         }]
+            //     })
+            //     console.log(json)
+            //     // ! this is a key piece...how to map to display at the interval
+            //     console.log(json[0].title)
+
+            // }
+            )
 
             .catch(err => console.log(err))
 
@@ -74,7 +80,8 @@ class Bookshelf extends Component<Props, State>{
             <div>
                 Bookshelf Data:
                 {/* {this.state.books.map((i) => { return <li>{i}</li> })} */}
-
+                {this.state.bookData.map((i) => {return <li>{i}</li>})}
+                {this.displayBookData}
             </div>
         );
     }
