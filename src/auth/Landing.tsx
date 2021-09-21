@@ -89,8 +89,8 @@ class Landing extends Component<Props, State> {
 
 
                     <Route exact path="/user/profile" component={() => <Profile
-                    // token={this.props.token}
-                    // updateToken={this.props.updateToken}
+                    token={this.props.token}
+                    updateToken={this.props.updateToken}
                     // title={this.state.title}
                     // author={this.state.author}
                     // genre={this.state.genre}
