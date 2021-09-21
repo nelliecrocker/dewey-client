@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom'
 
 type Props = {
     token: string,
@@ -15,14 +16,12 @@ type Book = {
 }
 
 type State = {
-    // books: Book[],
-    bookData: Book[]
-
+    books: Book[]
 }
 
 class Bookshelf extends Component<Props, State>{
     state = {
-        bookData: [{
+        books: [{
             title: "",
             author: "",
             genre: "",
@@ -31,7 +30,6 @@ class Bookshelf extends Component<Props, State>{
             sharedDate: ""
         }]
     }
-
 
     componentDidMount() {
         this.displayBookData()
@@ -46,27 +44,15 @@ class Bookshelf extends Component<Props, State>{
             })
         })
             .then(res => res.json())
-            .then((bookData) => this.setState({
-                bookData: bookData,
+            .then(json => {
+                this.setState({
+                    books: json
+                })
+                console.log(json)
+                // ! this is a key piece...how to map to display at the interval
+                console.log(json[0].title)
+                console.log(this.state.books)
             })
-                // json => {
-            //     this.setState({
-
-            //         books: [{
-            //             title: json.title,
-            //             author: json.author,
-            //             genre: json.genre,
-            //             cover: json.cover,
-            //             sharedWith: json.sharedWith,
-            //             sharedDate: json.sharedDate
-            //         }]
-            //     })
-            //     console.log(json)
-            //     // ! this is a key piece...how to map to display at the interval
-            //     console.log(json[0].title)
-
-            // }
-            )
 
             .catch(err => console.log(err))
 
@@ -76,12 +62,27 @@ class Bookshelf extends Component<Props, State>{
     //     for (let i = 0; i < Bookshelf.length; i++)
 
     render() {
+        //needs to redirect to create a book if no books are found
+        // if (this.state.books == "") {
+        //     return <Redirect to='/book/create' />
+        // }
+
+        // if (this.props.token === "") {
+        //     return <Redirect to='/user/login' />
+        // }
+
         return (
             <div>
                 Bookshelf Data:
-                {/* {this.state.books.map((i) => { return <li>{i}</li> })} */}
-                {this.state.bookData.map((i) => {return <li>{i}</li>})}
-                {this.displayBookData}
+                {/* Turn into a table */}
+                {this.state.books.map((book) => { 
+                    return(<ul><li>{book.title}</li>
+                    <li>{book.author}</li>
+                    <li>{book.genre}</li>
+                    <li>{book.sharedWith}</li>
+                    <li>{book.sharedDate}</li>
+                    </ul>)
+                })}
             </div>
         );
     }
