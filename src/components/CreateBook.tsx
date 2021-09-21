@@ -6,14 +6,8 @@ import { Redirect, Link } from 'react-router-dom'
 type Props = {
     token: string,
     updateToken(newToken: string): void,
-
-    // setTitle(newTitle: string): void,
-    // setAuthor(newAuthor: string): void,
-    // setGenre(newGenre: string): void,
-    // setCover(newCover: string): void,
-    // setSharedWith(newSharedWith: string): void,
-    // setSharedDate(newSharedDate: string): void
 }
+
 type State = {
     book: {
         title: string,
@@ -24,7 +18,6 @@ type State = {
         sharedDate: string
     }
 }
-
 
 class CreateBook extends Component<Props, State> {
     state = {

@@ -5,35 +5,35 @@ type Props = {
     updateToken(newToken: string): void
 }
 
-type State = {
-    book: {
-        title: string,
-        author: string,
-        genre: string,
-        cover: string,
-        sharedWith: string,
-        sharedDate: string
-    }
+type Book = {
+    title: string,
+    author: string,
+    genre: string,
+    cover: string,
+    sharedWith: string,
+    sharedDate: string
 }
 
+type State = {
+    books: Book[]
+}
 
 class Bookshelf extends Component<Props, State>{
     state = {
-        book: {
+        books: [{
             title: "",
             author: "",
             genre: "",
             cover: "",
             sharedWith: "",
             sharedDate: ""
-        }
+        }]
     }
 
-    // displayBookData = (allBookData: string) => {
-    //     this.setState(prevState => ({
-    //         bookDataArray: [...prevState.bookDataArray, allBookData],
-    //     }))
-    // }
+
+    componentDidMount() {
+        this.displayBookData()
+    }
 
     displayBookData = () => {
         fetch("http://localhost:3000/book/allbooks", {
@@ -44,28 +44,40 @@ class Bookshelf extends Component<Props, State>{
             })
         })
             .then(res => res.json())
-            .then(
-                (data) => {
-                console.log(data)
+            .then(json => {
+                this.setState({
+
+                    books: [{
+                        title: json.title,
+                        author: json.author,
+                        genre: json.genre,
+                        cover: json.cover,
+                        sharedWith: json.sharedWith,
+                        sharedDate: json.sharedDate
+                    }]
                 })
+                console.log(json)
+                //! this is a key piece...how to map to display at the interval
+                console.log(json[0].title)
 
-        .catch (err => console.log(err))
-}
+            })
 
+            .catch(err => console.log(err))
 
+    }
+    //             let i: number = 0
+    // {
+    //     for (let i = 0; i < Bookshelf.length; i++)
 
-componentDidMount() {
-    this.displayBookData()
-}
+    render() {
+        return (
+            <div>
+                Bookshelf Data:
+                {/* {this.state.books.map((i) => { return <li>{i}</li> })} */}
 
-render() {
-    return (
-        <div>
-            Bookshelf Data:
-            {/* {this.state.data.map((book) => {return <li>{book}</li>})} */}
-        </div>
-    );
-}
+            </div>
+        );
+    }
 }
 
 export default Bookshelf;
