@@ -17,8 +17,8 @@ class Profile extends Component<Props, {}> {
     render() {
 
         if (this.props.token === "") {
-            return <Redirect to='/' />
-        }
+            return (<Redirect to='/user/login' />)
+        } else
 
         return (
             <div>

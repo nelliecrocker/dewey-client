@@ -36,7 +36,7 @@ class Bookshelf extends Component<Props, State>{
     }
 
     displayBookData = () => {
-        fetch("http://localhost:3000/book/allbooks", {
+        fetch("http://localhost:3000/book/mybooks", {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',
@@ -60,8 +60,8 @@ class Bookshelf extends Component<Props, State>{
     render() {
         //needs to redirect to create a book if no books are found
                 if (this.props.token === "") {
-            return <Redirect to='/user/login' />
-        }
+            return (<Redirect to='/user/login' />)
+        } else
 
         return (
             <div>

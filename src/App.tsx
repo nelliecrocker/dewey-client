@@ -30,7 +30,9 @@ class App extends Component<Props, State> {
     return (
 
       <div>
-          <Navbar token={this.state.sessionToken} />
+          <Navbar token={this.state.sessionToken}
+          updateToken={this.updateToken}
+          />
           <Landing token={this.state.sessionToken} updateToken={this.updateToken} />
       </div>
 

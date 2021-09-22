@@ -75,9 +75,6 @@ class CreateBook extends Component<Props, State> {
         if (this.props.token === "") {
             return <Redirect to="/user/login" />
         } 
-        // else {
-        //     return <Redirect to="/user/profile" />
-        // }
 
         return (
 
