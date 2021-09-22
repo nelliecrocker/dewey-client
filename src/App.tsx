@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 
 type Props = {}
+
 type State = {
   sessionToken: string
 }
@@ -25,16 +26,12 @@ class App extends Component<Props, State> {
     console.log(this.state.sessionToken)
   }
 
-  //add ternary to determine view. If they have a session token, allow them to view profile...etc
-
   render() {
     return (
 
       <div>
-          <Navbar />
+          <Navbar token={this.state.sessionToken} />
           <Landing token={this.state.sessionToken} updateToken={this.updateToken} />
-
-        {/* insert ternary to determine if sessionToken is empty. If yes, show BookCreate, if no, show Login/Register */}
       </div>
 
     );

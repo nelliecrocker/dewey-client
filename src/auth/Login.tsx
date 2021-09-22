@@ -8,7 +8,6 @@ import { Redirect } from 'react-router-dom'
 type Props = {
     token: string,
     updateToken(newToken: string): void
-    
 };
 
 type State = {
@@ -54,6 +53,7 @@ class Login extends Component<Props, State> {
 
         return (
             <div>
+                
                 <Form onSubmit={this.onSubmit}>
                     <Label>Login</Label>
                     <Col md={6}>

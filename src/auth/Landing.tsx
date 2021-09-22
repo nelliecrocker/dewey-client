@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 
 type Props = {
     token: string,
-    updateToken(newToken: string): void
+    updateToken(newToken: string): void,
 }
 type State = {
     // user
@@ -44,13 +44,15 @@ class Landing extends Component<Props, State> {
         }
     }
 
-    updateToken = (newToken: string) => {
-        localStorage.setItem('token', newToken)
-        this.setState({
-            sessionToken: newToken
-        })
-        console.log(this.state.sessionToken)
-    }
+    // updateToken = (newToken: string) => {
+    //     localStorage.setItem('token', newToken)
+    //     this.setState({
+    //         sessionToken: newToken
+    //     })
+    //     console.log(this.state.sessionToken)
+    // }
+
+    
 
     render() {
         return (
