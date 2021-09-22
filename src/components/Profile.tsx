@@ -31,3 +31,5 @@ class Profile extends Component<Props, {}> {
 }
 
 export default Profile;
+
+// this.props.token === "" ? <Redirect to='/' /> : localStorage.clear()

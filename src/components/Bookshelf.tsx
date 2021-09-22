@@ -49,27 +49,19 @@ class Bookshelf extends Component<Props, State>{
                     books: json
                 })
                 console.log(json)
-                // ! this is a key piece...how to map to display at the interval
-                console.log(json[0].title)
                 console.log(this.state.books)
             })
 
             .catch(err => console.log(err))
 
     }
-    //             let i: number = 0
-    // {
-    //     for (let i = 0; i < Bookshelf.length; i++)
+    
 
     render() {
         //needs to redirect to create a book if no books are found
-        // if (this.state.books == "") {
-        //     return <Redirect to='/book/create' />
-        // }
-
-        // if (this.props.token === "") {
-        //     return <Redirect to='/user/login' />
-        // }
+                if (this.props.token === "") {
+            return <Redirect to='/user/login' />
+        }
 
         return (
             <div>

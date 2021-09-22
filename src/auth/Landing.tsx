@@ -7,6 +7,8 @@ type Props = {
     token: string,
     updateToken(newToken: string): void,
 }
+
+
 type State = {
     // user
     fname: string,
@@ -43,16 +45,6 @@ class Landing extends Component<Props, State> {
             sharedDate: ""
         }
     }
-
-    // updateToken = (newToken: string) => {
-    //     localStorage.setItem('token', newToken)
-    //     this.setState({
-    //         sessionToken: newToken
-    //     })
-    //     console.log(this.state.sessionToken)
-    // }
-
-    
 
     render() {
         return (

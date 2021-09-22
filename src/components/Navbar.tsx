@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 type Props = {
     token: string
@@ -17,6 +17,10 @@ class Navbar extends Component<Props, State> {
         this.setState({ sessionToken: "" })
     }
 
+    navLogin = () => {
+        <Redirect to='/user/login' />
+    }
+
     render() {
         return (
             <div>
@@ -31,7 +35,7 @@ class Navbar extends Component<Props, State> {
                     {/* Display Login or Logout based on props */}
                     {this.props.token !== ""
                         ? <button onClick={this.clearToken}>Logout</button>
-                        : <button onClick={this.clearToken}>Login</button>
+                        : <button onClick={this.navLogin}>Login</button>
                     }
                 </ul>
 
