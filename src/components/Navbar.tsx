@@ -40,6 +40,7 @@ class Navbar extends Component<Props, State> {
                     <li><Link to='/book/create'>Create a Book</Link></li>
                     <li><Link to='/book/update'>Update a Book</Link></li>
                     <li><Link to='/book/bookshelf'>View Bookshelf</Link></li>
+                    <li><Link to='/user/profile/create'>Create Profile</Link></li>
 
                     {/* Display Login or Logout based on props */}
                     {this.props.token !== ""

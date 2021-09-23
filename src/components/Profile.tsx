@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { useParams } from 'react-router-dom'
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Bookshelf } from './Index'
 import { Redirect } from 'react-router-dom'
 
@@ -9,27 +9,24 @@ type Props = {
 }
 
 
+
+
 class Profile extends Component<Props, {}> {
-    constructor(props:Props){
-        super(props)
-    }
+    
 
     render() {
 
         if (this.props.token === "") {
-            return (<Redirect to='/user/login' />)
-        } else
+            return (<Redirect to='/user/login' />)}
 
-        return (
-            <div>
-                My Profile
-                <Bookshelf token={this.props.token}
-                        updateToken={this.props.updateToken}/>
-            </div>
-        );
+            return (
+                <div>
+                    
+                    <Bookshelf token={this.props.token}
+                        updateToken={this.props.updateToken} />
+                </div>
+            );
     }
 }
 
 export default Profile;
-
-// this.props.token === "" ? <Redirect to='/' /> : localStorage.clear()

@@ -5,6 +5,7 @@ import CreateBook from './CreateBook'
 import Home from './Home'
 import Bookshelf from './Bookshelf'
 import UpdateBook from './UpdateBook'
+import CreateProfile from './CreateProfile'
 
 
 export {
@@ -14,5 +15,6 @@ export {
     CreateBook,
     Home,
     Bookshelf,
-    UpdateBook
+    UpdateBook,
+    CreateProfile
 }

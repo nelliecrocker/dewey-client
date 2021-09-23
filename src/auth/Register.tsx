@@ -14,6 +14,11 @@ type State = {
         email: string,
         username: string,
         password: string
+    },
+    userProfile: {
+        preferredGenre: string,
+        favoriteCharacter: string,
+        collectionSize: string
     }
 }
 
@@ -25,6 +30,11 @@ class Register extends Component<Props, State> {
             email: "",
             username: "",
             password: ""
+        },
+        userProfile: {
+            preferredGenre: "",
+            favoriteCharacter: "",
+            collectionSize: ""
         }
     }
 
@@ -32,12 +42,18 @@ class Register extends Component<Props, State> {
         e.preventDefault()
         this.setState({
             user: {
-                fname: this.state.user.fname,
-                lname: this.state.user.lname,
-                email: this.state.user.email,
-                username: this.state.user.username,
-                password: this.state.user.password
+                fname: "",
+                lname: "",
+                email: "",
+                username: "",
+                password: ""
+            },
+            userProfile: {
+                preferredGenre: "",
+                favoriteCharacter: "",
+                collectionSize: ""
             }
+
         })
 
         fetch("http://localhost:3000/user/register", {
@@ -61,6 +77,8 @@ class Register extends Component<Props, State> {
                 this.props.updateToken(data.sessionToken)
             })
             .catch(err => console.log(err))
+            
+            
     }
 
 
@@ -68,7 +86,7 @@ class Register extends Component<Props, State> {
         //redirects to my profile after registering
 
         if (this.props.token !== "") {
-            return <Redirect to='/book/create' />
+            return <Redirect to='/user/profile/create' />
         }
 
         return (
@@ -125,6 +143,7 @@ class Register extends Component<Props, State> {
                                         onChange={(e) => this.setState({user: {...this.state.user, password: e.target.value}})} />
                                 </FormGroup>
                             </Col>
+                            
                         </Row>
                         <Button>Join Dewey</Button>
                 </Form>

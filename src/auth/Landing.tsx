@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import { Login, Register } from './index'
-import { CreateBook, Profile, Home, Bookshelf, UpdateBook } from '../components/Index'
+import { CreateBook, Profile, CreateProfile, Home, Bookshelf, UpdateBook } from '../components/Index'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 
 type Props = {
@@ -71,6 +71,14 @@ class Landing extends Component<Props, State> {
                     updateToken={this.props.updateToken}
                     
                     />}>
+                    </Route>
+
+                    <Route exact path="/user/profile/create" component={() => <CreateProfile
+                    token={this.props.token}
+                    updateToken={this.props.updateToken}
+                    
+                    />}>
+
                     </Route>
 
                     <Route exact path="/book/create" component={() => <CreateBook
