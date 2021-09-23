@@ -46,17 +46,20 @@ class Navbar extends Component<Props, State> {
                     <Link to='#' className="menu-bars">
                         <FaIcons.FaBars onClick={this.showSidebar} />
                     </Link>
+                    {this.props.token !== ""
+                                ? <button onClick={this.clearToken}>Logout</button>
+                                : null
+                            }
                 </div>
+
                 <nav className={this.state.sidebar ? 'nav-menu active' : 'nav-menu'}>
+
                     <ul className="nav-menu-items" onClick={this.showSidebar}>
-                        <li className='navbar-toggle'><Link to='#'>
-                            <AiIcons.AiOutlineClose />
-                        </Link>
-                    </li>
-                        <li>{this.props.token !== ""
-                            ? <button onClick={this.clearToken}>Logout</button>
-                            : null
-                        }</li>
+                        <li className='navbar-toggle'>
+                            
+                            <Link to='#'><AiIcons.AiOutlineClose /></Link>
+                        </li>
+
                         {SidebarData.map((item, index) => {
                             return (
                                 <li key={index} className={item.cName}>
@@ -67,7 +70,6 @@ class Navbar extends Component<Props, State> {
                                 </li>
                             )
                         })}
-                        
                     </ul>
                 </nav>
             </>
