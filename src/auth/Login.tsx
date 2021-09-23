@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
-// import { FormControl } from '@mui/material'
 import { Redirect } from 'react-router-dom'
-
 
 
 type Props = {
@@ -73,7 +71,7 @@ class Login extends Component<Props, State> {
                             onChange = {e => this.setState({password: e.target.value})} />
                         </FormGroup>
                     </Col>
-                    <Button>Login</Button>
+                    <Button variant="contained">Login</Button>
                 </Form>
             </div>
         );

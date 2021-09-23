@@ -47,6 +47,7 @@ class Navbar extends Component<Props, State> {
                         ? <button onClick={this.clearToken}>Logout</button>
                         : null
                     }
+                    
                 </ul>
 
             </div >

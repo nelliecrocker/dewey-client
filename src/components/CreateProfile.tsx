@@ -17,14 +17,14 @@ type State = {
 }
 
 
-class Profile extends Component<Props, State> {
+class CreateProfile extends Component<Props, State> {
     state = {
         UserProfile: {
-        preferredGenre: "",
-        favoriteCharacter: "",
-        collectionSize: ""
+            preferredGenre: "",
+            favoriteCharacter: "",
+            collectionSize: ""
+        }
     }
-}
 
     onSubmit = (e: React.FormEvent) => {
         e.preventDefault()
@@ -35,9 +35,9 @@ class Profile extends Component<Props, State> {
                 collectionSize: this.state.UserProfile.collectionSize
             }
         })
-    
 
-    fetch("http://localhost:3000/profile/create", {
+
+        fetch("http://localhost:3000/profile/create", {
             method: 'POST',
             body: JSON.stringify({
                 UserProfile: {
@@ -60,12 +60,17 @@ class Profile extends Component<Props, State> {
 
 
     render() {
-        if (this.state.UserProfile.preferredGenre && this.state.UserProfile.favoriteCharacter && this.state.UserProfile.collectionSize !== "") {
-            return <Redirect to='/user/profile' />
-        }
-            return (
-                <div>
-                    <Form onSubmit={this.onSubmit}>
+        // if the userId in the profile table is not empty, redirect to user/profile
+        
+        // if (this.state.UserProfile.UserId !== "") {
+        //     return <Redirect to='/user/profile' />
+        // }
+
+        // <Redirect to='/user/profile/create' />
+
+        return (
+            <div>
+                <Form onSubmit={this.onSubmit}>
                     <Label>Create Your Profile</Label>
                     <FormGroup>
                         <Label for="preferredGenre">Preferred Genre</Label>
@@ -73,7 +78,7 @@ class Profile extends Component<Props, State> {
                             name="preferredGenre"
                             id="preferredGenre"
                             placeholder="Historical Fiction"
-                            onChange={(e) => this.setState({UserProfile: {...this.state.UserProfile, preferredGenre: e.target.value}})} />
+                            onChange={(e) => this.setState({ UserProfile: { ...this.state.UserProfile, preferredGenre: e.target.value } })} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="favoriteCharacter">Favorite Literary Character</Label>
@@ -81,7 +86,7 @@ class Profile extends Component<Props, State> {
                             name="favoriteCharacter"
                             id="favoriteCharacter"
                             placeholder="Historical Fiction"
-                            onChange={(e) => this.setState({UserProfile: {...this.state.UserProfile, favoriteCharacter: e.target.value}})} />
+                            onChange={(e) => this.setState({ UserProfile: { ...this.state.UserProfile, favoriteCharacter: e.target.value } })} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="collectionSize">Collection Size</Label>
@@ -89,17 +94,15 @@ class Profile extends Component<Props, State> {
                             name="collectionSize"
                             id="collectionSize"
                             placeholder="Historical Fiction"
-                            onChange={(e) => this.setState({UserProfile: {...this.state.UserProfile, collectionSize: e.target.value}})} />
+                            onChange={(e) => this.setState({ UserProfile: { ...this.state.UserProfile, collectionSize: e.target.value } })} />
                     </FormGroup>
                     <Button>Update Your Profile</Button>
-                    </Form>
-                    <Bookshelf token={this.props.token}
-                        updateToken={this.props.updateToken} />
-                </div>
-            );
+                </Form>
+                <Bookshelf token={this.props.token}
+                    updateToken={this.props.updateToken} />
+            </div>
+        );
     }
 }
 
-export default Profile;
-
-// this.props.token === "" ? <Redirect to='/' /> : localStorage.clear()
+export default CreateProfile;

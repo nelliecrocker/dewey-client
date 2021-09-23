@@ -65,7 +65,7 @@ class Bookshelf extends Component<Props, State>{
 
         return (
             <div>
-                Bookshelf Data:
+                My Collection of Books:
                 {/* Turn into a table */}
                 {this.state.books.map((book) => { 
                     return (

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { Redirect, Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 
 type Props = {
