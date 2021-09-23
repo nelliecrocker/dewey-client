@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
+import { Card, Button } from 'react-bootstrap'
+import { AiTwotoneBook } from 'react-icons/ai';
 
 type Props = {
     token: string,
@@ -20,15 +22,18 @@ type State = {
 }
 
 class Bookshelf extends Component<Props, State>{
-    state = {
-        books: [{
-            title: "",
-            author: "",
-            genre: "",
-            cover: "",
-            sharedWith: "",
-            sharedDate: ""
-        }]
+    constructor(props: Props) {
+        super(props)
+        this.state = {
+            books: [{
+                title: "",
+                author: "",
+                genre: "",
+                cover: "",
+                sharedWith: "",
+                sharedDate: ""
+            }]
+        }
     }
 
     componentDidMount() {
@@ -51,38 +56,37 @@ class Bookshelf extends Component<Props, State>{
                 console.log(json)
                 console.log(this.state.books)
             })
-
             .catch(err => console.log(err))
 
     }
-    
+
 
     render() {
         //needs to redirect to create a book if no books are found
-                if (this.props.token === "") {
-            return (<Redirect to='/user/login' />)
-        } else
-
-        return (
-            <div>
-                My Collection of Books:
-                {/* Turn into a table */}
-                {this.state.books.map((book) => { 
-                    return (
-                    <ul>
-                        <li>{book.title}</li>
-                    <li>{book.author}</li>
-                    <li>{book.genre}</li>
-                    <li>On the Shelf</li>
-                    {/* ({book.sharedWith !== "" ? 
-                    <li>{book.sharedWith}</li>
-                    <li>{book.sharedDate}</li>
-                    : null }) */}
-                    </ul>
-                    )
-                })}
-            </div>
-        );
+        // if (book.title === "") {
+        //     return (<Redirect to='/book/create' />)
+        // } 
+            return (
+                <div>
+                    My Collection of Books:
+                    {this.state.books.map((book) => {
+                        return (
+                            <>
+                                <Card style={{ width: '18rem' }}>
+                                    <Card.Body>
+                                        <Card.Title>{book.title}</Card.Title>
+                                        <Card.Text>
+                                            Author: {book.author}<br />
+                                            Genre: {book.genre}
+                                        </Card.Text>
+                                        {book.sharedWith !== "" ? <Button variant="outline-secondary">Lend</Button> : <Button variant="outline-secondary">Mark Returned</Button>}
+                                    </Card.Body>
+                                </Card>
+                            </>
+                        )
+                    })}
+                </div>
+            );
     }
 }
 

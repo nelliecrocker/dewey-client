@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { Redirect } from 'react-router-dom'
+import './Login.css'
 
 
 type Props = {
@@ -39,7 +40,7 @@ class Login extends Component<Props, State> {
         ).then((data) => {
             console.log(data)
             this.props.updateToken(data.sessionToken)
-            
+
         }).catch(err => console.log(err))
     }
 
@@ -51,28 +52,29 @@ class Login extends Component<Props, State> {
 
         return (
             <div>
-                
+
                 <Form onSubmit={this.onSubmit}>
                     <Label>Login</Label>
                     <Col md={6}>
                         <FormGroup>
                             <Label for="username">Username</Label>
                             <Input type="text" name="username" id="username" placeholder="harrylovesginny731"
-                            onChange = {e => this.setState({username: e.target.value})} />
+                                onChange={e => this.setState({ username: e.target.value })} />
                         </FormGroup>
                     </Col>
                     <Col md={6}>
                         <FormGroup>
                             <Label for="password">Password</Label>
                             <Input type="password"
-                            name="password"
-                            id="password"
-                            placeholder="HorcruxCrshr"
-                            onChange = {e => this.setState({password: e.target.value})} />
+                                name="password"
+                                id="password"
+                                placeholder="HorcruxCrshr"
+                                onChange={e => this.setState({ password: e.target.value })} />
                         </FormGroup>
                     </Col>
                     <Button variant="contained">Login</Button>
                 </Form>
+
             </div>
         );
     }
