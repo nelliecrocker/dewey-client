@@ -31,7 +31,6 @@ class CreateBook extends Component<Props, State> {
         }
     }
 
-
     onSubmit = (e: React.FormEvent) => {
         e.preventDefault()
         this.setState({
@@ -72,9 +71,11 @@ class CreateBook extends Component<Props, State> {
     render() {
         //redirects to login if no token, my profile after submit with token
 
-        if (this.props.token === "") {
-            return <Redirect to="/user/login" />
-        } 
+        if (this.props.token !== "") {
+            return <Redirect to="/user/profile" />
+        } else if (this.props.token === "") {
+            return <Redirect to='/user/login' />
+        }
 
         return (
 

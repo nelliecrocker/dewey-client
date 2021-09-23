@@ -38,6 +38,7 @@ class Navbar extends Component<Props, State> {
                     <li><Link to='/user/login'>Login</Link></li>
                     <li><Link to='/user/profile'>Profile</Link></li>
                     <li><Link to='/book/create'>Create a Book</Link></li>
+                    <li><Link to='/book/update'>Update a Book</Link></li>
                     <li><Link to='/book/bookshelf'>View Bookshelf</Link></li>
 
                     {/* Display Login or Logout based on props */}

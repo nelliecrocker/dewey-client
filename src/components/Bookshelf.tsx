@@ -68,12 +68,18 @@ class Bookshelf extends Component<Props, State>{
                 Bookshelf Data:
                 {/* Turn into a table */}
                 {this.state.books.map((book) => { 
-                    return(<ul><li>{book.title}</li>
+                    return (
+                    <ul>
+                        <li>{book.title}</li>
                     <li>{book.author}</li>
                     <li>{book.genre}</li>
+                    <li>On the Shelf</li>
+                    {/* ({book.sharedWith !== "" ? 
                     <li>{book.sharedWith}</li>
                     <li>{book.sharedDate}</li>
-                    </ul>)
+                    : null }) */}
+                    </ul>
+                    )
                 })}
             </div>
         );
