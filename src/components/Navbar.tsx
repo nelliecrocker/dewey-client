@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom'
 import * as FaIcons from "react-icons/fa"
 import * as AiIcons from "react-icons/ai"
 import { SidebarData } from './SidebarData'
-import './Navbar.css'
+import '../styling/Navbar.css'
 
 type Props = {
     token: string,

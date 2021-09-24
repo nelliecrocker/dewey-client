@@ -1,0 +1,20 @@
+.Form-Style {
+    margin: 2.5em;
+}
+
+.Form-Input {
+    border-style: hidden;
+    margin-bottom: 1em;
+    background-color:bisque;
+}
+
+.Label-Style {
+    font-size: 1em;
+    color:bisque;
+}
+
+.Logo {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}

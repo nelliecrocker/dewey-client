@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 
 type Props = {
     token: string,
-    updateToken(newToken: string): void,
+    updateToken(newToken: string): void
 }
 
 

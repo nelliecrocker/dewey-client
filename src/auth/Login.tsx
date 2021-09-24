@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { Redirect } from 'react-router-dom'
-import './Login.css'
+import '../styling/Login.css'
+import Dewey from '../images/Dewey.png'
 
 
 type Props = {
@@ -52,20 +53,23 @@ class Login extends Component<Props, State> {
 
         return (
             <div>
+                <div>
+                    <img src={Dewey} className='Logo' />
+                </div>
 
-                <Form onSubmit={this.onSubmit}>
+                <Form className='Form-Style' onSubmit={this.onSubmit}>
                     <Label>Login</Label>
                     <Col md={6}>
                         <FormGroup>
-                            <Label for="username">Username</Label>
-                            <Input type="text" name="username" id="username" placeholder="harrylovesginny731"
+                            <Label className='Label-Style' for="username">Username</Label>
+                            <Input className='Form-Input' type="text" name="username" id="username" placeholder="harrylovesginny731"
                                 onChange={e => this.setState({ username: e.target.value })} />
                         </FormGroup>
                     </Col>
                     <Col md={6}>
                         <FormGroup>
-                            <Label for="password">Password</Label>
-                            <Input type="password"
+                            <Label className='Label-Style' for="password">Password</Label>
+                            <Input className='Form-Input' type="password"
                                 name="password"
                                 id="password"
                                 placeholder="HorcruxCrshr"

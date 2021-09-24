@@ -1,7 +1,7 @@
 import { Component } from 'react';
-import { Landing, Register, Login } from './auth/index'
-import { Navbar, Home } from './components/Index'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Landing } from './auth/index'
+import { Navbar } from './components/Index'
+import './styling/App.css'
 
 
 type Props = {}

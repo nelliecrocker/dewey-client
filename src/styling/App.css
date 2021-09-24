@@ -1,9 +1,9 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap') */
 
-
 .App {
   text-align: center;
   background-color: #282c34;
+  background-image: url('../images/neutralbooks.png');
   min-height: 100vh;
   display: flex;
   flex-direction: column;
