@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom'
+// import { Redirect } from 'react-router-dom'
 import { Card, Button } from 'react-bootstrap'
-import { AiTwotoneBook } from 'react-icons/ai';
+import '../styling/Bookshelf.css'
 
 type Props = {
     token: string,
@@ -95,22 +95,21 @@ class Bookshelf extends Component<Props, State>{
         //     return (<Redirect to='/book/create' />)
         // } 
         return (
-            <div>
-                My Collection of Books:
+            <div className="bookshelf-styling">
                 {this.state.books.map((book) => {
                     return (
-                        <>
-                            <Card style={{ width: '18rem' }}>
-                                <Card.Body>
+                        <div>
+                            <Card className="card-styling">
+                                <Card.Body className="card-body">
                                     <Card.Title>{book.title}</Card.Title>
                                     <Card.Text>
-                                        Author: {book.author}<br />
-                                            Genre: {book.genre}
+                                        Author: {book.author}
                                     </Card.Text>
-                                    {book.sharedWith !== "" ? <Button variant="outline-secondary">Lend</Button> : <Button variant="outline-secondary">Mark Returned</Button>}
+                                    {book.sharedWith !== "" ? <Button className="card-btn" >Lend</Button> : <Button className="card-btn">Mark Returned</Button>}<br />
+                                    <Button className="card-btn2">Donate</Button>
                                 </Card.Body>
                             </Card>
-                        </>
+                        </div>
                     )
                 })}
             </div>

@@ -1,0 +1,42 @@
+.bookshelf-styling {
+    color: #a64b12;
+    margin-top: 2em;
+}
+
+.card-styling {
+    width: 15rem;
+    color: black;
+    border: none;
+    margin-bottom: 1em;
+
+}
+
+.card-body {
+    padding-left: 2em;
+    padding-right: 2em;
+    justify-content: center;
+    background-color: #f8e9dd 50%;
+
+}
+
+.card-btn {
+    margin-top: .5em;
+    margin-bottom: .5em;
+    background-color: #a64b12 !important;
+    font-size: 1em;
+    width: 8em;
+    border: none !important;
+}
+
+.card-btn2 {
+    color: #a64b12 !important;
+    text-align: center;
+    text-decoration: none;
+    background-color: transparent !important;
+    border: none !important;
+    font-size: .8em;
+}
+
+.Btn2:hover {
+    color: #a64b12
+}

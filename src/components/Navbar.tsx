@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom'
 import * as FaIcons from "react-icons/fa"
+import * as IoIcons from "react-icons/io5"
 import * as AiIcons from "react-icons/ai"
 import { SidebarData } from './SidebarData'
+import Dewey from '../images/Dewey.svg'
 import '../styling/Navbar.css'
 
 type Props = {
@@ -44,19 +46,20 @@ class Navbar extends Component<Props, State> {
             <>
                 <div className="navbar">
                     <Link to='#' className="menu-bars">
-                        <FaIcons.FaBars onClick={this.showSidebar} />
+                        <IoIcons.IoLibraryOutline onClick={this.showSidebar} />
                     </Link>
-                    {this.props.token !== ""
-                                ? <button onClick={this.clearToken}>Logout</button>
-                                : null
-                            }
+                    <img className="navbar-logo" src={Dewey}></img>
+                    {/* {this.props.token !== ""
+                        ? <button className="navbar-btn" onClick={this.clearToken}>Logout</button>
+                        : null
+                    } */}
                 </div>
 
                 <nav className={this.state.sidebar ? 'nav-menu active' : 'nav-menu'}>
 
                     <ul className="nav-menu-items" onClick={this.showSidebar}>
                         <li className='navbar-toggle'>
-                            
+
                             <Link to='#' className="menu-x"><AiIcons.AiOutlineClose /></Link>
                         </li>
 
@@ -70,6 +73,10 @@ class Navbar extends Component<Props, State> {
                                 </li>
                             )
                         })}
+                        {this.props.token !== ""
+                        ? <button className="navbar-btn" onClick={this.clearToken}>Logout</button>
+                        : null
+                    }
                     </ul>
                 </nav>
             </>

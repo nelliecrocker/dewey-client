@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { Bookshelf } from './Index'
-import { Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import '../styling/CreateProfile.css'
 
 type Props = {
     token: string,
@@ -70,36 +70,35 @@ class CreateProfile extends Component<Props, State> {
 
         return (
             <div>
-                <Form onSubmit={this.onSubmit}>
-                    <Label>Create Your Profile</Label>
+                <Form className = "Form-Style" onSubmit={this.onSubmit}>
+                    {/* <Label>Create Your Profile</Label> */}
                     <FormGroup>
-                        <Label for="preferredGenre">Preferred Genre</Label>
-                        <Input type="text"
+                        <Label for="preferredGenre"></Label>
+                        <Input className="Form-Input" type="text"
                             name="preferredGenre"
                             id="preferredGenre"
-                            placeholder="Historical Fiction"
+                            placeholder="Preferred Genre"
                             onChange={(e) => this.setState({ UserProfile: { ...this.state.UserProfile, preferredGenre: e.target.value } })} />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="favoriteCharacter">Favorite Literary Character</Label>
-                        <Input type="text"
+                        <Label for="favoriteCharacter"></Label>
+                        <Input className="Form-Input" type="text"
                             name="favoriteCharacter"
                             id="favoriteCharacter"
-                            placeholder="Historical Fiction"
+                            placeholder="Favorite Character"
                             onChange={(e) => this.setState({ UserProfile: { ...this.state.UserProfile, favoriteCharacter: e.target.value } })} />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="collectionSize">Collection Size</Label>
-                        <Input type="text"
+                        <Label for="collectionSize"></Label>
+                        <Input className="Form-Input" type="text"
                             name="collectionSize"
                             id="collectionSize"
-                            placeholder="Historical Fiction"
+                            placeholder="Collection Size"
                             onChange={(e) => this.setState({ UserProfile: { ...this.state.UserProfile, collectionSize: e.target.value } })} />
                     </FormGroup>
-                    <Button>Update Your Profile</Button>
+                    <Button className="Btn-login" >Update Your Profile</Button>
                 </Form>
-                <Bookshelf token={this.props.token}
-                    updateToken={this.props.updateToken} />
+                <Link className="Link-Style" to="/book/create">Add a Book</Link>
             </div>
         );
     }

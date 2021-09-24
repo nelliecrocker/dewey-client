@@ -28,7 +28,7 @@ class App extends Component<Props, State> {
 
   render() {
     return (
-      <div>
+      <div className="Nav-Styling">
         <Navbar token={this.state.sessionToken}
           updateToken={this.updateToken}
         />

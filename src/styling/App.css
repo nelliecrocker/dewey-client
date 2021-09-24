@@ -16,5 +16,12 @@
   font-family: 'Lato', sans-serif
 }
 
+.Nav-Styling {
+  justify-content: space-around;
+  position:fixed;
+  width: 100%;
+
+}
+
 
 
