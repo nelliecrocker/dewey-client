@@ -1,0 +1,18 @@
+.body-styling {
+    background-color: #a64b12;
+    width: 75%;
+    padding: 1em;
+    border-radius: .5em;
+    margin: 2.5em;
+    
+}
+
+
+.Btn-home {
+    margin-top: 1.5em;
+    background-color: #f8e9dd !important;
+    font-size: 1em;
+    width: 6em;
+    border: none !important;
+    border-radius: .2em;
+}

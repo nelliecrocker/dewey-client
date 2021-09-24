@@ -50,7 +50,8 @@ class Landing extends Component<Props, State> {
         return (
             <div>
                 <Switch>
-                    <Route exact path="/"><Home /></Route>
+                    <Route exact path="/"><Home token={this.props.token}
+                        updateToken={this.props.updateToken} /></Route>
 
                     <Route exact path="/user/register" component={() => <Register
                         token={this.props.token}

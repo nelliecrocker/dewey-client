@@ -4,7 +4,7 @@ import * as FaIcons from "react-icons/fa"
 import * as IoIcons from "react-icons/io5"
 import * as AiIcons from "react-icons/ai"
 import { SidebarData } from './SidebarData'
-import Dewey from '../images/Dewey.svg'
+import Deweynude from '../images/Deweynude.svg'
 import '../styling/Navbar.css'
 
 type Props = {
@@ -48,7 +48,9 @@ class Navbar extends Component<Props, State> {
                     <Link to='#' className="menu-bars">
                         <IoIcons.IoLibraryOutline onClick={this.showSidebar} />
                     </Link>
-                    <img className="navbar-logo" src={Dewey}></img>
+                    <Link to='/'>
+                    <img className="navbar-logo" src={Deweynude}></img>
+                    </Link>
                     {/* {this.props.token !== ""
                         ? <button className="navbar-btn" onClick={this.clearToken}>Logout</button>
                         : null

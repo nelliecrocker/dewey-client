@@ -21,7 +21,7 @@ class Profile extends Component<Props, {}> {
 
             return (
                 <div>
-                    
+                    <p></p>
                     <Bookshelf token={this.props.token}
                         updateToken={this.props.updateToken} />
                 </div>

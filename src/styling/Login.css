@@ -4,19 +4,14 @@
 
 .Form-Input {
     border-style: hidden;
-    background-color:#f8e9dd;
+    background-color:#f8e9dd !important;
     color: #a64b12;
     text-align: center;
 }
 
-.Label-Style {
-    font-size: 1em;
-    color:#f8e9dd;
-}
 
 .Logo {
     width: 75%;
-
 }
 
 .Btn-login {
@@ -25,15 +20,17 @@
     font-size: 1em;
     width: 6em;
     border: none !important;
+    border-radius: .2em;
+
 }
 
 .Link-Style {
-    color: white;
+    color: #a64b12;
     flex-direction: column;
     text-decoration: none;
     margin: 1em 2em 2em 2em;
 }
 
-.Link-Style:hover {
-    color: #a64b12
+a.Link-Style:hover {
+    color: #a64b12 !important;
 }
