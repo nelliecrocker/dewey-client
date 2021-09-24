@@ -57,7 +57,7 @@ class Navbar extends Component<Props, State> {
                     <ul className="nav-menu-items" onClick={this.showSidebar}>
                         <li className='navbar-toggle'>
                             
-                            <Link to='#'><AiIcons.AiOutlineClose /></Link>
+                            <Link to='#' className="menu-x"><AiIcons.AiOutlineClose /></Link>
                         </li>
 
                         {SidebarData.map((item, index) => {

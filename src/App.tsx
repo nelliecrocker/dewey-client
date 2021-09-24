@@ -28,12 +28,13 @@ class App extends Component<Props, State> {
 
   render() {
     return (
-
       <div>
-          <Navbar token={this.state.sessionToken}
+        <Navbar token={this.state.sessionToken}
           updateToken={this.updateToken}
-          />
+        />
+        <div className="App">
           <Landing token={this.state.sessionToken} updateToken={this.updateToken} />
+        </div>
       </div>
 
     );

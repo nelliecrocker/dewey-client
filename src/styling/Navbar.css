@@ -1,6 +1,6 @@
 .navbar {
-    background-color: #060b26;
-    height: 80px;
+    background-color: #2c5234;
+    height: 60px;
     display: flex;
     justify-content: start;
     align-items: center;
@@ -8,7 +8,7 @@
 }
 
 .navbar-logout {
-    background-color: #060b26;
+    background-color: #2c5234;
     height: 80px;
     display: flex;
     justify-content: end;
@@ -17,15 +17,22 @@
 }
 
 .menu-bars {
-    margin-left: 2rem;
+    margin-left: 1.5rem;
+    margin-top: -.2em;
     font-size: 2rem;
     background: none;
-    color: white;
+    color: #f8e9dd;
+}
 
+.menu-x {
+    margin-left: 2rem;
+    font-size: 1rem;
+    background: none;
+    color: #f8e9dd;
 }
 
 .nav-menu {
-    background-color: #060b26;
+    background-color: #a64b12;
     width: 250px;
     height: 100vh;
     display: flex;
@@ -52,7 +59,7 @@
 
 .nav-text a {
     text-decoration: none;
-    color: white;
+    color: #f8e9dd;
     font-size: 18px;
     width: 95%;
     height: 100%;
@@ -63,7 +70,7 @@
 }
 
 .nav-text a:hover {
-    background-color: gray;
+    background-color: #f8e9dd;
 }
 
 .nav-menu-items {
@@ -71,7 +78,7 @@
 }
 
 .navbar-toggle {
-    background-color: #060b26;
+    background-color: #a64b12;
     width: 100%;
     height: 80px;
     display: flex;

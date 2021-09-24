@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { Redirect } from 'react-router-dom'
 import '../styling/Login.css'
-import Dewey from '../images/Dewey.png'
+import Dewey from '../images/Dewey.svg'
 
 
 type Props = {
@@ -53,30 +53,28 @@ class Login extends Component<Props, State> {
 
         return (
             <div>
-                <div>
+                <div >
                     <img src={Dewey} className='Logo' />
                 </div>
-
                 <Form className='Form-Style' onSubmit={this.onSubmit}>
-                    <Label>Login</Label>
                     <Col md={6}>
                         <FormGroup>
-                            <Label className='Label-Style' for="username">Username</Label>
-                            <Input className='Form-Input' type="text" name="username" id="username" placeholder="harrylovesginny731"
+                            <Label className='Label-Style' for="username"></Label>
+                            <Input className='Form-Input' type="text" name="username" id="username" placeholder="username"
                                 onChange={e => this.setState({ username: e.target.value })} />
                         </FormGroup>
                     </Col>
                     <Col md={6}>
                         <FormGroup>
-                            <Label className='Label-Style' for="password">Password</Label>
+                            <Label className='Label-Style' for="password"></Label>
                             <Input className='Form-Input' type="password"
                                 name="password"
                                 id="password"
-                                placeholder="HorcruxCrshr"
+                                placeholder="password"
                                 onChange={e => this.setState({ password: e.target.value })} />
                         </FormGroup>
                     </Col>
-                    <Button variant="contained">Login</Button>
+                    <Button className="Btn-login" variant="contained">Login</Button>
                 </Form>
 
             </div>
