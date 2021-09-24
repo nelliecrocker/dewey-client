@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import '../styling/Login.css'
 import Dewey from '../images/Dewey.svg'
 
@@ -75,6 +75,9 @@ class Login extends Component<Props, State> {
                         </FormGroup>
                     </Col>
                     <Button className="Btn-login" variant="contained">Login</Button>
+                    <div >
+                    <Link className='Link-Style' to='/user/register'>Join Dewey</Link>
+                    </div>
                 </Form>
 
             </div>

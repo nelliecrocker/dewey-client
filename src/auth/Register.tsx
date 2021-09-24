@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Redirect } from 'react-router-dom'
+import '../styling/Register.css'
+import Dewey from '../images/Dewey.svg'
+
 
 type Props = {
     token: string,
@@ -92,60 +95,63 @@ class Register extends Component<Props, State> {
         return (
 
             <div>
-                <Form onSubmit={this.handleSubmit}>
-                    <Label>Register</Label>
+                <Form className="Form-Style" onSubmit={this.handleSubmit}>
+                <div >
+                    <img src={Dewey} className='Logo' />
+                </div>
+
                     <FormGroup>
-                        <Label for="fname">First Name</Label>
-                        <Input type="text"
+                        <Label for="fname"></Label>
+                        <Input className="Form-Input" type="text"
                             name="fname"
                             id="fname"
-                            placeholder="Harry"
+                            placeholder="First Name"
                             onChange={(e) => this.setState({user: {...this.state.user, fname: e.target.value}})} />
                     </FormGroup>
                     <Row form>
                             <Col md={6}>
                                 <FormGroup>
-                                    <Label for="lname">Last Name</Label>
-                                    <Input type="text"
+                                    <Label for="lname"></Label>
+                                    <Input className="Form-Input" type="text"
                                         name="lname"
                                         id="lname"
-                                        placeholder="Potter"
+                                        placeholder="Last Name"
                                         onChange={(e) => this.setState({user: {...this.state.user, lname: e.target.value}})} />
                                 </FormGroup>
                             </Col>
                             <Col md={4}>
                                 <FormGroup>
-                                    <Label for="email">Email Address</Label>
-                                    <Input type="email"
+                                    <Label for="email"></Label>
+                                    <Input className="Form-Input" type="email"
                                         name="email"
                                         id="email"
-                                        placeholder="hpotter@ministryofmagic.gov"
+                                        placeholder="Email Address"
                                         onChange={(e) => this.setState({user: {...this.state.user, email: e.target.value}})} />
                                 </FormGroup>
                             </Col>
                             <Col md={6}>
                                 <FormGroup>
-                                    <Label for="username">Username</Label>
-                                    <Input type="text"
+                                    <Label for="username"></Label>
+                                    <Input className="Form-Input" type="text"
                                         name="username"
                                         id="username"
-                                        placeholder="harrylovesginny731"
+                                        placeholder="Username"
                                         onChange={(e) => this.setState({user: {...this.state.user, username: e.target.value}})} />
                                 </FormGroup>
                             </Col>
                             <Col md={6}>
                                 <FormGroup>
-                                    <Label for="password">Password</Label>
-                                    <Input type="password"
+                                    <Label for="password"></Label>
+                                    <Input className="Form-Input" type="password"
                                         name="password"
                                         id="password"
-                                        placeholder="HorcruxCrshr"
+                                        placeholder="Password"
                                         onChange={(e) => this.setState({user: {...this.state.user, password: e.target.value}})} />
                                 </FormGroup>
                             </Col>
                             
                         </Row>
-                        <Button>Join Dewey</Button>
+                        <Button className="Btn-login">Join Dewey</Button>
                 </Form>
             </div>
         )
