@@ -23,7 +23,7 @@
     margin-top: 1.5em;
     background-color: #a64b12;
     font-size: 1em;
-    width: 8em;
+    width: 8em !important;
     border: none;
 }
 

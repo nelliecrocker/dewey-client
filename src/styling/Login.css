@@ -21,16 +21,15 @@
 
 .Btn-login {
     margin-top: 1.5em;
-    background-color: #a64b12;
+    background-color: #a64b12 !important;
     font-size: 1em;
     width: 6em;
-    border: none;
+    border: none !important;
 }
 
 .Link-Style {
     color: white;
-    display: flex;
-    text-align: center;
+    flex-direction: column;
     text-decoration: none;
     margin: 1em 2em 2em 2em;
 }

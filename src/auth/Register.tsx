@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import '../styling/Register.css'
 import Dewey from '../images/Dewey.svg'
 
@@ -95,10 +95,10 @@ class Register extends Component<Props, State> {
         return (
 
             <div>
-                <Form className="Form-Style" onSubmit={this.handleSubmit}>
                 <div >
                     <img src={Dewey} className='Logo' />
                 </div>
+                <Form className="Form-Style" onSubmit={this.handleSubmit}>
 
                     <FormGroup>
                         <Label for="fname"></Label>
@@ -152,6 +152,7 @@ class Register extends Component<Props, State> {
                             
                         </Row>
                         <Button className="Btn-login">Join Dewey</Button>
+                        <Link className='Link-Style' to='/user/login'>Already a Member</Link>
                 </Form>
             </div>
         )
