@@ -65,7 +65,7 @@ class Bookshelf extends Component<Props, State>{
                                 <Card.Body className="card-body">
                                     <Card.Title>{book.title}</Card.Title>
                                     <Card.Text>
-                                        Author: {book.author}
+                                        {book.author}
                                     </Card.Text>
 
                                     {book.sharedWith === "" ? 

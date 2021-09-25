@@ -49,7 +49,7 @@ class Navbar extends Component<Props, State> {
                         <IoIcons.IoLibraryOutline onClick={this.showSidebar} />
                     </Link>
                     <Link to='/'>
-                    <img className="navbar-logo" src={Deweynude}></img>
+                        <img className="navbar-logo" src={Deweynude}></img>
                     </Link>
                     {/* {this.props.token !== ""
                         ? <button className="navbar-btn" onClick={this.clearToken}>Logout</button>
@@ -76,9 +76,13 @@ class Navbar extends Component<Props, State> {
                             )
                         })}
                         {this.props.token !== ""
-                        ? <button className="navbar-btn" onClick={this.clearToken}>Logout</button>
-                        : null
-                    }
+                            ?
+                            <div>
+                                <button className="navbar-btn" id="navbar-margin" onClick={this.clearToken}>Logout</button>
+                                <Link to="/user/profile/edit"><button className="navbar-btn">Edit Profile</button></Link>
+                            </div>
+                            : null
+                        }
                     </ul>
                 </nav>
             </>

@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import { Login, Register } from './index'
-import { CreateBook, Profile, AdminView, CreateProfile, Home, Bookshelf, UpdateBook } from '../components/Index'
+import { CreateBook, Profile, AdminView, CreateProfile, Home, Bookshelf, UpdateBook, EditProfile } from '../components/Index'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 
 type Props = {
@@ -71,11 +71,9 @@ class Landing extends Component<Props, State> {
                     />}>
                         </Route>
 
-
                     <Route exact path="/user/profile" component={() => <Profile
                     token={this.props.token}
                     updateToken={this.props.updateToken}
-                    title={this.state.title}
                     
                     />}>
                     </Route>
@@ -88,6 +86,13 @@ class Landing extends Component<Props, State> {
 
                     </Route>
 
+                    <Route exact path="/user/profile/edit" component={() => <EditProfile
+                    token={this.props.token}
+                    updateToken={this.props.updateToken}
+                    />}>
+
+                    </Route>
+
                     <Route exact path="/book/create" component={() => <CreateBook
                         token={this.props.token}
                         updateToken={this.props.updateToken}
@@ -96,7 +101,8 @@ class Landing extends Component<Props, State> {
                     </Route>
                     
                     <Route exact path='/book/update/' component={() => 
-                    <UpdateBook token={this.props.token}
+                    <UpdateBook
+                        token={this.props.token}
                         updateToken={this.props.updateToken}
                         bookId={this.state.id}
                         />}>

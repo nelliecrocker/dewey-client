@@ -18,7 +18,8 @@ type State = {
         cover: string,
         sharedWith: string,
         sharedDate: string
-    }
+    },
+    navRedirect: boolean
 }
 
 class UpdateBook extends Component<Props, State> {
@@ -31,7 +32,8 @@ class UpdateBook extends Component<Props, State> {
             cover: "",
             sharedWith: "",
             sharedDate: ""
-        }
+        },
+        navRedirect: false
     }
 
     onSubmit = (e: React.FormEvent) => {
@@ -45,7 +47,8 @@ class UpdateBook extends Component<Props, State> {
                 cover: this.state.book.cover,
                 sharedWith: this.state.book.sharedWith,
                 sharedDate: this.state.book.sharedDate
-            }
+            },
+            navRedirect: true
         })
 
         fetch(`http://localhost:3000/book/update/${this.state.book.id} `, {
@@ -75,6 +78,7 @@ class UpdateBook extends Component<Props, State> {
 
 
     render() {
+        const { navRedirect } = this.state
 
         return (
             <div className="Form-Style">
@@ -94,7 +98,8 @@ class UpdateBook extends Component<Props, State> {
                             placeholder={this.state.book.sharedDate}
                             onChange={(e) => this.setState({ book: { ...this.state.book, sharedDate: e.target.value } })} />
                     </FormGroup>
-                    <Button className="Btn-login">Mark as Borrowed</Button>
+                    <Button className="Btn-login">Lend</Button>
+                    {navRedirect && (<Redirect to='/user/profile' />)}
                 </Form>
             </div>
         );

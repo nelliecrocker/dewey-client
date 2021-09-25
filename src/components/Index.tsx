@@ -7,6 +7,7 @@ import Bookshelf from './Bookshelf'
 import UpdateBook from './UpdateBook'
 import CreateProfile from './CreateProfile'
 import AdminView from './AdminView'
+import EditProfile from './EditProfile'
 
 
 export {
@@ -17,5 +18,6 @@ export {
     Bookshelf,
     UpdateBook,
     CreateProfile,
-    AdminView
+    AdminView,
+    EditProfile
 }

@@ -6,6 +6,7 @@
     align-items: center;
     position: fixed;
     padding: 1em;
+    
 
 }
 
@@ -30,9 +31,12 @@
     background-color: transparent;
     color: #f8e9dd;
     justify-content: right;
-    margin-top: 3em;
     margin-left: 3.5em;
 
+}
+
+#navbar-margin {
+    margin-top: 3em;
 }
 
 .menu-bars {
@@ -59,6 +63,7 @@
     top:0;
     left: -100%;
     transition: 850ms;
+    z-index: 9999;
 }
 
 .nav-menu.active {
