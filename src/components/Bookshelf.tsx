@@ -55,7 +55,7 @@ class Bookshelf extends Component<Props, State>{
 
 
     render() {
-         
+
         return (
             <div className="bookshelf-styling">
                 {this.state.books.map((book) => {
@@ -68,9 +68,12 @@ class Bookshelf extends Component<Props, State>{
                                         {book.author}
                                     </Card.Text>
 
-                                    {book.sharedWith === "" ? 
-                                    <Link to='/book/update/'>
-                                    <Button className="card-btn" >Lend</Button></Link> : <Button className="card-btn">Returned</Button>}<br />
+                                    {book.sharedWith === "" ?
+                                        <Link to='/book/update/'>
+                                            <Button
+                                                //add prop to identify book
+                                                //! Book={this.props.book}
+                                                className="card-btn" >Lend</Button></Link> : <Button className="card-btn">Returned</Button>}<br />
 
                                     <Button className="card-btn2">Donate</Button>
                                 </Card.Body>

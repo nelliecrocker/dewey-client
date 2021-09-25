@@ -10,43 +10,48 @@ type Props = {
 
 
 type State = {
-    // user
-    fname: string,
-    lname: string,
-    email: string,
-    username: string,
-    password: string,
-    sessionToken: string,
-    isAdmin: boolean,
-    // books
-    id: number,
-    title: string,
-    author: string,
-    genre: string,
-    cover: string,
-    sharedWith: string,
-    sharedDate: string
+    User: {
+        fname: string,
+        lname: string,
+        email: string,
+        username: string,
+        password: string,
+        sessionToken: string,
+        isAdmin: boolean
+    },
+    Book: {
+        id: number,
+        title: string,
+        author: string,
+        genre: string,
+        cover: string,
+        sharedWith: string,
+        sharedDate: string
+    }
 }
 
 class Landing extends Component<Props, State> {
     constructor(props: Props) {
         super(props)
         this.state = {
-            fname: "",
-            lname: "",
-            email: "",
-            username: "",
-            password: "",
-            sessionToken: "",
-            isAdmin: false,
-            //book
-            id: 0,
-            title: "",
-            author: "",
-            genre: "",
-            cover: "",
-            sharedWith: "",
-            sharedDate: ""
+            User: {
+                fname: "",
+                lname: "",
+                email: "",
+                username: "",
+                password: "",
+                sessionToken: "",
+                isAdmin: false
+            },
+            Book: {
+                id: 0,
+                title: "",
+                author: "",
+                genre: "",
+                cover: "",
+                sharedWith: "",
+                sharedDate: ""
+            }
         }
     }
 
@@ -60,35 +65,35 @@ class Landing extends Component<Props, State> {
                     <Route exact path="/user/register" component={() => <Register
                         token={this.props.token}
                         updateToken={this.props.updateToken}
-                        
+
                     />}></Route>
 
                     <Route exact path="/user/login" component={() => <Login
                         token={this.props.token}
                         updateToken={this.props.updateToken}
-                        isAdmin={this.state.isAdmin}
-                    
+                        isAdmin={this.state.User.isAdmin}
+
                     />}>
-                        </Route>
+                    </Route>
 
                     <Route exact path="/user/profile" component={() => <Profile
-                    token={this.props.token}
-                    updateToken={this.props.updateToken}
-                    
+                        token={this.props.token}
+                        updateToken={this.props.updateToken}
+
                     />}>
                     </Route>
 
                     <Route exact path="/user/profile/create" component={() => <CreateProfile
-                    token={this.props.token}
-                    updateToken={this.props.updateToken}
-                    
+                        token={this.props.token}
+                        updateToken={this.props.updateToken}
+
                     />}>
 
                     </Route>
 
                     <Route exact path="/user/profile/edit" component={() => <EditProfile
-                    token={this.props.token}
-                    updateToken={this.props.updateToken}
+                        token={this.props.token}
+                        updateToken={this.props.updateToken}
                     />}>
 
                     </Route>
@@ -96,30 +101,30 @@ class Landing extends Component<Props, State> {
                     <Route exact path="/book/create" component={() => <CreateBook
                         token={this.props.token}
                         updateToken={this.props.updateToken}
-                        
+
+                    />}>
+                    </Route>
+
+                    <Route exact path='/book/update/' component={() =>
+                        <UpdateBook
+                            token={this.props.token}
+                            updateToken={this.props.updateToken}
+                            //! Book={this.state.Book}
                         />}>
                     </Route>
-                    
-                    <Route exact path='/book/update/' component={() => 
-                    <UpdateBook
-                        token={this.props.token}
-                        updateToken={this.props.updateToken}
-                        bookId={this.state.id}
-                        />}>
-                            </Route>
 
                     <Route exact path="/book/bookshelf" component={() => <Bookshelf
                         token={this.props.token}
                         updateToken={this.props.updateToken}
-                        
-                        />}>
+
+                    />}>
                     </Route>
 
                     <Route exact path="/admin" component={() => <AdminView
                         token={this.props.token}
                         updateToken={this.props.updateToken}
-                        
-                        />}>
+
+                    />}>
                     </Route>
 
                     <Redirect to="/" />

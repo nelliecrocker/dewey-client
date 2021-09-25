@@ -6,7 +6,7 @@ import { Bookshelf } from './Index'
 type Props = {
     token: string,
     updateToken(newToken: string): void,
-    bookId: number
+    //! Book: string{}
 }
 
 type State = {
@@ -23,17 +23,22 @@ type State = {
 }
 
 class UpdateBook extends Component<Props, State> {
-    state = {
-        book: {
-            id: this.props.bookId,
-            title: "",
-            author: "",
-            genre: "",
-            cover: "",
-            sharedWith: "",
-            sharedDate: ""
-        },
-        navRedirect: false
+    constructor(props:Props){
+        super(props)
+        this.state = {
+            book: {
+                //needs to be this.props.{insert prop data from line 9}
+                //continue this pattern in all of the book items to auto-fill the update form
+                id: 0,
+                title: "",
+                author: "",
+                genre: "",
+                cover: "",
+                sharedWith: "",
+                sharedDate: ""
+            },
+            navRedirect: false
+        }
     }
 
     onSubmit = (e: React.FormEvent) => {
@@ -50,7 +55,7 @@ class UpdateBook extends Component<Props, State> {
             },
             navRedirect: true
         })
-
+//change to props not state
         fetch(`http://localhost:3000/book/update/${this.state.book.id} `, {
             method: 'PUT',
             body: JSON.stringify({

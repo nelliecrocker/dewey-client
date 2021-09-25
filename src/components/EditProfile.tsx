@@ -10,7 +10,7 @@ class EditProfile extends Component<Props, {}> {
     render() {
         return (
             <div>
-                
+                Edit Profile
             </div>
         );
     }
