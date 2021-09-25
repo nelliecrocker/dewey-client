@@ -5,7 +5,8 @@ import { Bookshelf } from './Index'
 
 type Props = {
     token: string,
-    updateToken(newToken: string): void
+    updateToken(newToken: string): void,
+    bookId: number
 }
 
 type State = {
@@ -23,7 +24,7 @@ type State = {
 class UpdateBook extends Component<Props, State> {
     state = {
         book: {
-            id: 0,
+            id: this.props.bookId,
             title: "",
             author: "",
             genre: "",
@@ -51,7 +52,7 @@ class UpdateBook extends Component<Props, State> {
             method: 'PUT',
             body: JSON.stringify({
                 book: {
-                    // id: this.state.book.id,
+                    id: this.state.book.id,
                     title: this.state.book.title,
                     author: this.state.book.author,
                     genre: this.state.book.genre,
@@ -75,28 +76,25 @@ class UpdateBook extends Component<Props, State> {
 
     render() {
 
-        if (this.props.token === "") {
-            return <Redirect to="/user/login" />
-        }
-
         return (
-            <div>
-                <Form onSubmit={this.onSubmit}>
-                    <Label>Lend Your Book</Label>
+            <div className="Form-Style">
+                <Form  onSubmit={this.onSubmit}>
                     <FormGroup>
-                        <Label for="sharedWith">Shared With</Label>
-                        <Input type="text"
+                        <Input className="Form-Input" type="text"
                             name="sharedWith"
                             id="sharedWith"
                             value={this.state.book.sharedWith}
+                            placeholder={this.state.book.sharedWith}
                             onChange={(e) => this.setState({ book: { ...this.state.book, sharedWith: e.target.value } })} />
-                        <Input type="text"
+                            <Label></Label>
+                        <Input className="Form-Input" type="text"
                             name="sharedDate"
                             id="sharedDate"
                             value={this.state.book.sharedDate}
+                            placeholder={this.state.book.sharedDate}
                             onChange={(e) => this.setState({ book: { ...this.state.book, sharedDate: e.target.value } })} />
                     </FormGroup>
-                    <Button>Mark as Borrowed</Button>
+                    <Button className="Btn-login">Mark as Borrowed</Button>
                 </Form>
             </div>
         );

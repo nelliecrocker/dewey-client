@@ -17,8 +17,9 @@ type State = {
     username: string,
     password: string,
     sessionToken: string,
-    isAdmin: boolean
+    isAdmin: boolean,
     // books
+    id: number,
     title: string,
     author: string,
     genre: string,
@@ -39,6 +40,7 @@ class Landing extends Component<Props, State> {
             sessionToken: "",
             isAdmin: false,
             //book
+            id: 0,
             title: "",
             author: "",
             genre: "",
@@ -95,7 +97,9 @@ class Landing extends Component<Props, State> {
                     
                     <Route exact path='/book/update/' component={() => 
                     <UpdateBook token={this.props.token}
-                        updateToken={this.props.updateToken}/> }>
+                        updateToken={this.props.updateToken}
+                        bookId={this.state.id}
+                        />}>
                             </Route>
 
                     <Route exact path="/book/bookshelf" component={() => <Bookshelf
