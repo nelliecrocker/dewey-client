@@ -17,18 +17,23 @@ type State = {
         cover: string,
         sharedWith: string,
         sharedDate: string
-    }
+    },
+    navRedirect: boolean
 }
 
 class CreateBook extends Component<Props, State> {
-    state = {
-        book: {
-            title: "",
-            author: "",
-            genre: "",
-            cover: "",
-            sharedWith: "",
-            sharedDate: ""
+    constructor(props: Props) {
+        super(props)
+        this.state = {
+            book: {
+                title: "",
+                author: "",
+                genre: "",
+                cover: "",
+                sharedWith: "",
+                sharedDate: ""
+            },
+            navRedirect: false
         }
     }
 
@@ -41,8 +46,9 @@ class CreateBook extends Component<Props, State> {
                 genre: this.state.book.genre,
                 cover: this.state.book.cover,
                 sharedWith: this.state.book.sharedWith,
-                sharedDate: this.state.book.sharedDate
-            }
+                sharedDate: this.state.book.sharedDate,
+            },
+            navRedirect: true
         })
 
         fetch("http://localhost:3000/book/create", {
@@ -71,6 +77,7 @@ class CreateBook extends Component<Props, State> {
 
     render() {
         // //redirects to login if no token, my profile after submit with token
+        const { navRedirect } = this.state
 
         if (this.props.token === "") {
             return <Redirect to='/user/login' />
@@ -80,7 +87,6 @@ class CreateBook extends Component<Props, State> {
 
             <div>
                 <Form className="Form-Style" onSubmit={this.onSubmit}>
-                    {/* <Label className="Label-Style">Create a Book</Label> */}
                     <FormGroup>
                         <Label for="title"></Label>
                         <Input className="Form-Input" type="text"
@@ -105,6 +111,8 @@ class CreateBook extends Component<Props, State> {
                             placeholder="Genre"
                             onChange={(e) => this.setState({ book: { ...this.state.book, genre: e.target.value } })} />
                     </FormGroup>
+
+                    {/* for use with book API */}
                     {/* <FormGroup>
                         <Label for="cover">cover</Label>
                         <Input type="text"
@@ -113,23 +121,10 @@ class CreateBook extends Component<Props, State> {
                             placeholder="Cover Image"
                             onChange={(e) => this.setState({book: {...this.state.book, cover: e.target.value}})} />
                     </FormGroup> */}
-                    {/* <FormGroup>
-                        <Label for="sharedWith">Shared With</Label>
-                        <Input type="text"
-                            name="sharedWith"
-                            id="sharedWith"
-                            placeholder="Username"
-                            onChange={(e) => this.setState({book: {...this.state.book, sharedWith: e.target.value}})} />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="sharedDate">Shared Date</Label>
-                        <Input type="text"
-                            name="sharedDate"
-                            id="sharedDate"
-                            placeholder="Date"
-                            onChange={(e) => this.setState({book: {...this.state.book, sharedDate: e.target.value}})} />
-                    </FormGroup> */}
+
+
                     <Button className="Btn-login">Add</Button>
+                    {navRedirect && (<Redirect to='/user/profile' />)}
                     <Link className="Link-Style" to='/user/profile'>View Bookshelf</Link>
 
                 </Form>
