@@ -27,10 +27,11 @@
 
 .navbar-btn {
     border: none;
-    background-color: #2c5234;
+    background-color: transparent;
     color: #f8e9dd;
     justify-content: right;
-    margin-right: 1.5em;
+    margin-top: 3em;
+    margin-left: 3.5em;
 
 }
 
