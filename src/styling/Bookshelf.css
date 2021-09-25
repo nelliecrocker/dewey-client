@@ -8,14 +8,14 @@
     color: black;
     border: none;
     margin-bottom: 1em;
-
+    background-color: #f8e9dd !important;
 }
 
 .card-body {
     padding-left: 2em;
     padding-right: 2em;
     justify-content: center;
-    background-color: #f8e9dd 50%;
+    
 
 }
 
