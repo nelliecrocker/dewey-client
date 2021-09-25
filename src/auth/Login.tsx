@@ -7,7 +7,8 @@ import Dewey from '../images/Dewey.svg'
 
 type Props = {
     token: string,
-    updateToken(newToken: string): void
+    updateToken(newToken: string): void,
+    isAdmin: boolean
 };
 
 type State = {
@@ -47,7 +48,9 @@ class Login extends Component<Props, State> {
 
     render() {
         //redirects to my profile after login
-        if (this.props.token !== "") {
+        if (this.props.isAdmin === true && this.props.token !== "") {
+            return <Redirect to='/admin' />
+        } else if (this.props.token !== "") {
             return <Redirect to='/user/profile' />
         }
 

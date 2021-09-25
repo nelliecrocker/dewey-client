@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import { Login, Register } from './index'
-import { CreateBook, Profile, CreateProfile, Home, Bookshelf, UpdateBook } from '../components/Index'
+import { CreateBook, Profile, AdminView, CreateProfile, Home, Bookshelf, UpdateBook } from '../components/Index'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 
 type Props = {
@@ -16,7 +16,8 @@ type State = {
     email: string,
     username: string,
     password: string,
-    sessionToken: string
+    sessionToken: string,
+    isAdmin: boolean
     // books
     title: string,
     author: string,
@@ -36,6 +37,7 @@ class Landing extends Component<Props, State> {
             username: "",
             password: "",
             sessionToken: "",
+            isAdmin: false,
             //book
             title: "",
             author: "",
@@ -62,6 +64,7 @@ class Landing extends Component<Props, State> {
                     <Route exact path="/user/login" component={() => <Login
                         token={this.props.token}
                         updateToken={this.props.updateToken}
+                        isAdmin={this.state.isAdmin}
                     
                     />}>
                         </Route>
@@ -70,6 +73,7 @@ class Landing extends Component<Props, State> {
                     <Route exact path="/user/profile" component={() => <Profile
                     token={this.props.token}
                     updateToken={this.props.updateToken}
+                    title={this.state.title}
                     
                     />}>
                     </Route>
@@ -95,6 +99,13 @@ class Landing extends Component<Props, State> {
                             </Route>
 
                     <Route exact path="/book/bookshelf" component={() => <Bookshelf
+                        token={this.props.token}
+                        updateToken={this.props.updateToken}
+                        
+                        />}>
+                    </Route>
+
+                    <Route exact path="/admin" component={() => <AdminView
                         token={this.props.token}
                         updateToken={this.props.updateToken}
                         

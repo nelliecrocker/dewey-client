@@ -6,6 +6,7 @@ import Home from './Home'
 import Bookshelf from './Bookshelf'
 import UpdateBook from './UpdateBook'
 import CreateProfile from './CreateProfile'
+import AdminView from './AdminView'
 
 
 export {
@@ -15,5 +16,6 @@ export {
     Home,
     Bookshelf,
     UpdateBook,
-    CreateProfile
+    CreateProfile,
+    AdminView
 }

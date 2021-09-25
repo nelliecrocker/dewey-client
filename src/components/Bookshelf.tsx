@@ -105,7 +105,7 @@ class Bookshelf extends Component<Props, State>{
                                     <Card.Text>
                                         Author: {book.author}
                                     </Card.Text>
-                                    {book.sharedWith !== "" ? <Button className="card-btn" >Lend</Button> : <Button className="card-btn">Mark Returned</Button>}<br />
+                                    {book.sharedWith === "" ? <Button className="card-btn" >Lend</Button> : <Button className="card-btn">Returned</Button>}<br />
                                     <Button className="card-btn2">Donate</Button>
                                 </Card.Body>
                             </Card>

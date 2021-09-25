@@ -1,0 +1,26 @@
+.card-btn {
+    margin-top: .5em;
+    margin-bottom: .5em;
+    background-color: #a64b12 !important;
+    color: #f8e9dd !important;
+    font-size: 1em;
+    width: 8em;
+    border: none !important;
+}
+
+.div-styling {
+    background-color:#f8e9dd;
+    border: 1px transparent;
+    border-radius: .5em;
+    margin: 1.5em;
+}
+
+.text-styling {
+    font-size: 1.5em;
+    color: #a64b12;
+    margin: .5em;
+    background-color: #f8e9dd;
+    padding: .5em;
+    
+
+}
