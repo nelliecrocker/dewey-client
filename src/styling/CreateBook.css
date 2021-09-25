@@ -1,0 +1,42 @@
+.Form-Style {
+    margin:-2em 2.5em 2.5em 2.5em;
+}
+
+.Form-Input {
+    border-style: hidden;
+    background-color:#f8e9dd;
+    color: #a64b12;
+    text-align: center;
+}
+
+.Label-Style {
+    font-size: 2em !important;
+    color:#a64b12 !important;
+    background-color: #f8e9dd;
+    opacity: 75% !important;
+}
+
+.Logo {
+    width: 75%;
+
+}
+
+.Btn-login {
+    margin-top: 1.5em;
+    background-color: #a64b12;
+    font-size: 1em;
+    width: 11em;
+    border: none;
+}
+
+.Link-Style {
+    color: white;
+    display: flex;
+    text-align: center;
+    text-decoration: none;
+    margin: 1em 2em 2em 2em;
+}
+
+.Link-Style:hover {
+    color: #a64b12
+}

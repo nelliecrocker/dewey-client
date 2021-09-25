@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
+import '../styling/CreateBook.css'
 
 
 type Props = {
@@ -69,52 +70,50 @@ class CreateBook extends Component<Props, State> {
     }
 
     render() {
-        //redirects to login if no token, my profile after submit with token
+        // //redirects to login if no token, my profile after submit with token
 
-        if (this.props.token !== "") {
-            return <Redirect to="/user/profile" />
-        } else if (this.props.token === "") {
+        if (this.props.token === "") {
             return <Redirect to='/user/login' />
         }
 
         return (
 
             <div>
-                <Form onSubmit={this.onSubmit}>
-                    <Label>Create a Book</Label>
+                <Form className="Form-Style" onSubmit={this.onSubmit}>
+                    {/* <Label className="Label-Style">Create a Book</Label> */}
                     <FormGroup>
-                        <Label for="title">Title</Label>
-                        <Input type="text"
+                        <Label for="title"></Label>
+                        <Input className="Form-Input" type="text"
                             name="title"
                             id="title"
-                            placeholder="Harry Potter and the Sorcerer's Stone"
-                            onChange={(e) => this.setState({book: {...this.state.book, title: e.target.value}})} />
+                            placeholder="Title"
+                            onChange={(e) => this.setState({ book: { ...this.state.book, title: e.target.value } })} />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="author">Author</Label>
-                        <Input type="text"
+                        <Label for="author"></Label>
+                        <Input className="Form-Input" type="text"
                             name="author"
                             id="author"
-                            placeholder="J.K. Rowling"
-                            onChange={(e) => this.setState({book: {...this.state.book, author: e.target.value}})} />
+                            placeholder="Author"
+                            onChange={(e) => this.setState({ book: { ...this.state.book, author: e.target.value } })} />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="genre">Genre</Label>
-                        <Input type="text"
+                        <Label for="genre"></Label>
+                        <Input className="Form-Input" type="text"
                             name="genre"
                             id="genre"
-                            placeholder="Fiction"
-                            onChange={(e) => this.setState({book: {...this.state.book, genre: e.target.value}})} />
+                            placeholder="Genre"
+                            onChange={(e) => this.setState({ book: { ...this.state.book, genre: e.target.value } })} />
                     </FormGroup>
-                    <FormGroup>
+                    {/* <FormGroup>
                         <Label for="cover">cover</Label>
                         <Input type="text"
                             name="cover"
                             id="cover"
                             placeholder="Cover Image"
                             onChange={(e) => this.setState({book: {...this.state.book, cover: e.target.value}})} />
-                    </FormGroup>
-                    <FormGroup>
+                    </FormGroup> */}
+                    {/* <FormGroup>
                         <Label for="sharedWith">Shared With</Label>
                         <Input type="text"
                             name="sharedWith"
@@ -129,9 +128,10 @@ class CreateBook extends Component<Props, State> {
                             id="sharedDate"
                             placeholder="Date"
                             onChange={(e) => this.setState({book: {...this.state.book, sharedDate: e.target.value}})} />
-                    </FormGroup>
-                    <Button>Add to your bookshelf</Button>
-                    
+                    </FormGroup> */}
+                    <Button className="Btn-login">Add</Button>
+                    <Link className="Link-Style" to='/user/profile'>View Bookshelf</Link>
+
                 </Form>
             </div>
         );

@@ -20,7 +20,7 @@
 
 .Nav-Styling {
   justify-content: space-around;
-  position:fixed;
+  /* position:fixed; */
   width: 100%;
 
 }
