@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Card, Button } from 'react-bootstrap'
 import '../styling/Bookshelf.css'
 
@@ -53,47 +53,9 @@ class Bookshelf extends Component<Props, State>{
             .catch(err => console.log(err))
     }
 
-    // onClickLend = () => {
-    //     this.setState({
-    //         //!how to set state on a type?
-    //         books: [
-    //             {
-    //             id: this.state.book.id,
-    //             title: this.state.book.title,
-    //             author: this.state.book.author,
-    //             genre: this.state.book.genre,
-    //             cover: this.state.book.cover,
-    //             sharedWith: this.state.book.sharedWith,
-    //             sharedDate: this.state.book.sharedDate
-    //         } ]
-    //     })
-
-    //     fetch(`http://localhost:3000/book/update/${this.state.book.id} `, {
-    //         method: 'PUT',
-    //         body: JSON.stringify({
-    //             book: {
-    //                 sharedWith: this.state.book.sharedWith,
-    //                 sharedDate: this.state.book.sharedDate
-    //             }
-    //         }),
-    //         headers: new Headers({
-    //             'Content-Type': 'application/json',
-    //             "Authorization": `Bearer ${this.props.token} `
-    //         })
-    //     })
-    //         .then(res => res.json())
-    //         .then((data) => {
-    //             console.log(data)
-    //         })
-    //         .catch(err => console.log(err))
-    // }
-
 
     render() {
-        //needs to redirect to create a book if no books are found
-        // if (book.title === "") {
-        //     return (<Redirect to='/book/create' />)
-        // } 
+         
         return (
             <div className="bookshelf-styling">
                 {this.state.books.map((book) => {
@@ -105,7 +67,11 @@ class Bookshelf extends Component<Props, State>{
                                     <Card.Text>
                                         Author: {book.author}
                                     </Card.Text>
-                                    {book.sharedWith === "" ? <Button className="card-btn" >Lend</Button> : <Button className="card-btn">Returned</Button>}<br />
+
+                                    {book.sharedWith === "" ? 
+                                    <Link to='/book/update/'>
+                                    <Button className="card-btn" >Lend</Button></Link> : <Button className="card-btn">Returned</Button>}<br />
+
                                     <Button className="card-btn2">Donate</Button>
                                 </Card.Body>
                             </Card>
