@@ -5,7 +5,7 @@ Users can login and add books to their bookshelf, and then mark those books as b
 
 This app was created by Nellie Crocker in September 2021 as part of Eleven Fifty Academy's web development program.
 
-The server portion of this app can be found here[here](https://github.com/nelliecrocker/dewey-server).
+The server portion of this app can be found [here](https://github.com/nelliecrocker/dewey-server).
 
 
 
