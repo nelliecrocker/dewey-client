@@ -80,7 +80,7 @@ class Bookshelf extends Component<Props, State>{
                                                 // book={this.state.book} 
 
                                                 className="card-btn" 
-                                            >Lend</Button></Link> : <Button className="card-btn">Returned</Button>}<br />
+                                            >Lend</Button></Link> : <Button className="card-btn">Return</Button>}<br />
 
                                     <Button className="card-btn2">Donate</Button>
                                 </Card.Body>

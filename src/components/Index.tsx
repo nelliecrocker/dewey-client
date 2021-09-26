@@ -19,5 +19,6 @@ export {
     UpdateBook,
     CreateProfile,
     AdminView,
-    EditProfile
+    EditProfile,
+    
 }

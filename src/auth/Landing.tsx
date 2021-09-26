@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import { Login, Register } from './index'
-import { CreateBook, Profile, AdminView, CreateProfile, Home, Bookshelf, UpdateBook, EditProfile } from '../components/Index'
+import { CreateBook, Profile, AdminView, CreateProfile, Home, Bookshelf, UpdateBook, EditProfile, Navbar } from '../components/Index'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 
 type Props = {
@@ -61,6 +61,7 @@ class Landing extends Component<Props, State> {
         return (
             <div>
                 <Switch>
+                    
                     <Route exact path="/"><Home
                         token={this.props.token}
                         updateToken={this.props.updateToken} /></Route>
@@ -72,11 +73,11 @@ class Landing extends Component<Props, State> {
                     <Route exact path="/user/login" component={() => <Login
                         token={this.props.token}
                         updateToken={this.props.updateToken}
-                        isAdmin={this.state.User.isAdmin}/>}></Route>
+                        isAdmin={this.state.User.isAdmin} />}></Route>
 
                     <Route exact path="/user/profile" component={() => <Profile
                         token={this.props.token}
-                        updateToken={this.props.updateToken}/>}></Route>
+                        updateToken={this.props.updateToken} />}></Route>
 
                     <Route exact path="/user/profile/create" component={() => <CreateProfile
                         token={this.props.token}
@@ -95,18 +96,20 @@ class Landing extends Component<Props, State> {
                         <UpdateBook
                             token={this.props.token}
                             updateToken={this.props.updateToken}
-                            // book={this.state.book}
-                            />}></Route>
+                        // book={this.state.book}
+                        />}></Route>
 
                     <Route exact path="/book/bookshelf" component={() => <Bookshelf
                         token={this.props.token}
                         updateToken={this.props.updateToken}
-                        // book={this.state.book}
-                        />}></Route>
+                    // book={this.state.book}
+                    />}></Route>
 
                     <Route exact path="/admin" component={() => <AdminView
                         token={this.props.token}
-                        updateToken={this.props.updateToken} />}></Route>
+                        updateToken={this.props.updateToken}
+                        isAdmin={this.state.User.isAdmin}
+                        />}></Route>
 
                     <Redirect to="/" />
 

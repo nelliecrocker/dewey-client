@@ -9,7 +9,8 @@ import '../styling/Navbar.css'
 
 type Props = {
     token: string,
-    updateToken(newToken: string): void
+    updateToken(newToken: string): void,
+
 
 }
 
@@ -79,6 +80,7 @@ class Navbar extends Component<Props, State> {
                             ?
                             <div>
                                 <Link to="/user/profile/edit"><button className="navbar-btn" id="navbar-margin">Edit Profile</button></Link>
+                                <Link to='/admin' className="navbar-btn">Admin</Link>
                                 <button className="navbar-btn"  onClick={this.clearToken}>Logout</button>
                                 
                             </div>

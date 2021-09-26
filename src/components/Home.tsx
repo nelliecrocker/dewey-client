@@ -16,7 +16,7 @@ class Home extends Component<Props, {}> {
             <div className="body-styling">
                 <p>Welcome to the Dewey Collective. We intend to decentralize the mainstream concept of a library and turn book lending into a democratized social experience.
                 </p>
-                <p>Want to join us? All you need to do is create a profile and fill up your bookshelf with books you are willing to lend. If a book comes to the end of its life with you, just click the Donate button to remove it from your digital collection.
+                <p>Want to join us? All you need to do is create a profile and fill up your bookshelf with books you are willing to lend.
                 </p>
                 <Link className="link-styling" to='/user/login'><button className="Btn-home">Login</button></Link>&nbsp;&nbsp;<Link className="link-styling" to='/user/register'><button className="Btn-home">Register</button></Link>
                 <p></p>

@@ -3,7 +3,7 @@
 }
 
 .Form-Input {
-    border-style: hidden;
+    border-style: hidden !important;
     background-color:#f8e9dd;
     color: #a64b12;
     text-align: center;
