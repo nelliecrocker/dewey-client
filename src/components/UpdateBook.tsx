@@ -66,6 +66,7 @@ class UpdateBook extends Component<Props, State> {
             },
             navRedirect: true
         })
+        
 //change to props not state
         fetch(`http://localhost:3000/book/update/${this.state.book.id} `, {
             method: 'PUT',

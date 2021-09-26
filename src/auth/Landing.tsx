@@ -11,6 +11,7 @@ type Props = {
 
 type State = {
     User: {
+        id: number,
         fname: string,
         lname: string,
         email: string,
@@ -35,6 +36,7 @@ class Landing extends Component<Props, State> {
         super(props)
         this.state = {
             User: {
+                id: 0,
                 fname: "",
                 lname: "",
                 email: "",
@@ -82,7 +84,8 @@ class Landing extends Component<Props, State> {
 
                     <Route exact path="/user/profile/edit" component={() => <EditProfile
                         token={this.props.token}
-                        updateToken={this.props.updateToken} />}></Route>
+                        updateToken={this.props.updateToken}
+                        userIdProps={this.state.User.id} />}></Route>
 
                     <Route exact path="/book/create" component={() => <CreateBook
                         token={this.props.token}
