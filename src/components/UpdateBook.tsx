@@ -6,7 +6,18 @@ import { Bookshelf } from './Index'
 type Props = {
     token: string,
     updateToken(newToken: string): void,
-    //! Book: string{}
+    //! incoming prop from Bookshelf
+    // book: Book[]
+}
+
+type Book = {
+    id: number,
+    title: string,
+    author: string,
+    genre: string,
+    cover: string,
+    sharedWith: string,
+    sharedDate: string
 }
 
 type State = {

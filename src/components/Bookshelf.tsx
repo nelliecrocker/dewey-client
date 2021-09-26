@@ -6,6 +6,7 @@ import '../styling/Bookshelf.css'
 type Props = {
     token: string,
     updateToken(newToken: string): void
+    // book: Book[]
 }
 
 type Book = {
@@ -19,14 +20,14 @@ type Book = {
 }
 
 type State = {
-    books: Book[]
+    book: Book[]
 }
 
 class Bookshelf extends Component<Props, State>{
     constructor(props: Props) {
         super(props)
         this.state = {
-            books: []
+            book: []
         }
     }
 
@@ -45,10 +46,10 @@ class Bookshelf extends Component<Props, State>{
             .then(res => res.json())
             .then(json => {
                 this.setState({
-                    books: json
+                    book: json
                 })
                 console.log(json)
-                console.log(this.state.books)
+                console.log(this.state.book)
             })
             .catch(err => console.log(err))
     }
@@ -58,7 +59,7 @@ class Bookshelf extends Component<Props, State>{
 
         return (
             <div className="bookshelf-styling">
-                {this.state.books.map((book) => {
+                {this.state.book.map((book) => {
                     return (
                         <div>
                             <Card className="card-styling">
@@ -71,9 +72,15 @@ class Bookshelf extends Component<Props, State>{
                                     {book.sharedWith === "" ?
                                         <Link to='/book/update/'>
                                             <Button
-                                                //add prop to identify book
-                                                //! Book={this.props.book}
-                                                className="card-btn" >Lend</Button></Link> : <Button className="card-btn">Returned</Button>}<br />
+                                                // token={this.props.token}
+                                                // updateToken={this.props.updateToken}
+                                                
+                                                //!add prop to identify book and send through to UpdateBook; struggling because Books is a type
+
+                                                // book={this.state.book} 
+
+                                                className="card-btn" 
+                                            >Lend</Button></Link> : <Button className="card-btn">Returned</Button>}<br />
 
                                     <Button className="card-btn2">Donate</Button>
                                 </Card.Body>

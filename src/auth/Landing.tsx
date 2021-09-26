@@ -19,7 +19,7 @@ type State = {
         sessionToken: string,
         isAdmin: boolean
     },
-    Book: {
+    book: {
         id: number,
         title: string,
         author: string,
@@ -43,7 +43,7 @@ class Landing extends Component<Props, State> {
                 sessionToken: "",
                 isAdmin: false
             },
-            Book: {
+            book: {
                 id: 0,
                 title: "",
                 author: "",
@@ -59,73 +59,51 @@ class Landing extends Component<Props, State> {
         return (
             <div>
                 <Switch>
-                    <Route exact path="/"><Home token={this.props.token}
+                    <Route exact path="/"><Home
+                        token={this.props.token}
                         updateToken={this.props.updateToken} /></Route>
 
                     <Route exact path="/user/register" component={() => <Register
                         token={this.props.token}
-                        updateToken={this.props.updateToken}
-
-                    />}></Route>
+                        updateToken={this.props.updateToken} />}></Route>
 
                     <Route exact path="/user/login" component={() => <Login
                         token={this.props.token}
                         updateToken={this.props.updateToken}
-                        isAdmin={this.state.User.isAdmin}
-
-                    />}>
-                    </Route>
+                        isAdmin={this.state.User.isAdmin}/>}></Route>
 
                     <Route exact path="/user/profile" component={() => <Profile
                         token={this.props.token}
-                        updateToken={this.props.updateToken}
-
-                    />}>
-                    </Route>
+                        updateToken={this.props.updateToken}/>}></Route>
 
                     <Route exact path="/user/profile/create" component={() => <CreateProfile
                         token={this.props.token}
-                        updateToken={this.props.updateToken}
-
-                    />}>
-
-                    </Route>
+                        updateToken={this.props.updateToken} />}></Route>
 
                     <Route exact path="/user/profile/edit" component={() => <EditProfile
                         token={this.props.token}
-                        updateToken={this.props.updateToken}
-                    />}>
-
-                    </Route>
+                        updateToken={this.props.updateToken} />}></Route>
 
                     <Route exact path="/book/create" component={() => <CreateBook
                         token={this.props.token}
-                        updateToken={this.props.updateToken}
-
-                    />}>
-                    </Route>
+                        updateToken={this.props.updateToken} />}></Route>
 
                     <Route exact path='/book/update/' component={() =>
                         <UpdateBook
                             token={this.props.token}
                             updateToken={this.props.updateToken}
-                            //! Book={this.state.Book}
-                        />}>
-                    </Route>
+                            // book={this.state.book}
+                            />}></Route>
 
                     <Route exact path="/book/bookshelf" component={() => <Bookshelf
                         token={this.props.token}
                         updateToken={this.props.updateToken}
-
-                    />}>
-                    </Route>
+                        // book={this.state.book}
+                        />}></Route>
 
                     <Route exact path="/admin" component={() => <AdminView
                         token={this.props.token}
-                        updateToken={this.props.updateToken}
-
-                    />}>
-                    </Route>
+                        updateToken={this.props.updateToken} />}></Route>
 
                     <Redirect to="/" />
 
