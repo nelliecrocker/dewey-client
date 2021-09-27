@@ -7,6 +7,17 @@ import '../styling/Profile.css'
 type Props = {
     token: string,
     updateToken(newToken: string): void,
+    updateBook(newBook: Book): void
+}
+
+type Book = {
+    id: number | null,
+    title: string,
+    author: string,
+    genre: string,
+    cover: string,
+    sharedWith: string,
+    sharedDate: string
 }
 
 class Profile extends Component<Props, {}> {
@@ -22,7 +33,10 @@ class Profile extends Component<Props, {}> {
                         <Button className="card-btn">Add a Book</Button></Link>
 
                     <Bookshelf token={this.props.token}
-                        updateToken={this.props.updateToken} />
+                        updateToken={this.props.updateToken}
+                        updateBook={this.props.updateBook}
+
+                         />
                 </div>
             );
     }

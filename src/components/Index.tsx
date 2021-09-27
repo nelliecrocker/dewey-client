@@ -8,6 +8,7 @@ import UpdateBook from './UpdateBook'
 import CreateProfile from './CreateProfile'
 import AdminView from './AdminView'
 import EditProfile from './EditProfile'
+import DeleteBook from './DeleteBook'
 
 
 export {
@@ -20,5 +21,6 @@ export {
     CreateProfile,
     AdminView,
     EditProfile,
+    DeleteBook
     
 }

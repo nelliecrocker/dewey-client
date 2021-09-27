@@ -7,6 +7,15 @@ import './styling/App.css'
 type Props = {}
 
 type State = {
+  user: {
+    id: number,
+    fname: string,
+    lname: string,
+    email: string,
+    username: string,
+    password: string,
+    isAdmin: boolean
+  },
   sessionToken: string
 }
 
@@ -14,6 +23,15 @@ class App extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
     this.state = {
+      user: {
+        id: 0,
+        fname: "",
+        lname: "",
+        email: "",
+        username: "",
+        password: "",
+        isAdmin: false
+      },
       sessionToken: ""
     }
   }
@@ -23,17 +41,32 @@ class App extends Component<Props, State> {
     this.setState({
       sessionToken: newToken
     })
-    console.log(this.state.sessionToken)
   }
 
   render() {
     return (
       <div className="Nav-Styling">
-        <Navbar token={this.state.sessionToken}
+        <Navbar
+          token={this.state.sessionToken}
           updateToken={this.updateToken}
+          
+          // isAdmin={this.state.user.isAdmin}
+          
+
         />
         <div className="App">
-          <Landing token={this.state.sessionToken} updateToken={this.updateToken} />
+          <Landing
+            token={this.state.sessionToken}
+            updateToken={this.updateToken}
+            userId={this.state.user.id}
+
+            fname={this.state.user.fname}
+            lname={this.state.user.lname}
+            email={this.state.user.email}
+            username={this.state.user.username}
+            password={this.state.user.password}
+            isAdmin={this.state.user.isAdmin}
+             />
         </div>
       </div>
 

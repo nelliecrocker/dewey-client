@@ -10,13 +10,11 @@ import '../styling/Navbar.css'
 type Props = {
     token: string,
     updateToken(newToken: string): void,
-
-
+    
+    
 }
 
 type State = {
-    // clearToken(): void,
-    // sessionToken: string,
     sidebar: boolean
 }
 
@@ -52,10 +50,6 @@ class Navbar extends Component<Props, State> {
                     <Link to='/'>
                         <img className="navbar-logo" src={Deweynude}></img>
                     </Link>
-                    {/* {this.props.token !== ""
-                        ? <button className="navbar-btn" onClick={this.clearToken}>Logout</button>
-                        : null
-                    } */}
                 </div>
 
                 <nav className={this.state.sidebar ? 'nav-menu active' : 'nav-menu'}>
@@ -81,8 +75,8 @@ class Navbar extends Component<Props, State> {
                             <div>
                                 <Link to="/user/profile/edit"><button className="navbar-btn" id="navbar-margin">Edit Profile</button></Link>
                                 <Link to='/admin' className="navbar-btn">Admin</Link>
-                                <button className="navbar-btn"  onClick={this.clearToken}>Logout</button>
-                                
+                                <button className="navbar-btn" onClick={this.clearToken}>Logout</button>
+
                             </div>
                             : null
                         }

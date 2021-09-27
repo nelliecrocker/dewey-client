@@ -6,12 +6,13 @@ import { Bookshelf } from './Index'
 type Props = {
     token: string,
     updateToken(newToken: string): void,
-    //! incoming prop from Bookshelf
-    // book: Book[]
+    //! needs incoming prop from Bookshelf that contains book id
+    book: Book
+    
 }
 
 type Book = {
-    id: number,
+    id: number | null,
     title: string,
     author: string,
     genre: string,
@@ -21,64 +22,38 @@ type Book = {
 }
 
 type State = {
-    book: {
-        id: number,
-        title: string,
-        author: string,
-        genre: string,
-        cover: string,
-        sharedWith: string,
-        sharedDate: string
-    },
-    navRedirect: boolean
+    navRedirect: boolean,
+    sharedWith: string,
+    sharedDate: string
 }
 
 class UpdateBook extends Component<Props, State> {
     constructor(props:Props){
         super(props)
         this.state = {
-            book: {
-                //needs to be this.props.{insert prop data from line 9}
-                //continue this pattern in all of the book items to auto-fill the update form
-                id: 0,
-                title: "",
-                author: "",
-                genre: "",
-                cover: "",
-                sharedWith: "",
-                sharedDate: ""
-            },
-            navRedirect: false
+            navRedirect: false,
+            sharedWith: this.props.book.sharedWith,
+            sharedDate: this.props.book.sharedDate
         }
     }
 
     onSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        this.setState({
-            book: {
-                id: this.state.book.id,
-                title: this.state.book.title,
-                author: this.state.book.author,
-                genre: this.state.book.genre,
-                cover: this.state.book.cover,
-                sharedWith: this.state.book.sharedWith,
-                sharedDate: this.state.book.sharedDate
-            },
-            navRedirect: true
-        })
+         this.setState ({
+             navRedirect: true
+         })
         
 //change to props not state
-        fetch(`http://localhost:3000/book/update/${this.state.book.id} `, {
+        fetch(`http://localhost:3000/book/update/${this.props.book.id} `, {
             method: 'PUT',
             body: JSON.stringify({
                 book: {
-                    id: this.state.book.id,
-                    title: this.state.book.title,
-                    author: this.state.book.author,
-                    genre: this.state.book.genre,
-                    cover: this.state.book.cover,
-                    sharedWith: this.state.book.sharedWith,
-                    sharedDate: this.state.book.sharedDate
+                    title: this.props.book.title,
+                    author:this.props.book.author,
+                    genre:this.props.book.genre,
+                    cover:this.props.book.cover,
+                    sharedWith: this.state.sharedWith,
+                    sharedDate: this.state.sharedDate
                 }
             }),
             headers: new Headers({
@@ -99,21 +74,23 @@ class UpdateBook extends Component<Props, State> {
 
         return (
             <div className="Form-Style">
-                <Form  onSubmit={this.onSubmit}>
+                <Form  
+                onSubmit={this.onSubmit}
+                >
                     <FormGroup>
                         <Input className="Form-Input" type="text"
                             name="sharedWith"
                             id="sharedWith"
-                            value={this.state.book.sharedWith}
-                            placeholder={this.state.book.sharedWith}
-                            onChange={(e) => this.setState({ book: { ...this.state.book, sharedWith: e.target.value } })} />
+                            value={this.props.book.sharedWith}
+                            placeholder={this.props.book.sharedWith}
+                            onChange={(e) => this.setState({ sharedWith: e.target.value })} />
                             <Label></Label>
                         <Input className="Form-Input" type="text"
                             name="sharedDate"
                             id="sharedDate"
-                            value={this.state.book.sharedDate}
-                            placeholder={this.state.book.sharedDate}
-                            onChange={(e) => this.setState({ book: { ...this.state.book, sharedDate: e.target.value } })} />
+                            value={this.props.book.sharedDate}
+                            placeholder={this.props.book.sharedDate}
+                            onChange={(e) => this.setState({sharedDate: e.target.value} )} />
                     </FormGroup>
                     <Button className="Btn-login">Lend</Button>
                     {navRedirect && (<Redirect to='/user/profile' />)}

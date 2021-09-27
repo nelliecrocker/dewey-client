@@ -6,11 +6,11 @@ import '../styling/Bookshelf.css'
 type Props = {
     token: string,
     updateToken(newToken: string): void
-    // book: Book[]
+    updateBook(newBook: Book): void
 }
 
 type Book = {
-    id: number,
+    id: number | null,
     title: string,
     author: string,
     genre: string,
@@ -20,20 +20,25 @@ type Book = {
 }
 
 type State = {
-    book: Book[]
+    book: Book[],
+    id: number
 }
 
 class Bookshelf extends Component<Props, State>{
     constructor(props: Props) {
         super(props)
         this.state = {
-            book: []
+            book: [],
+            id: 0
+            // id: null
         }
     }
 
     componentDidMount() {
         this.displayBookData()
+
     }
+    // ********************************************************************
 
     displayBookData = () => {
         fetch("http://localhost:3000/book/mybooks", {
@@ -49,14 +54,46 @@ class Bookshelf extends Component<Props, State>{
                     book: json
                 })
                 console.log(json)
-                console.log(this.state.book)
+                console.log(this.state.book[5].id)
             })
             .catch(err => console.log(err))
     }
 
+    // ********************************************************************
+
+    // onUpdate = () => {
+    //             
+    // //change to props not state
+    //         fetch(`http://localhost:3000/book/update/${this.state.id} `, {
+    //             method: 'PUT',
+    //             body: JSON.stringify({
+    //                 book: {
+    //                     id: this.state.book.id,
+    //                     title: this.state.book.title,
+    //                     author: this.state.book.author,
+    //                     genre: this.state.book.genre,
+    //                     cover: this.state.book.cover,
+    //                     sharedWith: this.state.book.sharedWith,
+    //                     sharedDate: this.state.book.sharedDate
+    //                 }
+    //             }),
+    //             headers: new Headers({
+    //                 'Content-Type': 'application/json',
+    //                 "Authorization": `Bearer ${this.props.token} `
+    //             })
+    //         })
+    //             .then(res => res.json())
+    //             .then((data) => {
+    //                 console.log(data)
+    //             })
+    //             .catch(err => console.log(err))
+    //     }
+    // ********************************************************************
+
+
 
     render() {
-
+        // {console.log("book state", this.state.book)}
         return (
             <div className="bookshelf-styling">
                 {this.state.book.map((book) => {
@@ -70,19 +107,24 @@ class Bookshelf extends Component<Props, State>{
                                     </Card.Text>
 
                                     {book.sharedWith === "" ?
-                                        <Link to='/book/update/'>
+                                        // <Link to='/book/update'>
+                                            //! add get function with id endpoint and add onclick to button to grab the book id
                                             <Button
-                                                // token={this.props.token}
-                                                // updateToken={this.props.updateToken}
-                                                
-                                                //!add prop to identify book and send through to UpdateBook; struggling because Books is a type
+                                                onClick={() =>{this.props.updateBook(book)
+                                            }}
 
+
+                                                //!add prop to identify book and send through to UpdateBook; struggling because Books is a type
                                                 // book={this.state.book} 
 
-                                                className="card-btn" 
-                                            >Lend</Button></Link> : <Button className="card-btn">Return</Button>}<br />
+                                                className="card-btn"
+                                            >Lend</Button>
+                                            // </Link>
+                                            : <Button className="card-btn">Return</Button>}<br />
 
+                                    <Link to='/book/delete'>
                                     <Button className="card-btn2">Donate</Button>
+                                    </Link>
                                 </Card.Body>
                             </Card>
                         </div>

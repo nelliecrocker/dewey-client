@@ -16,7 +16,8 @@ type State = {
         lname: string,
         email: string,
         username: string,
-        password: string
+        password: string,
+        isAdmin: boolean
     },
     userProfile: {
         preferredGenre: string,
@@ -32,7 +33,8 @@ class Register extends Component<Props, State> {
             lname: "",
             email: "",
             username: "",
-            password: ""
+            password: "",
+            isAdmin: true,
         },
         userProfile: {
             preferredGenre: "",
@@ -49,7 +51,8 @@ class Register extends Component<Props, State> {
                 lname: "",
                 email: "",
                 username: "",
-                password: ""
+                password: "",
+                isAdmin: true
             },
             userProfile: {
                 preferredGenre: "",
@@ -67,7 +70,8 @@ class Register extends Component<Props, State> {
                     lname: this.state.user.lname,
                     email: this.state.user.email,
                     username: this.state.user.username,
-                    password: this.state.user.password
+                    password: this.state.user.password,
+                    isAdmin: this.state.user.isAdmin
                 }
             }),
             headers: new Headers({
