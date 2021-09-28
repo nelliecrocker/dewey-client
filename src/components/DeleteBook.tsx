@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../styling/Home.css'
 import { Redirect, Link } from 'react-router-dom'
+import { Button } from 'reactstrap'
 
 
 
@@ -21,13 +22,18 @@ type Book = {
     sharedDate: string
 }
 
+// type State = {
+//     book: Book[]
+//     }
+
 
 class DeleteBook extends Component<Props, {}> {
     constructor(props:Props){
         super(props)
         this.state = {
             title: this.props.book.title,
-            author: this.props.book.author
+            author: this.props.book.author,
+
         }
     }
 
@@ -42,17 +48,25 @@ class DeleteBook extends Component<Props, {}> {
     }
 
     render() {
-        if (this.props.token === "") {
-            return <Redirect to='/user/login' />
-        }
+        // if (this.props.token === "") {
+        //     return (<Redirect to='/user/login' />)
+        // }
+
+        
         console.log(this.state)
         return (
             <div className="body-styling">
                 <p>Are you sure you want to delete this book?
                 </p>
                 {this.props.book.title}
-                {this.props.book.author}
-                <button onClick={this.onDelete} className="Btn-home">Delete</button>
+                <br />
+                by {this.props.book.author}
+                <br />
+                <Button onClick={this.onDelete} className="Btn-home">Delete</Button>
+                <br />
+                <br />
+                <Button><Link to='/user/profile'>No thanks</Link></Button>
+                
             </div>
         );
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import { Form, Label, FormGroup, Input, Button } from 'reactstrap'
 
 type Props = {
@@ -92,7 +92,12 @@ class UpdateBook extends Component<Props, State> {
                     </FormGroup>
                     <Button className="Btn-login">Lend</Button>
                     {navRedirect && (<Redirect to='/user/profile' />)}
+
                 </Form>
+                <Link
+                    to='/book/delete'>
+                    <Button className="card-btn2">Donate</Button>
+                </Link>
             </div>
         );
     }

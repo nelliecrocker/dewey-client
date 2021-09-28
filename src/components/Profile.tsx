@@ -8,7 +8,10 @@ type Props = {
     token: string,
     updateToken(newToken: string): void,
     updateBook(newBook: Book): void,
-    bookId:number | null
+    deleteBook(newBook: Book): void,
+    bookId:number | null,
+    navUpdate: boolean,
+    navDelete: boolean
 
 
 }
@@ -38,7 +41,10 @@ class Profile extends Component<Props, {}> {
                     <Bookshelf token={this.props.token}
                         updateToken={this.props.updateToken}
                         updateBook={this.props.updateBook}
+                        deleteBook={this.props.deleteBook}
                         bookId={this.props.bookId}
+                        navUpdate={this.props.navUpdate}
+                        navDelete={this.props.navDelete}
 
 
                          />

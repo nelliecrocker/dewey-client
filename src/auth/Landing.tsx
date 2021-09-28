@@ -47,7 +47,8 @@ type State = {
         sharedWith: string,
         sharedDate: string
     },
-    navRedirect: boolean
+    navUpdate: boolean,
+    navDelete: boolean
 }
 
 
@@ -75,13 +76,23 @@ class Landing extends Component<Props, State> {
                 sharedWith: "",
                 sharedDate: ""
             },
-            navRedirect: false
+            navUpdate: false,
+            navDelete: false
         }
     }
 
     updateBook = (newBook: Book) => {
         this.setState({
-            book: newBook
+            book: newBook,
+            navUpdate: true
+        })
+        console.log(newBook)
+    }
+
+    deleteBook = (newBook: Book) => {
+        this.setState({
+            book: newBook,
+            navDelete: true
         })
         console.log(newBook)
     }
@@ -112,6 +123,9 @@ class Landing extends Component<Props, State> {
                         token={this.props.token}
                         updateToken={this.props.updateToken}
                         updateBook={this.updateBook}
+                        deleteBook={this.deleteBook}
+                        navUpdate={this.state.navUpdate}
+                        navDelete={this.state.navDelete}
                         bookId={this.state.book.id}
 
 
@@ -141,6 +155,10 @@ class Landing extends Component<Props, State> {
                         token={this.props.token}
                         updateToken={this.props.updateToken}
                         updateBook={this.updateBook}
+                        deleteBook={this.deleteBook}
+                        navUpdate={this.state.navUpdate}
+                        navDelete={this.state.navDelete}
+
                         bookId={this.state.book.id}
 
                     />}></Route>
