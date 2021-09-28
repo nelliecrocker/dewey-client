@@ -24,8 +24,26 @@
 
 }
 
+.Btn-delete {
+    margin-top: 1.5em;
+    background-color: #f8e9dd !important;
+    color: #a64b12 !important;
+    font-size: 1em;
+    width: 6em;
+    border: none !important;
+    border-radius: .2em;
+
+}
+
 .Link-Style {
     color: #a64b12;
+    flex-direction: column;
+    text-decoration: none;
+    margin: 1em 2em 2em 2em;
+}
+
+.Link-Stylex {
+    color: #f8e9dd;
     flex-direction: column;
     text-decoration: none;
     margin: 1em 2em 2em 2em;

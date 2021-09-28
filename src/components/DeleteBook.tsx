@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import '../styling/Home.css'
+import '../styling/Login.css'
 import { Redirect, Link } from 'react-router-dom'
 import { Button } from 'reactstrap'
+
 
 
 
@@ -10,8 +11,8 @@ type Props = {
     updateToken(newToken: string): void,
     book: Book,
     bookId: number | null,
-    // deleteBook(newBook: Book): void,
     navDelete: boolean
+    
 
 }
 
@@ -24,10 +25,6 @@ type Book = {
     sharedWith: string,
     sharedDate: string
 }
-
-// type State = {
-//     book: Book[]
-//     }
 
 
 class DeleteBook extends Component<Props, {}> {
@@ -76,10 +73,10 @@ class DeleteBook extends Component<Props, {}> {
                 <br />
                 <Button onClick={this.onDelete}
                 
-                className="Btn-home">Delete</Button>
+                className="Btn-delete">Delete</Button>
                 <br />
                 <br />
-                <Button><Link to='/user/profile'>No thanks</Link></Button>
+                <Link className="Link-Stylex" to='/user/profile'>No thanks</Link>
                 
             </div>
         );

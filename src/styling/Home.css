@@ -16,3 +16,10 @@
     border: none !important;
     border-radius: .2em;
 }
+
+.Link-Style {
+    color: #a64b12;
+    flex-direction: column;
+    text-decoration: none;
+    margin: 1em 2em 2em 2em;
+}
