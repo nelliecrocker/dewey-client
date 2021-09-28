@@ -13,7 +13,7 @@ type Props = {
     username: string,
     password: string,
     isAdmin: boolean,
-    
+
 }
 
 type Book = {
@@ -79,7 +79,7 @@ class Landing extends Component<Props, State> {
         }
     }
 
-    updateBook = (newBook:Book) => {
+    updateBook = (newBook: Book) => {
         this.setState({
             book: newBook
         })
@@ -114,8 +114,8 @@ class Landing extends Component<Props, State> {
                         updateBook={this.updateBook}
                         bookId={this.state.book.id}
 
-                        
-                        />}></Route>
+
+                    />}></Route>
 
                     <Route exact path="/user/profile/create" component={() => <CreateProfile
                         token={this.props.token}
@@ -134,7 +134,7 @@ class Landing extends Component<Props, State> {
                         <UpdateBook
                             token={this.props.token}
                             updateToken={this.props.updateToken}
-                        book={this.state.book}
+                            book={this.state.book}
                         />}></Route>
 
                     <Route exact path="/book/bookshelf" component={() => <Bookshelf
@@ -142,14 +142,14 @@ class Landing extends Component<Props, State> {
                         updateToken={this.props.updateToken}
                         updateBook={this.updateBook}
                         bookId={this.state.book.id}
-                        
-                    // book={this.state.book}
+
                     />}></Route>
 
                     <Route exact path="/book/delete" component={() => <DeleteBook
                         token={this.props.token}
                         updateToken={this.props.updateToken}
-                    // book={this.state.book}
+                        book={this.state.book}
+                        bookId={this.state.book.id}
                     />}></Route>
 
                     <Route exact path="/admin" component={() => <AdminView

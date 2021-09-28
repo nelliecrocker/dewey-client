@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
 import { Form, Label, FormGroup, Input, Button } from 'reactstrap'
-import { Bookshelf } from './Index'
 
 type Props = {
     token: string,

@@ -94,7 +94,8 @@ class Bookshelf extends Component<Props, State>{
 
                                     <br />
 
-                                    <Link to='/book/delete'>
+                                    <Link 
+                                    to='/book/delete'>
                                         <Button className="card-btn2">Donate</Button>
                                     </Link>
                                 </Card.Body>
