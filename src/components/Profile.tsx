@@ -9,7 +9,7 @@ type Props = {
     updateToken(newToken: string): void,
     updateBook(newBook: Book): void,
     deleteBook(newBook: Book): void,
-    bookId:number | null,
+    bookId: number | null,
     navUpdate: boolean,
     navDelete: boolean
 
@@ -31,25 +31,26 @@ class Profile extends Component<Props, {}> {
     render() {
 
         if (this.props.token === "") {
-            return (<Redirect to='/user/login' />)} 
+            return (<Redirect to='/user/login' />)
+        }
 
-            return (
-                <div>
-                    <Link to='/book/create'>
-                        <Button className="card-btn">Add a Book</Button></Link>
+        return (
+            <div>
+                <Link to='/book/create'>
+                    <Button className="card-btn">Add a Book</Button></Link>
 
-                    <Bookshelf token={this.props.token}
-                        updateToken={this.props.updateToken}
-                        updateBook={this.props.updateBook}
-                        deleteBook={this.props.deleteBook}
-                        bookId={this.props.bookId}
-                        navUpdate={this.props.navUpdate}
-                        navDelete={this.props.navDelete}
+                <Bookshelf token={this.props.token}
+                    updateToken={this.props.updateToken}
+                    updateBook={this.props.updateBook}
+                    deleteBook={this.props.deleteBook}
+                    bookId={this.props.bookId}
+                    navUpdate={this.props.navUpdate}
+                    navDelete={this.props.navDelete}
 
 
-                         />
-                </div>
-            );
+                />
+            </div>
+        );
     }
 }
 

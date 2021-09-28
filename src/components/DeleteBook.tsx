@@ -9,7 +9,10 @@ type Props = {
     token: string,
     updateToken(newToken: string): void,
     book: Book,
-    bookId: number | null
+    bookId: number | null,
+    // deleteBook(newBook: Book): void,
+    navDelete: boolean
+
 }
 
 type Book = {
@@ -33,7 +36,7 @@ class DeleteBook extends Component<Props, {}> {
         this.state = {
             title: this.props.book.title,
             author: this.props.book.author,
-
+            navDelete: this.props.navDelete
         }
     }
 
@@ -44,13 +47,22 @@ class DeleteBook extends Component<Props, {}> {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${this.props.token}`
             }),
+            
         })
+        this.setState({
+            title: null,
+            author: null,
+            id: null,
+            navDelete: !this.props.navDelete
+        })
+        console.log(this.state)
     }
 
+
     render() {
-        // if (this.props.token === "") {
-        //     return (<Redirect to='/user/login' />)
-        // }
+        if (this.props.navDelete === false) {
+            return (<Redirect to='/user/profile' />)
+        } 
 
         
         console.log(this.state)
@@ -62,7 +74,9 @@ class DeleteBook extends Component<Props, {}> {
                 <br />
                 by {this.props.book.author}
                 <br />
-                <Button onClick={this.onDelete} className="Btn-home">Delete</Button>
+                <Button onClick={this.onDelete}
+                
+                className="Btn-home">Delete</Button>
                 <br />
                 <br />
                 <Button><Link to='/user/profile'>No thanks</Link></Button>

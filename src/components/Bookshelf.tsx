@@ -8,7 +8,7 @@ type Props = {
     updateToken(newToken: string): void,
     updateBook(newBook: Book): void,
     deleteBook(newBook: Book): void,
-    bookId:number | null,
+    bookId: number | null,
     navDelete: boolean,
     navUpdate: boolean
 
@@ -61,7 +61,6 @@ class Bookshelf extends Component<Props, State>{
             .then(json => {
                 this.setState({
                     book: json,
-                    navRedirect: true
                 })
                 console.log(json)
             })
@@ -69,21 +68,16 @@ class Bookshelf extends Component<Props, State>{
     }
 
     render() {
-        // const { navRedirect } = this.state
-        // const {nav}
 
-        // if (this.props.bookId !== null) {
-        //     return <Redirect to='/book/update' />
-        // }
 
         if (this.props.navUpdate === true) {
             return (<Redirect to='/book/update' />)
-        } else 
-        if (this.props.navDelete === true) {
-            return (<Redirect to='/book/delete' />)
-        } 
+        } else
+            if (this.props.navDelete === true) {
+                return (<Redirect to='/book/delete' />)
+            }
 
-        
+
         return (
             <div className="bookshelf-styling">
                 {this.state.book.map((book) => {
@@ -97,29 +91,24 @@ class Bookshelf extends Component<Props, State>{
                                     </Card.Text>
 
                                     {book.sharedWith === "" ?
-
                                         <Button onClick={() => {
                                             this.props.updateBook(book)
                                         }}
-
                                             className="card-btn">
                                             Lend</Button>
-                                    
-                                    :
-                                    <Button 
-                                    
-                                    className="card-btn">Return</Button> }
-
+                                        :
+                                        <Button
+                                            className="card-btn">Return</Button>}
                                     <br />
 
-                                    <Link 
-                                    to='/book/delete'>
-                                        <Button 
-                                        
-                                        onClick={() => {
-                                            this.props.deleteBook(book)
-                                        }}
-                                        className="card-btn2">Donate</Button>
+                                    <Link
+                                        to='/book/delete'>
+                                        <Button
+
+                                            onClick={() => {
+                                                this.props.deleteBook(book)
+                                            }}
+                                            className="card-btn2">Donate</Button>
                                     </Link>
                                 </Card.Body>
                             </Card>

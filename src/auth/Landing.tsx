@@ -92,7 +92,7 @@ class Landing extends Component<Props, State> {
     deleteBook = (newBook: Book) => {
         this.setState({
             book: newBook,
-            navDelete: true
+            navDelete: !this.state.navDelete
         })
         console.log(newBook)
     }
@@ -168,6 +168,9 @@ class Landing extends Component<Props, State> {
                         updateToken={this.props.updateToken}
                         book={this.state.book}
                         bookId={this.state.book.id}
+                        navDelete={this.state.navDelete}
+                        // deleteBook={this.deleteBook}
+
                     />}></Route>
 
                     <Route exact path="/admin" component={() => <AdminView
