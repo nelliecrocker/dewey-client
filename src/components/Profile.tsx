@@ -7,7 +7,10 @@ import '../styling/Profile.css'
 type Props = {
     token: string,
     updateToken(newToken: string): void,
-    updateBook(newBook: Book): void
+    updateBook(newBook: Book): void,
+    bookId:number | null
+
+
 }
 
 type Book = {
@@ -35,6 +38,8 @@ class Profile extends Component<Props, {}> {
                     <Bookshelf token={this.props.token}
                         updateToken={this.props.updateToken}
                         updateBook={this.props.updateBook}
+                        bookId={this.props.bookId}
+
 
                          />
                 </div>

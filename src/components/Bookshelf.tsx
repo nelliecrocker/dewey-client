@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { Card, Button } from 'react-bootstrap'
 import '../styling/Bookshelf.css'
 
 type Props = {
     token: string,
-    updateToken(newToken: string): void
-    updateBook(newBook: Book): void
+    updateToken(newToken: string): void,
+    updateBook(newBook: Book): void,
+    bookId:number | null
+
 }
 
 type Book = {
@@ -21,7 +23,8 @@ type Book = {
 
 type State = {
     book: Book[],
-    id: number
+    id: number | null,
+    navRedirect: boolean
 }
 
 class Bookshelf extends Component<Props, State>{
@@ -29,8 +32,8 @@ class Bookshelf extends Component<Props, State>{
         super(props)
         this.state = {
             book: [],
-            id: 0
-            // id: null
+            id: null,
+            navRedirect: false
         }
     }
 
@@ -38,7 +41,6 @@ class Bookshelf extends Component<Props, State>{
         this.displayBookData()
 
     }
-    // ********************************************************************
 
     displayBookData = () => {
         fetch("http://localhost:3000/book/mybooks", {
@@ -51,49 +53,21 @@ class Bookshelf extends Component<Props, State>{
             .then(res => res.json())
             .then(json => {
                 this.setState({
-                    book: json
+                    book: json,
+                    navRedirect: true
                 })
                 console.log(json)
-                console.log(this.state.book[5].id)
             })
             .catch(err => console.log(err))
     }
 
-    // ********************************************************************
-
-    // onUpdate = () => {
-    //             
-    // //change to props not state
-    //         fetch(`http://localhost:3000/book/update/${this.state.id} `, {
-    //             method: 'PUT',
-    //             body: JSON.stringify({
-    //                 book: {
-    //                     id: this.state.book.id,
-    //                     title: this.state.book.title,
-    //                     author: this.state.book.author,
-    //                     genre: this.state.book.genre,
-    //                     cover: this.state.book.cover,
-    //                     sharedWith: this.state.book.sharedWith,
-    //                     sharedDate: this.state.book.sharedDate
-    //                 }
-    //             }),
-    //             headers: new Headers({
-    //                 'Content-Type': 'application/json',
-    //                 "Authorization": `Bearer ${this.props.token} `
-    //             })
-    //         })
-    //             .then(res => res.json())
-    //             .then((data) => {
-    //                 console.log(data)
-    //             })
-    //             .catch(err => console.log(err))
-    //     }
-    // ********************************************************************
-
-
-
     render() {
-        // {console.log("book state", this.state.book)}
+        // const { navRedirect } = this.state
+
+        if (this.props.bookId !== null) {
+            return <Redirect to='/book/update' />
+        }
+
         return (
             <div className="bookshelf-styling">
                 {this.state.book.map((book) => {
@@ -107,30 +81,30 @@ class Bookshelf extends Component<Props, State>{
                                     </Card.Text>
 
                                     {book.sharedWith === "" ?
-                                        // <Link to='/book/update'>
-                                            //! add get function with id endpoint and add onclick to button to grab the book id
-                                            <Button
-                                                onClick={() =>{this.props.updateBook(book)
-                                            }}
 
+                                        <Button onClick={() => {
+                                            this.props.updateBook(book)
+                                        }}
 
-                                                //!add prop to identify book and send through to UpdateBook; struggling because Books is a type
-                                                // book={this.state.book} 
+                                            className="card-btn">
+                                            Lend</Button>
+                                    // {navRedirect && (<Redirect to='/user/profile' />)}
+                                    :
+                                    <Button className="card-btn">Return</Button> }
 
-                                                className="card-btn"
-                                            >Lend</Button>
-                                            // </Link>
-                                            : <Button className="card-btn">Return</Button>}<br />
+                                    <br />
 
                                     <Link to='/book/delete'>
-                                    <Button className="card-btn2">Donate</Button>
+                                        <Button className="card-btn2">Donate</Button>
                                     </Link>
                                 </Card.Body>
                             </Card>
                         </div>
                     )
-                })}
-            </div>
+                })
+                }
+
+            </div >
         );
     }
 }

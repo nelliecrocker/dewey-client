@@ -76,7 +76,7 @@ class CreateBook extends Component<Props, State> {
     }
 
     render() {
-        // //redirects to login if no token, my profile after submit with token
+       
         const { navRedirect } = this.state
 
         if (this.props.token === "") {

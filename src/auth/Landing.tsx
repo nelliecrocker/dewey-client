@@ -46,7 +46,8 @@ type State = {
         cover: string,
         sharedWith: string,
         sharedDate: string
-    }
+    },
+    navRedirect: boolean
 }
 
 
@@ -73,14 +74,21 @@ class Landing extends Component<Props, State> {
                 cover: "",
                 sharedWith: "",
                 sharedDate: ""
-            }
+            },
+            navRedirect: false
         }
     }
 
-    updateBook = (newBook: Book) => {
-        this.setState({book:newBook})
+    updateBook = (newBook:Book) => {
+        this.setState({
+            book: newBook
+        })
         console.log(newBook)
     }
+
+    // navRedirectFunction = (navRedirect:boolean) => {
+    //     this.setState({navRedirect: true})
+    // }
 
     render() {
         return (
@@ -104,6 +112,9 @@ class Landing extends Component<Props, State> {
                         token={this.props.token}
                         updateToken={this.props.updateToken}
                         updateBook={this.updateBook}
+                        bookId={this.state.book.id}
+
+                        
                         />}></Route>
 
                     <Route exact path="/user/profile/create" component={() => <CreateProfile
@@ -130,6 +141,8 @@ class Landing extends Component<Props, State> {
                         token={this.props.token}
                         updateToken={this.props.updateToken}
                         updateBook={this.updateBook}
+                        bookId={this.state.book.id}
+                        
                     // book={this.state.book}
                     />}></Route>
 
