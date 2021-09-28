@@ -11,8 +11,10 @@ type Props = {
     updateToken(newToken: string): void,
     book: Book,
     bookId: number | null,
-    navDelete: boolean
-    
+    navDelete: boolean,
+    toggleDeleteNav(): void
+
+
 
 }
 
@@ -28,7 +30,7 @@ type Book = {
 
 
 class DeleteBook extends Component<Props, {}> {
-    constructor(props:Props){
+    constructor(props: Props) {
         super(props)
         this.state = {
             title: this.props.book.title,
@@ -44,24 +46,33 @@ class DeleteBook extends Component<Props, {}> {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${this.props.token}`
             }),
-            
+
         })
-        this.setState({
-            title: null,
-            author: null,
-            id: null,
-            navDelete: !this.props.navDelete
-        })
-        console.log(this.state)
+            .then(() => {
+                this.setState({
+                    title: null,
+                    author: null,
+                    id: null,
+                    navDelete: false
+                })
+                this.props.toggleDeleteNav()
+            }
+            )
+        // console.log("navDelete state", this.props.navDelete)
+    }
+
+    onCancel = () => {
+        this.props.toggleDeleteNav()
     }
 
 
     render() {
+
         if (this.props.navDelete === false) {
             return (<Redirect to='/user/profile' />)
-        } 
+        }
 
-        
+
         console.log(this.state)
         return (
             <div className="body-styling">
@@ -72,12 +83,11 @@ class DeleteBook extends Component<Props, {}> {
                 by {this.props.book.author}
                 <br />
                 <Button onClick={this.onDelete}
-                
-                className="Btn-delete">Delete</Button>
+                    className="Btn-delete">Delete</Button>
                 <br />
                 <br />
-                <Link className="Link-Stylex" to='/user/profile'>No thanks</Link>
-                
+                <Link onClick={this.onCancel} className="Link-Stylex" to='/user/profile'>No thanks</Link>
+
             </div>
         );
     }

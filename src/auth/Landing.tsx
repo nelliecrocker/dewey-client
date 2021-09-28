@@ -97,6 +97,12 @@ class Landing extends Component<Props, State> {
         console.log(newBook)
     }
 
+    toggleDeleteNav = () => {
+        this.setState({
+            navDelete: !this.state.navDelete
+        })
+    }
+
     // navRedirectFunction = (navRedirect:boolean) => {
     //     this.setState({navRedirect: true})
     // }
@@ -127,6 +133,7 @@ class Landing extends Component<Props, State> {
                         navUpdate={this.state.navUpdate}
                         navDelete={this.state.navDelete}
                         bookId={this.state.book.id}
+                        toggleDeleteNav={this.toggleDeleteNav}
 
 
                     />}></Route>
@@ -158,6 +165,8 @@ class Landing extends Component<Props, State> {
                         deleteBook={this.deleteBook}
                         navUpdate={this.state.navUpdate}
                         navDelete={this.state.navDelete}
+                        toggleDeleteNav={this.toggleDeleteNav}
+
 
                         bookId={this.state.book.id}
 
@@ -170,6 +179,8 @@ class Landing extends Component<Props, State> {
                         bookId={this.state.book.id}
                         navDelete={this.state.navDelete}
                         // deleteBook={this.deleteBook}
+                        toggleDeleteNav={this.toggleDeleteNav}
+
 
                     />}></Route>
 
