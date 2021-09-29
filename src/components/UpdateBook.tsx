@@ -96,9 +96,12 @@ class UpdateBook extends Component<Props, State> {
                             placeholder={this.state.sharedDate}
                             onChange={(e) => this.setState({ sharedDate: e.target.value })} />
                     </FormGroup>
-                    
+                    {this.state.sharedWith !== "" && this.state.sharedDate !== "" ? 
                     <Button className="Btn-login">Lend</Button>
-                                        
+                    :
+                    <Button className="Btn-login">Return</Button>
+                }
+                    
                 </Form>
                 
             </div>
