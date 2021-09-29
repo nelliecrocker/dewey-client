@@ -12,7 +12,8 @@ type Props = {
     bookId: number | null,
     navUpdate: boolean,
     navDelete: boolean,
-    toggleDeleteNav(): void
+    toggleDeleteNav(): void,
+    toggleUpdateNav(): void
 
 
 }
@@ -48,6 +49,7 @@ class Profile extends Component<Props, {}> {
                     navUpdate={this.props.navUpdate}
                     navDelete={this.props.navDelete}
                     toggleDeleteNav={this.props.toggleDeleteNav}
+                    toggleUpdateNav={this.props.toggleUpdateNav}
 
 
                 />

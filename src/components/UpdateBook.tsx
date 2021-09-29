@@ -6,7 +6,8 @@ type Props = {
     token: string,
     updateToken(newToken: string): void,
     book: Book,
-    navUpdate: boolean
+    navUpdate: boolean,
+    toggleUpdateNav(): void
 
 }
 
@@ -21,16 +22,14 @@ type Book = {
 }
 
 type State = {
-    navRedirect: boolean,
     sharedWith: string,
-    sharedDate: string
+    sharedDate: string,
 }
 
 class UpdateBook extends Component<Props, State> {
     constructor(props: Props) {
         super(props)
         this.state = {
-            navRedirect: false,
             sharedWith: this.props.book.sharedWith,
             sharedDate: this.props.book.sharedDate,
         }
@@ -38,10 +37,7 @@ class UpdateBook extends Component<Props, State> {
 
     onSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        this.setState({
-            navRedirect: true,
-        })
-
+        
         fetch(`http://localhost:3000/book/update/${this.props.book.id} `, {
             method: 'PUT',
             body: JSON.stringify({
@@ -63,17 +59,21 @@ class UpdateBook extends Component<Props, State> {
             .then((data) => {
                 console.log(data)
             })
+            .then(() => {
+                this.props.toggleUpdateNav()
+            })
             .catch(err => console.log(err))
     }
 
-    // toggleNavUpdate=()=>{
-    //     !this.props.navUpdate
-    // }
+    onReturn = () => {
+        this.props.toggleUpdateNav()
+    }
+
 
 
     render() {
         if (this.props.navUpdate === false) {
-            return (<Redirect to='/book/update' />)
+            return (<Redirect to='/user/profile' />)
         }
 
         return (
@@ -96,12 +96,9 @@ class UpdateBook extends Component<Props, State> {
                             placeholder={this.state.sharedDate}
                             onChange={(e) => this.setState({ sharedDate: e.target.value })} />
                     </FormGroup>
-                    {this.state.sharedWith === "" && this.state.sharedDate === "" ? 
-                    <Button className="Btn-login">Lend</Button>
-                    :
-                    <Button className="Btn-login">Return</Button>
-                }
                     
+                    <Button className="Btn-login">Lend</Button>
+                                        
                 </Form>
                 
             </div>

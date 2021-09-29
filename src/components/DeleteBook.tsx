@@ -26,6 +26,7 @@ type Book = {
 }
 
 
+
 class DeleteBook extends Component<Props, {}> {
     constructor(props: Props) {
         super(props)
@@ -53,9 +54,7 @@ class DeleteBook extends Component<Props, {}> {
                     navDelete: false
                 })
                 this.props.toggleDeleteNav()
-            }
-            )
-        // console.log("navDelete state", this.props.navDelete)
+            })
     }
 
     onCancel = () => {

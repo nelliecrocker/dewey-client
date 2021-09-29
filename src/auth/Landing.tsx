@@ -103,6 +103,12 @@ class Landing extends Component<Props, State> {
         })
     }
 
+    toggleUpdateNav = () => {
+        this.setState({
+            navUpdate: !this.state.navUpdate
+        })
+    }
+
     // navRedirectFunction = (navRedirect:boolean) => {
     //     this.setState({navRedirect: true})
     // }
@@ -134,6 +140,7 @@ class Landing extends Component<Props, State> {
                         navDelete={this.state.navDelete}
                         bookId={this.state.book.id}
                         toggleDeleteNav={this.toggleDeleteNav}
+                        toggleUpdateNav={this.toggleUpdateNav}
 
 
                     />}></Route>
@@ -157,6 +164,7 @@ class Landing extends Component<Props, State> {
                             updateToken={this.props.updateToken}
                             book={this.state.book}
                             navUpdate={this.state.navUpdate}
+                            toggleUpdateNav={this.toggleUpdateNav}
                         />}></Route>
 
                     <Route exact path="/book/bookshelf" component={() => <Bookshelf
@@ -167,6 +175,7 @@ class Landing extends Component<Props, State> {
                         navUpdate={this.state.navUpdate}
                         navDelete={this.state.navDelete}
                         toggleDeleteNav={this.toggleDeleteNav}
+                        toggleUpdateNav={this.toggleUpdateNav}
 
 
                         bookId={this.state.book.id}
