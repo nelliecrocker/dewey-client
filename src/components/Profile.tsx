@@ -14,8 +14,6 @@ type Props = {
     navDelete: boolean,
     toggleDeleteNav(): void,
     toggleUpdateNav(): void
-
-
 }
 
 type Book = {
@@ -28,7 +26,26 @@ type Book = {
     sharedDate: string
 }
 
-class Profile extends Component<Props, {}> {
+type State = {
+    bookshelfView: boolean
+}
+
+
+
+
+class Profile extends Component<Props, State> {
+    constructor(props: Props) {
+        super(props)
+        this.state = {
+            bookshelfView: false
+        }
+    }
+
+    toggleBookshelf = () => {
+        this.setState({
+            bookshelfView: true
+        })
+    }
 
     render() {
 
@@ -38,21 +55,24 @@ class Profile extends Component<Props, {}> {
 
         return (
             <div>
+                
                 <Link to='/book/create'>
                     <Button className="card-btn">Add a Book</Button></Link>
-
-                <Bookshelf token={this.props.token}
-                    updateToken={this.props.updateToken}
-                    updateBook={this.props.updateBook}
-                    deleteBook={this.props.deleteBook}
-                    bookId={this.props.bookId}
-                    navUpdate={this.props.navUpdate}
-                    navDelete={this.props.navDelete}
-                    toggleDeleteNav={this.props.toggleDeleteNav}
-                    toggleUpdateNav={this.props.toggleUpdateNav}
-
-
-                />
+<br />
+                    <Button onClick={this.toggleBookshelf} className="card-btn">Bookshelf</Button>
+                {this.state.bookshelfView === false ? null :
+                    <Bookshelf token={this.props.token}
+                        updateToken={this.props.updateToken}
+                        updateBook={this.props.updateBook}
+                        deleteBook={this.props.deleteBook}
+                        bookId={this.props.bookId}
+                        navUpdate={this.props.navUpdate}
+                        navDelete={this.props.navDelete}
+                        toggleDeleteNav={this.props.toggleDeleteNav}
+                        toggleUpdateNav={this.props.toggleUpdateNav}
+                        
+                        />
+                    }
             </div>
         );
     }

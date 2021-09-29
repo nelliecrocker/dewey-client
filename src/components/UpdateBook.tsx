@@ -66,6 +66,10 @@ class UpdateBook extends Component<Props, State> {
     }
 
     onReturn = () => {
+        // this.setState({
+        //     sharedDate: "",
+        //     sharedWith: ""
+        // })
         this.props.toggleUpdateNav()
     }
 
