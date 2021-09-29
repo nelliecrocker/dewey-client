@@ -156,6 +156,7 @@ class Landing extends Component<Props, State> {
                             token={this.props.token}
                             updateToken={this.props.updateToken}
                             book={this.state.book}
+                            navUpdate={this.state.navUpdate}
                         />}></Route>
 
                     <Route exact path="/book/bookshelf" component={() => <Bookshelf

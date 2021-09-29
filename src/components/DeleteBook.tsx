@@ -13,9 +13,6 @@ type Props = {
     bookId: number | null,
     navDelete: boolean,
     toggleDeleteNav(): void
-
-
-
 }
 
 type Book = {

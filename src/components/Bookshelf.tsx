@@ -97,8 +97,11 @@ class Bookshelf extends Component<Props, State>{
                                             className="card-btn">
                                             Lend</Button>
                                         :
-                                        <Button
-                                            className="card-btn">Return</Button>}
+                                        <Button onClick={() => {
+                                            this.props.updateBook(book)
+                                        }}
+                                            className="card-btn">
+                                            Return</Button>}
                                     <br />
 
                                     <Link

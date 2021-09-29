@@ -5,8 +5,8 @@ import { Form, Label, FormGroup, Input, Button } from 'reactstrap'
 type Props = {
     token: string,
     updateToken(newToken: string): void,
-    //! needs incoming prop from Bookshelf that contains book id
-    book: Book
+    book: Book,
+    navUpdate: boolean
 
 }
 
@@ -32,14 +32,14 @@ class UpdateBook extends Component<Props, State> {
         this.state = {
             navRedirect: false,
             sharedWith: this.props.book.sharedWith,
-            sharedDate: this.props.book.sharedDate
+            sharedDate: this.props.book.sharedDate,
         }
     }
 
     onSubmit = (e: React.FormEvent) => {
         e.preventDefault()
         this.setState({
-            navRedirect: true
+            navRedirect: true,
         })
 
         fetch(`http://localhost:3000/book/update/${this.props.book.id} `, {
@@ -66,15 +66,21 @@ class UpdateBook extends Component<Props, State> {
             .catch(err => console.log(err))
     }
 
+    // toggleNavUpdate=()=>{
+    //     !this.props.navUpdate
+    // }
+
 
     render() {
-        const { navRedirect } = this.state
+        if (this.props.navUpdate === false) {
+            return (<Redirect to='/book/update' />)
+        }
 
         return (
             <div className="Form-Style">
-                <Form
-                    onSubmit={this.onSubmit}
+                <Form onSubmit={this.onSubmit}
                 >
+                    {this.state.sharedWith !== "" && this.state.sharedDate !== "" ? 'Currently shared with:' : null }
                     <FormGroup>
                         <Input className="Form-Input" type="text"
                             name="sharedWith"
@@ -90,14 +96,14 @@ class UpdateBook extends Component<Props, State> {
                             placeholder={this.state.sharedDate}
                             onChange={(e) => this.setState({ sharedDate: e.target.value })} />
                     </FormGroup>
+                    {this.state.sharedWith === "" && this.state.sharedDate === "" ? 
                     <Button className="Btn-login">Lend</Button>
-                    {navRedirect && (<Redirect to='/user/profile' />)}
-
+                    :
+                    <Button className="Btn-login">Return</Button>
+                }
+                    
                 </Form>
-                <Link
-                    to='/book/delete'>
-                    <Button className="card-btn2">Donate</Button>
-                </Link>
+                
             </div>
         );
     }
