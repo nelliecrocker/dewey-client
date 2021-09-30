@@ -23,12 +23,15 @@ type UserProfile = {
 
 
 class CreateProfile extends Component<Props, State> {
-    state = {
-        profile: {
-            preferredGenre: "",
-            favoriteCharacter: "",
-            collectionSize: ""
-        },
+    constructor(props: Props) {
+        super(props)
+        this.state = {
+            profile: {
+                preferredGenre: "",
+                favoriteCharacter: "",
+                collectionSize: ""
+            },
+        }
         // userId: {
         //     id: this.props.newUser.id
         // }
@@ -51,7 +54,7 @@ class CreateProfile extends Component<Props, State> {
         fetch(`http://localhost:3000/profile/create/${userIdx}`, {
             method: 'POST',
             body: JSON.stringify({
-                profile: {
+                UserProfile: {
                     preferredGenre: this.state.profile.preferredGenre,
                     favoriteCharacter: this.state.profile.favoriteCharacter,
                     collectionSize: this.state.profile.collectionSize
