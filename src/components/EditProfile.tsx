@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Link, Redirect } from 'react-router-dom'
 import '../styling/CreateProfile.css'
+import {User} from '../Types/User'
 
 
 
 type Props = {
     token: string,
-    updateToken(newToken: string): void
-    userIdProps: number
+    updateToken(newToken: string): void,
+    newUser: User
 
 }
 
@@ -43,7 +44,7 @@ class EditProfile extends Component<Props, State> {
 
         })
 
-        fetch(`http://localhost:3000/profile/update/${this.props.userIdProps} `, {
+        fetch(`http://localhost:3000/profile/update/${this.props.newUser.id} `, {
             method: 'PUT',
             body: JSON.stringify({
                 userProfile: {

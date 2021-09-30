@@ -25,8 +25,6 @@ type Book = {
     sharedDate: string
 }
 
-
-
 class DeleteBook extends Component<Props, {}> {
     constructor(props: Props) {
         super(props)

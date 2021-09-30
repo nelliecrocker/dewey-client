@@ -3,11 +3,15 @@ import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Redirect, Link } from 'react-router-dom'
 import '../styling/Register.css'
 import Dewey from '../images/Dewey.svg'
+import {User} from '../Types/User'
+
 
 
 type Props = {
     token: string,
     updateToken(newToken: string): void,
+    setUser(newUser: User): void
+
 }
 
 type State = {

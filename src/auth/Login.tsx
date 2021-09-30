@@ -3,12 +3,15 @@ import { Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { Redirect, Link } from 'react-router-dom'
 import '../styling/Login.css'
 import Dewey from '../images/Dewey.svg'
+import {User} from '../Types/User'
+
 
 
 type Props = {
     token: string,
     updateToken(newToken: string): void,
-    isAdmin: boolean
+    setUser(newUser: User): void
+    newUser: User
 };
 
 type State = {
@@ -41,14 +44,15 @@ class Login extends Component<Props, State> {
             (response) => response.json()
         ).then((data) => {
             console.log(data)
+            this.props.setUser(data.user)
             this.props.updateToken(data.sessionToken)
 
         }).catch(err => console.log(err))
     }
 
     render() {
-        //redirects to my profile after login
-        if (this.props.isAdmin === true && this.props.token !== "") {
+        //! this.props.new.User.isAdmin -- follow this pattern to dig into data
+        if (this.props.newUser.isAdmin === true && this.props.token !== "") {
             return <Redirect to='/admin' />
         } else if (this.props.token !== "") {
             return <Redirect to='/user/profile' />
