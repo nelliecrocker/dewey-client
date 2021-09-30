@@ -69,9 +69,7 @@ class UpdateBook extends Component<Props, State> {
     }
 
     render() {
-        // if (this.props.token === "") {
-        //     return (<Redirect to='/user/login' />)
-        // }
+       
         if (this.props.navUpdate === false) {
             return (<Redirect to='/user/profile' />)
         }
@@ -85,14 +83,14 @@ class UpdateBook extends Component<Props, State> {
                             name="sharedWith"
                             id="sharedWith"
                             value={this.state.sharedWith}
-                            placeholder={this.state.sharedWith}
+                            placeholder="Lent to:"
                             onChange={(e) => this.setState({ sharedWith: e.target.value })} />
                         <Label></Label>
                         <Input className="Form-Input" type="text"
                             name="sharedDate"
                             id="sharedDate"
                             value={this.state.sharedDate}
-                            placeholder={this.state.sharedDate}
+                            placeholder="Date:"
                             onChange={(e) => this.setState({ sharedDate: e.target.value })} />
                     </FormGroup>
                                             

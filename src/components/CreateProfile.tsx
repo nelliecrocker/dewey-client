@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { Link } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import '../styling/CreateProfile.css'
 import {User} from '../Types/User'
 
@@ -12,10 +12,12 @@ type Props = {
 }
 
 type State = {
-    profile: UserProfile
+    profile: UserProfile,
+    navRedirect: boolean
 }
 
 type UserProfile = {
+    id: number | null,
     preferredGenre: string,
     favoriteCharacter: string,
     collectionSize: string
@@ -27,31 +29,30 @@ class CreateProfile extends Component<Props, State> {
         super(props)
         this.state = {
             profile: {
+                id: null,
                 preferredGenre: "",
                 favoriteCharacter: "",
                 collectionSize: ""
             },
+            navRedirect: false
         }
-        // userId: {
-        //     id: this.props.newUser.id
-        // }
     }
 
     onSubmit = (e: React.FormEvent) => {
         e.preventDefault()
         this.setState({
             profile: {
+                id: null,
                 preferredGenre: "",
                 favoriteCharacter: "",
                 collectionSize: ""
-            }
-            
+            },
+            navRedirect: true
         })
         
-        const userIdx = localStorage.getItem('userId')
-        console.log("userId=",userIdx)
+        const userIdLocal = localStorage.getItem('userId')
 
-        fetch(`http://localhost:3000/profile/create/${userIdx}`, {
+        fetch(`http://localhost:3000/profile/create/${userIdLocal}`, {
             method: 'POST',
             body: JSON.stringify({
                 UserProfile: {
@@ -76,10 +77,12 @@ class CreateProfile extends Component<Props, State> {
 
     render() {
 
+        const { navRedirect } = this.state
+
+
         return (
             <div>
                 <Form className = "Form-Style" onSubmit={this.onSubmit}>
-                    {/* <Label>Create Your Profile</Label> */}
                     <FormGroup>
                         <Label for="preferredGenre"></Label>
                         <Input className="Form-Input" type="text"
@@ -105,6 +108,7 @@ class CreateProfile extends Component<Props, State> {
                             onChange={(e) => this.setState({ profile: { ...this.state.profile, collectionSize: e.target.value } })} />
                     </FormGroup>
                     <Button className="Btn-login">Create Profile</Button>
+                    {navRedirect && (<Redirect to='/user/profile' />)}
                 </Form>
                 
             </div>

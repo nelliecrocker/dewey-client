@@ -76,20 +76,14 @@ class Navbar extends Component<Props, State> {
                         {this.props.token !== ""
                             ?
                             <div>
-                                {/* {this.props.newUser.userProfile.id === null ? */}
                                     <Link to='/user/profile/create'><button className="navbar-btn">Create Profile</button></Link>
-                                    {/* : */}
-
-                                    {/* <Link to="/user/profile/edit"><button className="navbar-btn" id="navbar-margin">Edit Profile</button></Link> */}
-                                {/* } */}
+                                    
                                 {this.props.newUser.isAdmin ?
                                     <Link to='/admin'><button className="navbar-btn">Admin</button></Link>
                                     :
                                     null}
 
                                 <button className="navbar-btn" onClick={this.clearToken}>Logout</button>
-
-
 
                             </div>
                             : null

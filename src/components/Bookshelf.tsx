@@ -27,9 +27,8 @@ type Book = {
 type State = {
     book: Book[],
     id: number | null,
-    navRedirect: boolean,
-    // navUpdate: boolean,
-    // navDelete: boolean
+    navRedirect: boolean
+    
 }
 
 class Bookshelf extends Component<Props, State>{
@@ -38,9 +37,7 @@ class Bookshelf extends Component<Props, State>{
         this.state = {
             book: [],
             id: null,
-            navRedirect: false,
-            // navUpdate: false,
-            // navDelete: false
+            navRedirect: false
         }
     }
 

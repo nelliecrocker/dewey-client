@@ -52,6 +52,7 @@ class App extends Component<{}, State> {
           updateToken={this.updateToken}
           newUser={this.state.user}
 
+
         />
         <div className="App">
           <Landing

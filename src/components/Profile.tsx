@@ -31,15 +31,13 @@ type Book = {
 
 type State = {
     bookshelfView: boolean
-    // adminView: boolean
 }
 
 class Profile extends Component<Props, State> {
     constructor(props: Props) {
         super(props)
         this.state = {
-            bookshelfView: false,
-            // adminView: this.props.newUser.isAdmin
+            bookshelfView: false
         }
     }
 
@@ -48,12 +46,6 @@ class Profile extends Component<Props, State> {
             bookshelfView: !this.state.bookshelfView
         })
     }
-
-    // toggleAdmin = () => {
-    //     this.setState({
-    //         adminView: !this.props.newUser.isAdmin
-    //     })
-    // }
 
     render() {
 

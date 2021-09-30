@@ -9,7 +9,8 @@ import { User } from '../Types/User'
 type Props = {
     token: string,
     newUser: User,
-    setProfile(newProfile: UserProfile): void
+    setProfile(newProfile: UserProfile): void,
+    updateProfile(newProfile: UserProfile): void
 }
 
 type UserProfile = {
@@ -38,10 +39,10 @@ class EditProfile extends Component<Props, State> {
         }
     }
 
-
     onUpdate = (e: React.FormEvent) => {
         e.preventDefault()
-                fetch(`http://localhost:3000/profile/update/${this.props.newUser.id} `, {
+        const userIdLocal = localStorage.getItem('userId')
+        fetch(`http://localhost:3000/profile/update/${userIdLocal} `, {
             method: 'PUT',
             body: JSON.stringify({
                 UserProfile: {
@@ -72,39 +73,38 @@ class EditProfile extends Component<Props, State> {
             <div>
                 <div>
                     Preferred Genre: {this.state.profile.preferredGenre}
-
-
+                    Favorite Character: {this.state.profile.favoriteCharacter}
+                    Collection Size: {this.state.profile.collectionSize}
                 </div>
-                    <Form className="Form-Style" onSubmit={this.onUpdate}>
-                        {/* <Label>Create Your Profile</Label> */}
-                        <FormGroup>
-                            <Label for="preferredGenre"></Label>
-                            <Input className="Form-Input" type="text"
-                                name="preferredGenre"
-                                id="preferredGenre"
-                                placeholder="Preferred Genre"
-                                onChange={(e) => this.setState({ profile: { ...this.state.profile, preferredGenre: e.target.value } })} />
-                        </FormGroup>
-                        <FormGroup>
-                            <Label for="favoriteCharacter"></Label>
-                            <Input className="Form-Input" type="text"
-                                name="favoriteCharacter"
-                                id="favoriteCharacter"
-                                placeholder="Favorite Character"
-                                onChange={(e) => this.setState({ profile: { ...this.state.profile, favoriteCharacter: e.target.value } })} />
-                        </FormGroup>
-                        <FormGroup>
-                            <Label for="collectionSize"></Label>
-                            <Input className="Form-Input" type="text"
-                                name="collectionSize"
-                                id="collectionSize"
-                                placeholder="Collection Size"
-                                onChange={(e) => this.setState({ profile: { ...this.state.profile, collectionSize: e.target.value } })} />
-                        </FormGroup>
-                        <Button className="Btn-login" >Update</Button>
-                        {navRedirect && (<Redirect to='/user/profile' />)}
-                    </Form>
-                    
+                <Form className="Form-Style" onSubmit={this.onUpdate}>
+                    <FormGroup>
+                        <Label for="preferredGenre"></Label>
+                        <Input className="Form-Input" type="text"
+                            name="preferredGenre"
+                            id="preferredGenre"
+                            placeholder="Preferred Genre"
+                            onChange={(e) => this.setState({ profile: { ...this.state.profile, preferredGenre: e.target.value } })} />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="favoriteCharacter"></Label>
+                        <Input className="Form-Input" type="text"
+                            name="favoriteCharacter"
+                            id="favoriteCharacter"
+                            placeholder="Favorite Character"
+                            onChange={(e) => this.setState({ profile: { ...this.state.profile, favoriteCharacter: e.target.value } })} />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="collectionSize"></Label>
+                        <Input className="Form-Input" type="text"
+                            name="collectionSize"
+                            id="collectionSize"
+                            placeholder="Collection Size"
+                            onChange={(e) => this.setState({ profile: { ...this.state.profile, collectionSize: e.target.value } })} />
+                    </FormGroup>
+                    <Button className="Btn-login" >Update</Button>
+                    {navRedirect && (<Redirect to='/user/profile' />)}
+                </Form>
+
             </div>
         );
     }

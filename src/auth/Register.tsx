@@ -80,7 +80,6 @@ class Register extends Component<Props, State> {
 
 
     render() {
-        //redirects to my profile after registering
 
         if (this.props.token !== "") {
             return <Redirect to='/user/profile/' />

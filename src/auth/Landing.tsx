@@ -14,6 +14,7 @@ type Props = {
 }
 
 type UserProfile = {
+    id: number | null,
     preferredGenre: string,
     favoriteCharacter: string,
     collectionSize: string
@@ -50,6 +51,7 @@ class Landing extends Component<Props, State> {
                 sharedDate: ""
             },
             profile: {
+                id: null,
                 preferredGenre: "",
                 favoriteCharacter: "",
                 collectionSize: ""
@@ -60,6 +62,12 @@ class Landing extends Component<Props, State> {
     }
 
     setProfile = (newProfile: UserProfile) => {
+        this.setState({
+            profile: newProfile
+        })
+    }
+
+    updateProfile = (newProfile: UserProfile) => {
         this.setState({
             profile: newProfile
         })
@@ -95,17 +103,15 @@ class Landing extends Component<Props, State> {
 
 
     render() {
-        // if (this.props.token === "") {
-        //         return <Redirect to='/login' />
-        //     }
-
+        
         return (
             <div>
                 <Switch>
 
                     <Route exact path="/"><Home
                         token={this.props.token}
-                        updateToken={this.props.updateToken} /></Route>
+                        updateToken={this.props.updateToken} />
+                        </Route>
 
                     <Route exact path="/user/register" component={() => <Register
                         token={this.props.token}
@@ -130,7 +136,6 @@ class Landing extends Component<Props, State> {
                         toggleDeleteNav={this.toggleDeleteNav}
                         toggleUpdateNav={this.toggleUpdateNav}
                         newUser={this.props.newUser}
-
                     />}></Route>
 
                     <Route exact path="/user/profile/create" component={() => <CreateProfile
@@ -143,7 +148,7 @@ class Landing extends Component<Props, State> {
                         token={this.props.token}
                         newUser={this.props.newUser}
                         setProfile={this.setProfile}
-
+                        updateProfile={this.updateProfile}
                     />}></Route>
 
                     <Route exact path="/book/create" component={() => <CreateBook
@@ -166,10 +171,7 @@ class Landing extends Component<Props, State> {
                         navDelete={this.state.navDelete}
                         toggleDeleteNav={this.toggleDeleteNav}
                         toggleUpdateNav={this.toggleUpdateNav}
-
-
                         bookId={this.state.book.id}
-
                     />}></Route>
 
                     <Route exact path="/book/delete" component={() => <DeleteBook
@@ -177,19 +179,13 @@ class Landing extends Component<Props, State> {
                         book={this.state.book}
                         bookId={this.state.book.id}
                         navDelete={this.state.navDelete}
-                        // deleteBook={this.deleteBook}
                         toggleDeleteNav={this.toggleDeleteNav}
-
-
                     />}></Route>
 
                     <Route exact path="/admin" component={() => <AdminView
                         token={this.props.token}
                         newUser={this.props.newUser}
-                    // grabUser={this.grabUser}
                     />}></Route>
-
-
 
                     <Redirect to="/" />
 
