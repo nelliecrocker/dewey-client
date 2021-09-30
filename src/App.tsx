@@ -2,8 +2,8 @@ import { Component } from 'react';
 import { Landing } from './auth/index'
 import { Navbar } from './components/Index'
 import './styling/App.css'
-import {User} from './Types/User'
-import {Redirect} from 'react-router-dom'
+import { User } from './Types/User'
+import { Redirect } from 'react-router-dom'
 
 
 
@@ -26,46 +26,45 @@ class App extends Component<{}, State> {
     sessionToken: ""
   }
 
+  updateToken = (newToken: string) => {
+    localStorage.setItem('token', newToken)
+    this.setState({
+      sessionToken: newToken
+    })
+  }
 
-updateToken = (newToken: string) => {
-  localStorage.setItem('token', newToken)
-  this.setState({
-    sessionToken: newToken
-  })
-}
+  setUser = (newUser: User) => {
+    this.setState({
+      user: newUser
+    })
+    localStorage.setItem('admin', String(this.state.user.isAdmin))
+    localStorage.setItem('userId', String(this.state.user.id))
+  }
 
-setUser = (newUser: User) => {
-  localStorage.setItem('admin', String(this.state.user.isAdmin))
-  localStorage.setItem('userId', String(this.state.user.id))
-  this.setState({
-    user: newUser
-  })
-}
+  render() {
 
-render() {
+    //   
 
-//   
-
-  return (
-    <div className="Nav-Styling">
-      <Navbar
-        token={this.state.sessionToken}
-        updateToken={this.updateToken}
-        newUser={this.state.user}
-
-      />
-      <div className="App">
-        <Landing
+    return (
+      <div className="Nav-Styling">
+        <Navbar
           token={this.state.sessionToken}
           updateToken={this.updateToken}
           newUser={this.state.user}
-          setUser={this.setUser}
-        />
-      </div>
-    </div>
 
-  );
-}
+        />
+        <div className="App">
+          <Landing
+            token={this.state.sessionToken}
+            updateToken={this.updateToken}
+            newUser={this.state.user}
+            setUser={this.setUser}
+          />
+        </div>
+      </div>
+
+    );
+  }
 
 }
 

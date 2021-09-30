@@ -2,7 +2,7 @@ import { Component } from 'react'
 import { Login, Register } from './index'
 import { CreateBook, Profile, AdminView, CreateProfile, Home, Bookshelf, UpdateBook, EditProfile, DeleteBook, Navbar } from '../components/Index'
 import { Route, Switch, Redirect } from 'react-router-dom'
-import {User} from '../Types/User'
+import { User } from '../Types/User'
 
 
 type Props = {
@@ -11,6 +11,12 @@ type Props = {
     newUser: User,
     setUser(newUser: User): void
 
+}
+
+type UserProfile = {
+    preferredGenre: string,
+    favoriteCharacter: string,
+    collectionSize: string
 }
 
 type Book = {
@@ -24,9 +30,10 @@ type Book = {
 }
 
 type State = {
-        book: Book,
+    book: Book,
     navUpdate: boolean,
-    navDelete: boolean
+    navDelete: boolean,
+    profile: UserProfile
 }
 
 class Landing extends Component<Props, State> {
@@ -42,9 +49,20 @@ class Landing extends Component<Props, State> {
                 sharedWith: "",
                 sharedDate: ""
             },
+            profile: {
+                preferredGenre: "",
+                favoriteCharacter: "",
+                collectionSize: ""
+            },
             navUpdate: false,
             navDelete: false
         }
+    }
+
+    setProfile = (newProfile: UserProfile) => {
+        this.setState({
+            profile: newProfile
+        })
     }
 
     updateBook = (newBook: Book) => {
@@ -93,14 +111,14 @@ class Landing extends Component<Props, State> {
                         token={this.props.token}
                         updateToken={this.props.updateToken}
                         setUser={this.props.setUser}
-                         />}></Route>
+                    />}></Route>
 
                     <Route exact path="/user/login" component={() => <Login
                         token={this.props.token}
                         updateToken={this.props.updateToken}
                         setUser={this.props.setUser}
                         newUser={this.props.newUser}
-                        />}></Route>
+                    />}></Route>
 
                     <Route exact path="/user/profile" component={() => <Profile
                         token={this.props.token}
@@ -112,21 +130,25 @@ class Landing extends Component<Props, State> {
                         toggleDeleteNav={this.toggleDeleteNav}
                         toggleUpdateNav={this.toggleUpdateNav}
                         newUser={this.props.newUser}
-                        
+
                     />}></Route>
 
                     <Route exact path="/user/profile/create" component={() => <CreateProfile
                         token={this.props.token}
-                         />}></Route>
+                        newUser={this.props.newUser}
+                        setProfile={this.setProfile}
+                    />}></Route>
 
                     <Route exact path="/user/profile/edit" component={() => <EditProfile
                         token={this.props.token}
                         newUser={this.props.newUser}
-                         />}></Route>
+                        setProfile={this.setProfile}
+
+                    />}></Route>
 
                     <Route exact path="/book/create" component={() => <CreateBook
                         token={this.props.token}
-                         />}></Route>
+                    />}></Route>
 
                     <Route exact path='/book/update' component={() =>
                         <UpdateBook
@@ -164,7 +186,7 @@ class Landing extends Component<Props, State> {
                     <Route exact path="/admin" component={() => <AdminView
                         token={this.props.token}
                         newUser={this.props.newUser}
-                        // grabUser={this.grabUser}
+                    // grabUser={this.grabUser}
                     />}></Route>
 
 

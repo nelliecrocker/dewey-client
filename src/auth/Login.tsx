@@ -22,6 +22,7 @@ type State = {
 
 class Login extends Component<Props, State> {
     state = {
+        id: "",
         username: "",
         password: ""
     }
@@ -33,6 +34,7 @@ class Login extends Component<Props, State> {
             method: 'POST',
             body: JSON.stringify({
                 user: {
+                    id: this.state.id,
                     username: this.state.username,
                     password: this.state.password
                 }
@@ -48,10 +50,11 @@ class Login extends Component<Props, State> {
             this.props.updateToken(data.sessionToken)
 
         }).catch(err => console.log(err))
+        
     }
+    
 
     render() {
-        //! this.props.newUser.isAdmin -- follow this pattern to dig into data
         if (this.props.newUser.isAdmin === true && this.props.token !== "") {
             return <Redirect to='/admin' />
         } else if (this.props.token !== "") {

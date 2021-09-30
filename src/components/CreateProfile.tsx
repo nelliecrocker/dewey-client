@@ -2,47 +2,59 @@ import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Link } from 'react-router-dom'
 import '../styling/CreateProfile.css'
+import {User} from '../Types/User'
+
 
 type Props = {
     token: string,
+    newUser: User,
+    setProfile(newProfile: UserProfile): void
 }
 
 type State = {
-    UserProfile: {
-        preferredGenre: string,
-        favoriteCharacter: string,
-        collectionSize: string
-    }
+    profile: UserProfile
+}
+
+type UserProfile = {
+    preferredGenre: string,
+    favoriteCharacter: string,
+    collectionSize: string
 }
 
 
 class CreateProfile extends Component<Props, State> {
     state = {
-        UserProfile: {
+        profile: {
             preferredGenre: "",
             favoriteCharacter: "",
             collectionSize: ""
-        }
+        },
+        // userId: {
+        //     id: this.props.newUser.id
+        // }
     }
 
     onSubmit = (e: React.FormEvent) => {
         e.preventDefault()
         this.setState({
-            UserProfile: {
-                preferredGenre: this.state.UserProfile.preferredGenre,
-                favoriteCharacter: this.state.UserProfile.favoriteCharacter,
-                collectionSize: this.state.UserProfile.collectionSize
+            profile: {
+                preferredGenre: "",
+                favoriteCharacter: "",
+                collectionSize: ""
             }
+            
         })
+        
+        const userIdx = localStorage.getItem('userId')
+        console.log("userId=",userIdx)
 
-
-        fetch("http://localhost:3000/profile/create", {
+        fetch(`http://localhost:3000/profile/create/${userIdx}`, {
             method: 'POST',
             body: JSON.stringify({
-                UserProfile: {
-                    preferredGenre: this.state.UserProfile.preferredGenre,
-                    favoriteCharacter: this.state.UserProfile.favoriteCharacter,
-                    collectionSize: this.state.UserProfile.collectionSize
+                profile: {
+                    preferredGenre: this.state.profile.preferredGenre,
+                    favoriteCharacter: this.state.profile.favoriteCharacter,
+                    collectionSize: this.state.profile.collectionSize
                 }
             }),
             headers: new Headers({
@@ -53,19 +65,13 @@ class CreateProfile extends Component<Props, State> {
             .then(res => res.json())
             .then((data) => {
                 console.log(data)
+                this.props.setProfile(data.profile)
             })
             .catch(err => console.log(err))
     }
 
 
     render() {
-        // if the userId in the profile table is not empty, redirect to user/profile
-        
-        // if (this.state.UserProfile.UserId !== "") {
-        //     return <Redirect to='/user/profile' />
-        // }
-
-        // <Redirect to='/user/profile/create' />
 
         return (
             <div>
@@ -77,7 +83,7 @@ class CreateProfile extends Component<Props, State> {
                             name="preferredGenre"
                             id="preferredGenre"
                             placeholder="Preferred Genre"
-                            onChange={(e) => this.setState({ UserProfile: { ...this.state.UserProfile, preferredGenre: e.target.value } })} />
+                            onChange={(e) => this.setState({ profile: { ...this.state.profile, preferredGenre: e.target.value } })} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="favoriteCharacter"></Label>
@@ -85,7 +91,7 @@ class CreateProfile extends Component<Props, State> {
                             name="favoriteCharacter"
                             id="favoriteCharacter"
                             placeholder="Favorite Character"
-                            onChange={(e) => this.setState({ UserProfile: { ...this.state.UserProfile, favoriteCharacter: e.target.value } })} />
+                            onChange={(e) => this.setState({ profile: { ...this.state.profile, favoriteCharacter: e.target.value } })} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="collectionSize"></Label>
@@ -93,11 +99,11 @@ class CreateProfile extends Component<Props, State> {
                             name="collectionSize"
                             id="collectionSize"
                             placeholder="Collection Size"
-                            onChange={(e) => this.setState({ UserProfile: { ...this.state.UserProfile, collectionSize: e.target.value } })} />
+                            onChange={(e) => this.setState({ profile: { ...this.state.profile, collectionSize: e.target.value } })} />
                     </FormGroup>
-                    <Button className="Btn-login" >Update Your Profile</Button>
+                    <Button className="Btn-login">Create Profile</Button>
                 </Form>
-                <Link className="Link-Style" to="/book/create">Add a Book</Link>
+                
             </div>
         );
     }

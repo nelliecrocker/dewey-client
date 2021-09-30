@@ -12,14 +12,12 @@ import { User } from '../Types/User'
 type Props = {
     token: string,
     updateToken(newToken: string): void,
-    newUser: User
-
+    newUser: User,
 }
 
 type State = {
     sidebar: boolean
 }
-
 
 class Navbar extends Component<Props, State> {
     constructor(props: Props) {
@@ -63,7 +61,7 @@ class Navbar extends Component<Props, State> {
                         </li>
 
                         {this.props.token === "" ? null :
-                        <div className="navbar-name">Welcome {this.props.newUser.fname}</div>}
+                            <div className="navbar-name">Welcome {this.props.newUser.fname}</div>}
 
                         {SidebarData.map((item, index) => {
                             return (
@@ -78,11 +76,17 @@ class Navbar extends Component<Props, State> {
                         {this.props.token !== ""
                             ?
                             <div>
-                                <Link to="/user/profile/edit"><button className="navbar-btn" id="navbar-margin">Edit Profile</button></Link>
+                                {/* {this.props.newUser.userProfile.id === null ? */}
+                                    <Link to='/user/profile/create'><button className="navbar-btn">Create Profile</button></Link>
+                                    {/* : */}
+
+                                    {/* <Link to="/user/profile/edit"><button className="navbar-btn" id="navbar-margin">Edit Profile</button></Link> */}
+                                {/* } */}
                                 {this.props.newUser.isAdmin ?
                                     <Link to='/admin'><button className="navbar-btn">Admin</button></Link>
                                     :
                                     null}
+
                                 <button className="navbar-btn" onClick={this.clearToken}>Logout</button>
 
 
