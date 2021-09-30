@@ -3,33 +3,14 @@ import { Landing } from './auth/index'
 import { Navbar } from './components/Index'
 import './styling/App.css'
 import {User} from './Types/User'
+import {Redirect} from 'react-router-dom'
 
 
-// type Props = {}
 
 type State = {
-  // user: {
-  //   id: number,
-  //   fname: string,
-  //   lname: string,
-  //   email: string,
-  //   username: string,
-  //   password: string,
-  //   isAdmin: boolean
-  // },
   user: User,
   sessionToken: string
 }
-
-// type User = {
-//   id: number | string,
-//   fname: string,
-//   lname: string,
-//   email: string,
-//   username: string,
-//   password: string,
-//   isAdmin: boolean
-// }
 
 class App extends Component<{}, State> {
   state = {
@@ -62,6 +43,9 @@ setUser = (newUser: User) => {
 }
 
 render() {
+
+//   
+
   return (
     <div className="Nav-Styling">
       <Navbar

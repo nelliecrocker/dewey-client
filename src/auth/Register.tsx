@@ -22,11 +22,6 @@ type State = {
         username: string,
         password: string,
         isAdmin: boolean
-    },
-    userProfile: {
-        preferredGenre: string,
-        favoriteCharacter: string,
-        collectionSize: string
     }
 }
 
@@ -39,11 +34,6 @@ class Register extends Component<Props, State> {
             username: "",
             password: "",
             isAdmin: true,
-        },
-        userProfile: {
-            preferredGenre: "",
-            favoriteCharacter: "",
-            collectionSize: ""
         }
     }
 
@@ -57,11 +47,6 @@ class Register extends Component<Props, State> {
                 username: "",
                 password: "",
                 isAdmin: true
-            },
-            userProfile: {
-                preferredGenre: "",
-                favoriteCharacter: "",
-                collectionSize: ""
             }
 
         })
@@ -86,6 +71,7 @@ class Register extends Component<Props, State> {
             .then((data) => {
                 console.log(data)
                 this.props.updateToken(data.sessionToken)
+                this.props.setUser(data.user)
             })
             .catch(err => console.log(err))
             
@@ -97,7 +83,7 @@ class Register extends Component<Props, State> {
         //redirects to my profile after registering
 
         if (this.props.token !== "") {
-            return <Redirect to='/user/profile/create' />
+            return <Redirect to='/user/profile/' />
         }
 
         return (

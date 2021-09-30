@@ -24,25 +24,7 @@ type Book = {
 }
 
 type State = {
-    // user: {
-    //     id: number,
-    //     fname: string,
-    //     lname: string,
-    //     email: string,
-    //     username: string,
-    //     password: string,
-    //     // sessionToken: string,
-    //     isAdmin: boolean
-    // },
-    book: {
-        id: number | null,
-        title: string,
-        author: string,
-        genre: string,
-        cover: string,
-        sharedWith: string,
-        sharedDate: string
-    },
+        book: Book,
     navUpdate: boolean,
     navDelete: boolean
 }
@@ -51,16 +33,6 @@ class Landing extends Component<Props, State> {
     constructor(props: Props) {
         super(props)
         this.state = {
-            
-            //     userId: this.props.userId,
-            //     fname: this.props.fname,
-            //     lname: this.props.lname,
-            //     email: this.props.email,
-            //     username: this.props.username,
-            //     password: this.props.password,
-            //     // sessionToken: this.props.sessionToken,
-            //     isAdmin: this.props.isAdmin
-            // },
             book: {
                 id: null,
                 title: "",
@@ -74,13 +46,6 @@ class Landing extends Component<Props, State> {
             navDelete: false
         }
     }
-
-    // grabUser = (newUser: User) => {
-    //     this.setState({
-    //         user: newUser,
-    //     })
-    //     console.log(newUser)
-    // }
 
     updateBook = (newBook: Book) => {
         this.setState({
@@ -112,6 +77,10 @@ class Landing extends Component<Props, State> {
 
 
     render() {
+        // if (this.props.token === "") {
+        //         return <Redirect to='/login' />
+        //     }
+
         return (
             <div>
                 <Switch>
