@@ -35,6 +35,19 @@
 
 }
 
+.navbar-name {
+    border: none;
+    background-color: transparent;
+    color: #f8e9dd;
+    justify-content: right;
+    margin-left: .5em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    font-size: 1.2rem;
+    
+
+}
+
 #navbar-margin {
     margin-top: 3em;
 }

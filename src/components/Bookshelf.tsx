@@ -5,7 +5,6 @@ import '../styling/Bookshelf.css'
 
 type Props = {
     token: string,
-    updateToken(newToken: string): void,
     updateBook(newBook: Book): void,
     deleteBook(newBook: Book): void,
     bookId: number | null,

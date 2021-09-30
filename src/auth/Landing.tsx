@@ -135,7 +135,6 @@ class Landing extends Component<Props, State> {
 
                     <Route exact path="/user/profile" component={() => <Profile
                         token={this.props.token}
-                        updateToken={this.props.updateToken}
                         updateBook={this.updateBook}
                         deleteBook={this.deleteBook}
                         navUpdate={this.state.navUpdate}
@@ -144,29 +143,25 @@ class Landing extends Component<Props, State> {
                         toggleDeleteNav={this.toggleDeleteNav}
                         toggleUpdateNav={this.toggleUpdateNav}
                         newUser={this.props.newUser}
-
-
                         
                     />}></Route>
 
                     <Route exact path="/user/profile/create" component={() => <CreateProfile
                         token={this.props.token}
-                        updateToken={this.props.updateToken} />}></Route>
+                         />}></Route>
 
                     <Route exact path="/user/profile/edit" component={() => <EditProfile
                         token={this.props.token}
-                        updateToken={this.props.updateToken}
                         newUser={this.props.newUser}
                          />}></Route>
 
                     <Route exact path="/book/create" component={() => <CreateBook
                         token={this.props.token}
-                        updateToken={this.props.updateToken} />}></Route>
+                         />}></Route>
 
                     <Route exact path='/book/update' component={() =>
                         <UpdateBook
                             token={this.props.token}
-                            updateToken={this.props.updateToken}
                             book={this.state.book}
                             navUpdate={this.state.navUpdate}
                             toggleUpdateNav={this.toggleUpdateNav}
@@ -174,7 +169,6 @@ class Landing extends Component<Props, State> {
 
                     <Route exact path="/book/bookshelf" component={() => <Bookshelf
                         token={this.props.token}
-                        updateToken={this.props.updateToken}
                         updateBook={this.updateBook}
                         deleteBook={this.deleteBook}
                         navUpdate={this.state.navUpdate}
@@ -189,7 +183,6 @@ class Landing extends Component<Props, State> {
 
                     <Route exact path="/book/delete" component={() => <DeleteBook
                         token={this.props.token}
-                        updateToken={this.props.updateToken}
                         book={this.state.book}
                         bookId={this.state.book.id}
                         navDelete={this.state.navDelete}
@@ -201,7 +194,6 @@ class Landing extends Component<Props, State> {
 
                     <Route exact path="/admin" component={() => <AdminView
                         token={this.props.token}
-                        updateToken={this.props.updateToken}
                         newUser={this.props.newUser}
                         // grabUser={this.grabUser}
                     />}></Route>

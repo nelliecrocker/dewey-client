@@ -4,7 +4,6 @@ import { Form, Label, FormGroup, Input, Button } from 'reactstrap'
 
 type Props = {
     token: string,
-    updateToken(newToken: string): void,
     book: Book,
     navUpdate: boolean,
     toggleUpdateNav(): void
@@ -37,7 +36,7 @@ class UpdateBook extends Component<Props, State> {
 
     onSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        
+
         fetch(`http://localhost:3000/book/update/${this.props.book.id} `, {
             method: 'PUT',
             body: JSON.stringify({
@@ -66,25 +65,21 @@ class UpdateBook extends Component<Props, State> {
     }
 
     onReturn = () => {
-        // this.setState({
-        //     sharedDate: "",
-        //     sharedWith: ""
-        // })
         this.props.toggleUpdateNav()
     }
 
-
-
     render() {
+        // if (this.props.token === "") {
+        //     return (<Redirect to='/user/login' />)
+        // }
         if (this.props.navUpdate === false) {
             return (<Redirect to='/user/profile' />)
         }
 
         return (
             <div className="Form-Style">
-                <Form onSubmit={this.onSubmit}
-                >
-                    {this.state.sharedWith !== "" && this.state.sharedDate !== "" ? 'Currently shared with:' : null }
+                <Form onSubmit={this.onSubmit}>
+                    {this.state.sharedWith !== "" && this.state.sharedDate !== "" ? 'Currently shared with:' : null}
                     <FormGroup>
                         <Input className="Form-Input" type="text"
                             name="sharedWith"
@@ -100,14 +95,12 @@ class UpdateBook extends Component<Props, State> {
                             placeholder={this.state.sharedDate}
                             onChange={(e) => this.setState({ sharedDate: e.target.value })} />
                     </FormGroup>
-                    {this.state.sharedWith !== "" && this.state.sharedDate !== "" ? 
-                    <Button className="Btn-login">Lend</Button>
-                    :
-                    <Button className="Btn-login">Return</Button>
-                }
+                                            
+                        <Button className="Btn-login">Update</Button>
                     
+
                 </Form>
-                
+
             </div>
         );
     }

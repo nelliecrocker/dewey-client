@@ -8,7 +8,6 @@ import { User } from '../Types/User'
 
 type Props = {
     token: string,
-    updateToken(newToken: string): void,
     updateBook(newBook: Book): void,
     deleteBook(newBook: Book): void,
     bookId: number | null,
@@ -61,17 +60,14 @@ class Profile extends Component<Props, State> {
         if (this.props.token === "") {
             return (<Redirect to='/user/login' />)
         }
-        
+
         return (
             <div>
-
                 <Link to='/book/create'>
                     <Button className="card-btn">Add a Book</Button></Link>
                 <br />
-                <Button onClick={this.toggleBookshelf} className="card-btn">Bookshelf</Button>
-                {this.state.bookshelfView === false ? null :
+                
                     <Bookshelf token={this.props.token}
-                        updateToken={this.props.updateToken}
                         updateBook={this.props.updateBook}
                         deleteBook={this.props.deleteBook}
                         bookId={this.props.bookId}
@@ -80,7 +76,7 @@ class Profile extends Component<Props, State> {
                         toggleDeleteNav={this.props.toggleDeleteNav}
                         toggleUpdateNav={this.props.toggleUpdateNav}
                     />
-                }
+                
             </div>
         );
     }

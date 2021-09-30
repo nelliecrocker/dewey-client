@@ -8,7 +8,6 @@ import { Button } from 'reactstrap'
 
 type Props = {
     token: string,
-    updateToken(newToken: string): void,
     book: Book,
     bookId: number | null,
     navDelete: boolean,

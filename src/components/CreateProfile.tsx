@@ -5,7 +5,6 @@ import '../styling/CreateProfile.css'
 
 type Props = {
     token: string,
-    updateToken(newToken: string): void
 }
 
 type State = {

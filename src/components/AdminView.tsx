@@ -7,10 +7,7 @@ import {User} from '../Types/User'
 
 type Props = {
     token: string,
-    updateToken(newToken: string): void,
     newUser: User
-   
-
 }
 
 

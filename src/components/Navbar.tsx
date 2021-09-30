@@ -62,6 +62,9 @@ class Navbar extends Component<Props, State> {
                             <Link to='#' className="menu-x"><AiIcons.AiOutlineClose /></Link>
                         </li>
 
+                        {this.props.token === "" ? null :
+                        <div className="navbar-name">Welcome {this.props.newUser.fname}</div>}
+
                         {SidebarData.map((item, index) => {
                             return (
                                 <li key={index} className={item.cName}>
@@ -82,7 +85,7 @@ class Navbar extends Component<Props, State> {
                                     null}
                                 <button className="navbar-btn" onClick={this.clearToken}>Logout</button>
 
-                                
+
 
                             </div>
                             : null
