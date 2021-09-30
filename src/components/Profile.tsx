@@ -3,7 +3,7 @@ import { Button } from 'reactstrap';
 import { Bookshelf } from './Index'
 import { Redirect, Link } from 'react-router-dom'
 import '../styling/Profile.css'
-import {User} from '../Types/User'
+import { User } from '../Types/User'
 
 
 type Props = {
@@ -32,13 +32,15 @@ type Book = {
 
 type State = {
     bookshelfView: boolean
+    // adminView: boolean
 }
 
 class Profile extends Component<Props, State> {
     constructor(props: Props) {
         super(props)
         this.state = {
-            bookshelfView: false
+            bookshelfView: false,
+            // adminView: this.props.newUser.isAdmin
         }
     }
 
@@ -48,6 +50,12 @@ class Profile extends Component<Props, State> {
         })
     }
 
+    // toggleAdmin = () => {
+    //     this.setState({
+    //         adminView: !this.props.newUser.isAdmin
+    //     })
+    // }
+
     render() {
 
         if (this.props.token === "") {
@@ -56,18 +64,11 @@ class Profile extends Component<Props, State> {
         console.log(this.props.newUser.isAdmin)
         return (
             <div>
-                {this.props.newUser.isAdmin === true ? 
-                <div>
-                    Admin Page Link
-                <Link to='/user/admin'><Button className="card-btn">Admin Page</Button></Link>
-                </div>
-                : null
-                }
-                
+
                 <Link to='/book/create'>
                     <Button className="card-btn">Add a Book</Button></Link>
-<br />
-                    <Button onClick={this.toggleBookshelf} className="card-btn">Bookshelf</Button>
+                <br />
+                <Button onClick={this.toggleBookshelf} className="card-btn">Bookshelf</Button>
                 {this.state.bookshelfView === false ? null :
                     <Bookshelf token={this.props.token}
                         updateToken={this.props.updateToken}
@@ -78,8 +79,8 @@ class Profile extends Component<Props, State> {
                         navDelete={this.props.navDelete}
                         toggleDeleteNav={this.props.toggleDeleteNav}
                         toggleUpdateNav={this.props.toggleUpdateNav}
-                        />
-                    }
+                    />
+                }
             </div>
         );
     }

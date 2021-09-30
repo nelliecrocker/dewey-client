@@ -22,7 +22,7 @@ class AdminView extends Component<Props ,{}> {
 
         return (
             <div>
-                Welcome, Admin!
+                Hey, Admin!
             </div>
         );
     }

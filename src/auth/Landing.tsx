@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import { Login, Register } from './index'
-import { CreateBook, Profile, AdminView, CreateProfile, Home, Bookshelf, UpdateBook, EditProfile, DeleteBook } from '../components/Index'
+import { CreateBook, Profile, AdminView, CreateProfile, Home, Bookshelf, UpdateBook, EditProfile, DeleteBook, Navbar } from '../components/Index'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import {User} from '../Types/User'
 
@@ -110,9 +110,6 @@ class Landing extends Component<Props, State> {
         })
     }
 
-    // navRedirectFunction = (navRedirect:boolean) => {
-    //     this.setState({navRedirect: true})
-    // }
 
     render() {
         return (
@@ -208,6 +205,8 @@ class Landing extends Component<Props, State> {
                         newUser={this.props.newUser}
                         // grabUser={this.grabUser}
                     />}></Route>
+
+
 
                     <Redirect to="/" />
 

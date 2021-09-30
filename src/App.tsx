@@ -54,21 +54,20 @@ updateToken = (newToken: string) => {
 }
 
 setUser = (newUser: User) => {
-  
+  localStorage.setItem('admin', String(this.state.user.isAdmin))
+  localStorage.setItem('userId', String(this.state.user.id))
   this.setState({
     user: newUser
   })
-  localStorage.setItem('admin', String(this.state.user.isAdmin))
-  localStorage.setItem('userId', String(this.state.user.id))
 }
 
 render() {
-  console.log("User Info:", this.state.sessionToken)
   return (
     <div className="Nav-Styling">
       <Navbar
         token={this.state.sessionToken}
         updateToken={this.updateToken}
+        newUser={this.state.user}
 
       />
       <div className="App">
@@ -77,14 +76,6 @@ render() {
           updateToken={this.updateToken}
           newUser={this.state.user}
           setUser={this.setUser}
-
-          // userId={this.state.id}
-          // fname={this.state.fname}
-          // lname={this.state.lname}
-          // email={this.state.email}
-          // username={this.state.username}
-          // password={this.state.password}
-          // isAdmin={this.state.isAdmin}
         />
       </div>
     </div>

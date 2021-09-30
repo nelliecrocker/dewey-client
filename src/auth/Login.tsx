@@ -51,7 +51,7 @@ class Login extends Component<Props, State> {
     }
 
     render() {
-        //! this.props.new.User.isAdmin -- follow this pattern to dig into data
+        //! this.props.newUser.isAdmin -- follow this pattern to dig into data
         if (this.props.newUser.isAdmin === true && this.props.token !== "") {
             return <Redirect to='/admin' />
         } else if (this.props.token !== "") {

@@ -6,12 +6,14 @@ import * as AiIcons from "react-icons/ai"
 import { SidebarData } from './SidebarData'
 import Deweynude from '../images/Deweynude.svg'
 import '../styling/Navbar.css'
+import { User } from '../Types/User'
+
 
 type Props = {
     token: string,
     updateToken(newToken: string): void,
-    
-    
+    newUser: User
+
 }
 
 type State = {
@@ -74,8 +76,13 @@ class Navbar extends Component<Props, State> {
                             ?
                             <div>
                                 <Link to="/user/profile/edit"><button className="navbar-btn" id="navbar-margin">Edit Profile</button></Link>
-                                <Link to='/admin' className="navbar-btn">Admin</Link>
+                                {this.props.newUser.isAdmin ?
+                                    <Link to='/admin'><button className="navbar-btn">Admin</button></Link>
+                                    :
+                                    null}
                                 <button className="navbar-btn" onClick={this.clearToken}>Logout</button>
+
+                                
 
                             </div>
                             : null
