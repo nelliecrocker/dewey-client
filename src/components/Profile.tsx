@@ -61,7 +61,7 @@ class Profile extends Component<Props, State> {
         if (this.props.token === "") {
             return (<Redirect to='/user/login' />)
         }
-        console.log(this.props.newUser.isAdmin)
+        
         return (
             <div>
 

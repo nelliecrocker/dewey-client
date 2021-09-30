@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import '../styling/Home.css'
+import {Link} from 'react-router-dom'
+
 import {User} from '../Types/User'
 
 
@@ -21,8 +24,11 @@ class AdminView extends Component<Props ,{}> {
         
 
         return (
-            <div>
-                Hey, Admin!
+            <div className="body-styling">
+                <p>Hey! You're an admin!
+                
+                <Link className="link-styling" to='/user/profile'><button className="Btn-home">Profile</button></Link>
+            </p>
             </div>
         );
     }
