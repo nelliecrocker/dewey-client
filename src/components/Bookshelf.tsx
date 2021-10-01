@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom'
 import { Card, Button } from 'react-bootstrap'
 import '../styling/Bookshelf.css'
+import APIURL from '../helpers/environment'
+
 
 type Props = {
     token: string,
@@ -47,7 +49,7 @@ class Bookshelf extends Component<Props, State>{
     }
 
     displayBookData = () => {
-        fetch("http://localhost:3000/book/mybooks", {
+        fetch(`${APIURL}/book/mybooks`, {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',

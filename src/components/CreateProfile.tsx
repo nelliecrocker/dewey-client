@@ -3,6 +3,8 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Redirect, Link } from 'react-router-dom'
 import '../styling/CreateProfile.css'
 import {User} from '../Types/User'
+import APIURL from '../helpers/environment'
+
 
 
 type Props = {
@@ -52,7 +54,7 @@ class CreateProfile extends Component<Props, State> {
         
         const userIdLocal = localStorage.getItem('userId')
 
-        fetch(`http://localhost:3000/profile/create/${userIdLocal}`, {
+        fetch(`${APIURL}/profile/create/${userIdLocal}`, {
             method: 'POST',
             body: JSON.stringify({
                 UserProfile: {

@@ -3,6 +3,8 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Link, Redirect } from 'react-router-dom'
 import '../styling/CreateProfile.css'
 import { User } from '../Types/User'
+import APIURL from '../helpers/environment'
+
 
 
 
@@ -42,7 +44,7 @@ class EditProfile extends Component<Props, State> {
     onUpdate = (e: React.FormEvent) => {
         e.preventDefault()
         const userIdLocal = localStorage.getItem('userId')
-        fetch(`http://localhost:3000/profile/update/${userIdLocal} `, {
+        fetch(`${APIURL}/profile/update/${userIdLocal} `, {
             method: 'PUT',
             body: JSON.stringify({
                 UserProfile: {

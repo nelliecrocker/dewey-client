@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Link, Redirect } from 'react-router-dom'
 import '../styling/CreateBook.css'
+import APIURL from '../helpers/environment'
+
 
 
 type Props = {
@@ -50,7 +52,7 @@ class CreateBook extends Component<Props, State> {
             navRedirect: true
         })
 
-        fetch("http://localhost:3000/book/create", {
+        fetch(`${APIURL}/book/create`, {
             method: 'POST',
             body: JSON.stringify({
                 book: {

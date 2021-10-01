@@ -4,6 +4,8 @@ import { Redirect, Link } from 'react-router-dom'
 import '../styling/Register.css'
 import Dewey from '../images/Dewey.svg'
 import {User} from '../Types/User'
+import APIURL from '../helpers/environment'
+
 
 
 
@@ -51,7 +53,7 @@ class Register extends Component<Props, State> {
 
         })
 
-        fetch("http://localhost:3000/user/register", {
+        fetch(`${APIURL}/user/register`, {
             method: 'POST',
             body: JSON.stringify({
                 user: {

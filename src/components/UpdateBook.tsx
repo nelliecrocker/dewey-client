@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom'
 import { Form, Label, FormGroup, Input, Button } from 'reactstrap'
+import APIURL from '../helpers/environment'
+
 
 type Props = {
     token: string,
@@ -37,7 +39,7 @@ class UpdateBook extends Component<Props, State> {
     onSubmit = (e: React.FormEvent) => {
         e.preventDefault()
 
-        fetch(`http://localhost:3000/book/update/${this.props.book.id} `, {
+        fetch(`${APIURL}/book/update/${this.props.book.id} `, {
             method: 'PUT',
             body: JSON.stringify({
                 book: {

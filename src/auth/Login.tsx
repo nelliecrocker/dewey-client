@@ -4,6 +4,7 @@ import { Redirect, Link } from 'react-router-dom'
 import '../styling/Login.css'
 import Dewey from '../images/Dewey.svg'
 import {User} from '../Types/User'
+import APIURL from '../helpers/environment'
 
 
 
@@ -30,7 +31,7 @@ class Login extends Component<Props, State> {
 
     onSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        fetch("http://localhost:3000/user/login", {
+        fetch(`${APIURL}/user/login`, {
             method: 'POST',
             body: JSON.stringify({
                 user: {

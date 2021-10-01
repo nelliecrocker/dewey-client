@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import '../styling/Login.css'
 import { Redirect, Link } from 'react-router-dom'
 import { Button } from 'reactstrap'
+import APIURL from '../helpers/environment'
+
 
 
 
@@ -35,7 +37,7 @@ class DeleteBook extends Component<Props, {}> {
     }
 
     onDelete = () => {
-        fetch(`http://localhost:3000/book/delete/${this.props.book.id}`, {
+        fetch(`${APIURL}/book/delete/${this.props.book.id}`, {
             method: "DELETE",
             headers: new Headers({
                 "Content-Type": "application/json",
