@@ -43,7 +43,7 @@ class Navbar extends Component<Props, State> {
     render() {
         return (
             <>
-                <div className="navbar">
+                <div className="navbar-styling">
                     <Link to='#' className="menu-bars">
                         <IoIcons.IoLibraryOutline onClick={this.showSidebar} />
                     </Link>
